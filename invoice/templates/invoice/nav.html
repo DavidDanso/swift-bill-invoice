@@ -1,0 +1,66 @@
+{% load static %}
+<!--  -->
+{% load active_link_tags %}
+<!--======================== Nav-Section ================================-->
+<nav class="navbar navbar-expand-lg fixed-top menu" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'dashboard' %}">
+      <img
+        src="{% static '/images/swift_logo.svg' %}"
+        class="img-fluid"
+        id="logo"
+        alt="logo"
+      />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
+        <li class="nav-item">
+          <a
+            class="nav-link {% active_link 'dashboard' %}"
+            href="{% url 'dashboard' %}"
+            >Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% active_link 'invoice' %}"
+            href="{% url 'invoice' %}"
+            >Invoice</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% active_link 'clients' %}"
+            href="{% url 'clients' %}"
+            >Clients</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0" id="rightNav">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="{% url 'profile' %}">
+            <img
+              id="profile_img"
+              src="{% static '/images/user-avatar.svg' %}"
+              class="img-fluid rounded-circle"
+              alt="logo"
+            />
+            <small>{{request.user.profile}}</small>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

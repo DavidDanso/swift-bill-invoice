@@ -1,0 +1,345 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Home Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/dashboard.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/dashboard.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'invoice/nav.html' %}
+    <!-- end nav -->
+    <main>
+      <!-- Show django messages -->
+      {% include 'toast.html' %}
+      <!--  end django message -->
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Section ===============================-->
+        <div id="hero">
+          <div class="container-fluid">
+            <div class="hero-intro">
+              <h1>Welcome Back👋</h1>
+              <p>
+                Review your most recent activity.
+                <span class="badge">
+                  <img
+                    src="{% static '/images/calendar.png' %}"
+                    class="img-fluid calender-img"
+                    alt="calender-img"
+                  />
+                  {% now "D d M, Y" %}
+                </span>
+              </p>
+            </div>
+            <!-- End hero-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== Card-Section ===============================-->
+        <div id="card">
+          <div class="container-fluid">
+            <div class="card-intro">
+              <hr />
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="info">
+                        <h6>
+                          <img
+                            src="{% static '/images/customers.png' %}"
+                            class="img-fluid icon"
+                            alt="customers--img"
+                          />
+                          Total Clients
+                        </h6>
+                      </div>
+                      <!-- end info -->
+                      <div class="data">
+                        <p>{{clients_num}}</p>
+                      </div>
+                      <!-- end data -->
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end client -->
+
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="info">
+                        <h6>
+                          <img
+                            src="{% static '/images/banknotes.png' %}"
+                            class="img-fluid icon"
+                            alt="banknotes--img"
+                          />
+                          Revenue
+                        </h6>
+                      </div>
+                      <!-- end info -->
+                      <div class="data">
+                        {% if paid_invoice == None %}
+                        <p><span>$</span>0.00</p>
+                        {% else %}
+                        <p>
+                          <span>$</span>{{paid_invoice|floatformat:2|intcomma}}
+                        </p>
+                        <!--  -->
+                        {% endif %}
+                      </div>
+                      <!-- end data -->
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end revenue -->
+
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="info">
+                        <h6>
+                          <img
+                            src="{% static '/images/wallet.png' %}"
+                            class="img-fluid icon"
+                            alt="wallet--img"
+                          />
+                          Pending
+                        </h6>
+                      </div>
+                      <!-- end info -->
+                      <div class="data">
+                        {% if pending_invoice == None %}
+                        <p><span>$</span>0.00</p>
+                        {% else %}
+                        <p>
+                          <span>$</span
+                          >{{pending_invoice|floatformat:2|intcomma}}
+                        </p>
+                        <!--  -->
+                        {% endif %}
+                      </div>
+                      <!-- end data -->
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end pending -->
+
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="info">
+                        <h6>
+                          <img
+                            src="{% static '/images/billing.png' %}"
+                            class="img-fluid icon"
+                            alt="billing--img"
+                          />
+                          Total Invoice
+                        </h6>
+                      </div>
+                      <!-- end info -->
+                      <div class="data">
+                        <p>{{invoices_num}}</p>
+                      </div>
+                      <!-- end data -->
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end invoice -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- End card-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End card -->
+
+        <!--=========================================== Chart--Data-Section ===============================-->
+        <div id="chart--data">
+          <div class="container">
+            <div class="chart--data-intro">
+              <div class="row">
+                <div class="col-md-8" id="myChart-col">
+                  {% if paid_invoice == None %}
+                  <img
+                    src="{% static 'images/graph.png' %}"
+                    id="graph_img"
+                    class="img-fluid d-flex mx-auto"
+                    alt="graph_img"
+                  />
+                  <h4>No Data available yet!</h4>
+                  {% else %}
+                  <canvas id="myChart"></canvas>
+                  {% endif %}
+                </div>
+                <!-- end col -->
+
+                <div class="col-md-4 align-self-center">
+                  <div class="card">
+                    <div class="card-body">
+                      <h3>
+                        Clients
+                        <ion-icon name="unlink-outline"></ion-icon>
+                      </h3>
+                      <hr />
+                      {% if clients_num == 0 %}
+                      <h4>No Clients created yet!</h4>
+                      <div class="d-flex justify-content-center">
+                        <a
+                          href="{% url 'clients' %}"
+                          id="clients--btn"
+                          class="btn"
+                        >
+                          <ion-icon name="create-outline"></ion-icon>
+                          Create new clients</a
+                        >
+                      </div>
+
+                      {% elif clients_num < 3 %}
+                      <h4>Data appears with three or more clients.</h4>
+
+                      {% else %}
+                      <div class="clients_sec">
+                        <div class="row">
+                          {% for client in clients|slice:":3" %}
+                          <div class="col-4 col-md-3">
+                            <div id="initial_con">
+                              <h6>{{client.name|first|upper}}</h6>
+                            </div>
+                            <!-- end initial_con -->
+                            <small
+                              >{{client.first_name | truncatechars:7}}</small
+                            >
+                          </div>
+                          <!-- end col -->
+                          {% endfor %}
+                          <!--  -->
+                          <div class="col-4 col-md-3">
+                            <a href="{% url 'clients' %}">
+                              <div id="initial_con">
+                                <h6>
+                                  <ion-icon
+                                    name="arrow-forward-outline"
+                                  ></ion-icon>
+                                </h6>
+                              </div>
+                              <!-- end initial_con -->
+                              <small>View all</small>
+                            </a>
+                          </div>
+                          <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                      </div>
+                      <!-- end clients_sec -->
+                      {% endif %}
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- End chart--data-intro -->
+          </div>
+          <!-- End container -->
+        </div>
+        <!-- End chart--data -->
+
+        <!--=========================================== Footer-Text ===============================-->
+
+        <!-- end footer -->
+
+        <!--=========================================== Modal ===============================-->
+
+        <!-- end add_invoice_modal -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static '/js/dashboard.js' %}"></script>
+  </body>
+</html>

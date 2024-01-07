@@ -1,0 +1,95 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<div id="mobile-table">
+  <div class="container-fluid">
+    <div class="mobile-table-intro">
+      {% for invoice in invoices %}
+      <div class="card" id="invoice--table">
+        <div class="card-body">
+          <div id="invoice--container">
+            <h4>
+              <img
+                src="{{invoice.client_name.imageURL}}"
+                class="img-fluid rounded-circle"
+                id="avatar-img"
+                alt="avatar-img"
+              />
+              {{invoice.client_name}}
+            </h4>
+
+            <h5>
+              {{invoice.client_name.email | truncatechars:25}}
+              <!--  -->
+              {% if invoice.invoice_status == 'Pending' %}
+              <span class="badge" id="unpaid_status">
+                {{invoice.invoice_status}}
+                <img
+                  src="{% static '/images/clock.png' %}"
+                  class="img-fluid"
+                  id="clock-img"
+                  alt="clock-img"
+                />
+              </span>
+              {% else %}
+              <span class="badge" id="paid_status">
+                {{invoice.invoice_status}}
+                <img
+                  src="{% static '/images/clock.png' %}"
+                  class="img-fluid"
+                  id="clock-img"
+                  alt="clock-img"
+                />
+              </span>
+              <!--  -->
+              {% endif %}
+            </h5>
+
+            <hr id="divider--line" />
+
+            <h5 id="invoice--amount">
+              <strong>${{invoice.total|floatformat:2|intcomma}}</strong>
+              <span>{{invoice.payment_date|date:"d F, Y"}}</span>
+            </h5>
+
+            <a href="#edit-invoice">
+              <img
+                src="{% static '/images/list.png' %}"
+                class="img-fluid"
+                id="open_invoice-link"
+                alt="open_invoice-link"
+              />
+              view Invoice
+            </a>
+          </div>
+          <!-- end invoice--container -->
+        </div>
+        <!-- end card-body -->
+      </div>
+      {% endfor %}
+      <!-- end card / invoice--table -->
+
+      <!--  Page navigation -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- end pagination -->
+    </div>
+    <!-- End mobile-table-intro-->
+  </div>
+  <!-- End container-fluid -->
+</div>

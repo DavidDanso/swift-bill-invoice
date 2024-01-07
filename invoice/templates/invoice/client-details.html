@@ -1,0 +1,345 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Client-details Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link
+      rel="preload"
+      as="style"
+      href="{% static '/css/client-details.css' %}"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/client-details.css' %}" />
+
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="client--details-hero">
+          <div class="container-fluid">
+            <div class="client--details-intro">
+              <a href="javascript:history.back()">
+                <img
+                  src="{% static '/images/left.png' %}"
+                  class="img-fluid"
+                  id="return_back"
+                  alt="return_back-img"
+                />
+              </a>
+
+              <!--  -->
+              <div class="card d-flex mx-auto" id="main--card">
+                <div class="card-body">
+                  <h5>Edit [ {{client.name}} ] details</h5>
+                  <!--  -->
+                  <div class="row" id="ion-icon--card">
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                  </div>
+                  <!--  -->
+
+                  <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Client name</label
+                          >
+                          {{form.name}}
+                        </div>
+                        <!-- end client--name -->
+                      </div>
+                      <!-- end col-client--name -->
+
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label for="exampleEmail" class="form-label"
+                            >email</label
+                          >
+                          {{form.email}}
+                        </div>
+                        <!-- end email -->
+                      </div>
+                      <!-- end col-email -->
+
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label for="exampleAddress" class="form-label"
+                            >address</label
+                          >
+                          {{form.address}}
+                        </div>
+                        <!-- end address -->
+                      </div>
+                      <!-- end col-address -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleFCity--State" class="form-label"
+                            >city/state</label
+                          >
+                          {{form.city_state}}
+                        </div>
+                        <!-- end city/state -->
+                      </div>
+                      <!-- end col-city/state -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="examplePostal--code" class="form-label"
+                            >postal code</label
+                          >
+                          {{form.postal_code}}
+                        </div>
+                        <!-- end postal--code -->
+                      </div>
+                      <!-- end col-postal--code -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleNumber" class="form-label"
+                            >phone number</label
+                          >
+                          {{form.phone_number}}
+                        </div>
+                        <!-- end phone_number -->
+                      </div>
+                      <!-- end col-phone_number -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleCountry" class="form-label"
+                            >country</label
+                          >
+                          {{form.country}}
+                        </div>
+                        <!-- end country -->
+                      </div>
+                      <!-- end col-country -->
+
+                      <div class="col-md-8">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="mb-3">
+                              <label for="formFile" class="form-label">
+                                ...
+                              </label>
+                              {{form.client_avatar}}
+                            </div>
+                          </div>
+                          <!-- end card-body -->
+                        </div>
+                      </div>
+                      <!-- end col-client--avatar -->
+                    </div>
+                    <!-- end row -->
+
+                    <hr id="offcanvas--line" />
+                    <input
+                      type="submit"
+                      id="save--btn"
+                      class="btn"
+                      value="Save changes"
+                    />
+                    <a
+                      id="delete--btn"
+                      class="btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteAccountModal"
+                      ><ion-icon name="trash-outline"></ion-icon
+                    ></a>
+                    <!--  -->
+                    <div id="form_error">{{form.errors}}</div>
+                    <!-- end form_error -->
+                  </form>
+                  <!-- end form -->
+
+                  <!--  -->
+                  <img
+                    src="{% static '/images/banner.jpeg' %}"
+                    class="img-fluid offcanvas--banner"
+                    alt="offcanvas--banner"
+                  />
+                  <!--  -->
+                </div>
+                <!-- end card-body -->
+              </div>
+              <!--  -->
+            </div>
+            <!-- End client--details-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End client--details-hero -->
+
+        <!--=========================================== delete-client-Modal--layout ===============================-->
+        <div id="delete-client-modal">
+          <div
+            class="modal fade"
+            id="deleteAccountModal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title" id="staticBackdropLabel">
+                    Are you absolutely sure?
+                  </h6>
+                  <img
+                    id="close_img"
+                    src="{% static '/images/cancel.png' %}"
+                    class="img-fluid"
+                    alt="close_img"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  />
+                </div>
+                <div class="modal-body">
+                  <div id="modal-wrapper">
+                    <div id="warning">
+                      <h3>
+                        Unexpected bad things will happen if you don't read
+                        this!
+                      </h3>
+                    </div>
+                    <!-- end warning -->
+                    <h4>
+                      Are sure you want to delete this Client? This action
+                      cannot be undone. This will permanently delete this Client
+                      with all saved info.
+                    </h4>
+
+                    <h6>
+                      Please click on the Delete Button to confirm, or click
+                      Cancel
+                    </h6>
+                    <!--  -->
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <div class="modal-footer">
+                        <a href="#" data-bs-dismiss="modal" aria-label="Close">
+                          <h6>
+                            <span>Cancel, keep this client</span>
+                          </h6>
+                        </a>
+                        <input
+                          type="submit"
+                          class="btn"
+                          name="delete_client"
+                          id="delete_client"
+                          value="delete client"
+                        />
+                      </div>
+                      <!-- End modal-footer-->
+                    </form>
+                    <!-- End form-->
+                  </div>
+                  <!-- End modal-wrapper-->
+                </div>
+                <!-- End modal-body-->
+              </div>
+              <!-- End modal-content-->
+            </div>
+          </div>
+          <!-- End modal-->
+        </div>
+        <!-- End delete-folder-modal-->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="assets/styles/js/jquery-min.js"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/client-details.js' %}"></script>
+  </body>
+</html>

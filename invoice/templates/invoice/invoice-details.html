@@ -1,0 +1,400 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Invoice-details Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link
+      rel="preload"
+      as="style"
+      href="{% static '/css/invoice-details.css' %}"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/invoice-details.css' %}" />
+
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="invoice--details-hero">
+          <div class="container-fluid">
+            <div class="invoice--details-intro">
+              <a href="javascript:history.back()">
+                <img
+                  src="{% static '/images/left.png' %}"
+                  class="img-fluid"
+                  id="return_back"
+                  alt="return_back-img"
+                />
+              </a>
+
+              <!--  -->
+              <div class="card d-flex mx-auto" id="main--card">
+                <div class="card-body">
+                  <h5>Edit Invoice <span>#MB2345</span></h5>
+                  <a
+                    href="{% url 'preview-invoice' invoice.id %}"
+                    class="btn"
+                    id="preview--invoice"
+                  >
+                    <ion-icon name="eye-outline"></ion-icon> Preview Invoice /
+                    Download
+                  </a>
+                  <!--  -->
+                  <div class="row" id="ion-icon--card">
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="newspaper-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="newspaper-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="newspaper-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="newspaper-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                  </div>
+                  <!--  -->
+
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Payment for?</label
+                          >
+                          {{form.project_name}}
+                        </div>
+                        <!-- end payment--for -->
+                      </div>
+                      <!-- end col-payment--for -->
+
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label for="exampleClientName" class="form-label"
+                            >Client Name</label
+                          >
+                          {{form.client_name}}
+                        </div>
+                        <!-- end client--name -->
+                      </div>
+                      <!-- end col-client--name -->
+
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label for="exampleProjectDuration" class="form-label"
+                            >Project Duration</label
+                          >
+                          {{form.project_duration}}
+                        </div>
+                        <!-- end project-duration -->
+                      </div>
+                      <!-- end col-project-duration -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleInvoiceStatus" class="form-label"
+                            >Status</label
+                          >
+                          {{form.invoice_status}}
+                        </div>
+                        <!-- end invoice-status -->
+                      </div>
+                      <!-- end col-invoice-status -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleInvoiceDate" class="form-label"
+                            >Payment Date</label
+                          >
+                          {{form.payment_date}}
+                        </div>
+                        <!-- end payment--date -->
+                      </div>
+                      <!-- end col-payment--date -->
+
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleCurrency" class="form-label"
+                            >Currency</label
+                          >
+                          {{form.currency}}
+                        </div>
+                        <!-- end currency -->
+                      </div>
+                      <!-- end col-currency -->
+                    </div>
+                    <!-- end row -->
+
+                    <!--  -->
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-5">
+                            <div class="mb-3">
+                              <label for="exampleItemTitle" class="form-label"
+                                >Item Title</label
+                              >
+                              {{form.item_title}}
+                            </div>
+                            <!-- end item-title -->
+                          </div>
+                          <!-- end item-title -->
+
+                          <div class="col-6 col-md-3">
+                            <div class="mb-3">
+                              <label
+                                for="exampleItemQuantity"
+                                class="form-label"
+                                >Quantity</label
+                              >
+                              {{form.quantity}}
+                            </div>
+                            <!-- end item-quantity -->
+                          </div>
+                          <!-- end item-quantity -->
+
+                          <div class="col-6 col-md-3">
+                            <div class="mb-3">
+                              <label for="exampleItemPrice" class="form-label"
+                                >Price</label
+                              >
+                              {{form.price}}
+                            </div>
+                            <!-- end item-price -->
+                          </div>
+                          <!-- end item-price -->
+
+                          <div
+                            class="col-md-1 align-self-center"
+                            id="form--delete-btn"
+                          >
+                            <button type="submit" class="btn">
+                              <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                          </div>
+                          <!-- end delete-form-btn -->
+                        </div>
+                        <!-- end invoice--items-row -->
+
+                        <hr id="offcanvas--line" />
+
+                        <!-- form--add-more -->
+                        <div id="form--add-more">
+                          <a href="#">
+                            + add more item
+                            <h4>
+                              ${{invoice.invoice_total|floatformat:2|intcomma}}
+                            </h4>
+                          </a>
+                        </div>
+                        <!-- end form--add-more -->
+                      </div>
+                      <!-- end card-body -->
+                    </div>
+                    <!-- end invoice-item--card -->
+
+                    <!--  -->
+                    <hr id="offcanvas--line" />
+
+                    <!--  -->
+                    <div class="row g-3" id="clients--note">
+                      <div class="col-md-12">
+                        <div class="input-container">
+                          <div class="form-floating">
+                            {{form.client_note}}
+                            <label for="floatingTextarea2">Comments</label>
+                          </div>
+                        </div>
+                        <!-- end input-container  -->
+                      </div>
+                      <!-- end email -->
+                    </div>
+                    <!-- end clients--note -->
+
+                    <input
+                      type="submit"
+                      id="save--btn"
+                      class="btn"
+                      value="save Invoice changes"
+                    />
+
+                    <a
+                      id="delete--btn"
+                      class="btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteAccountModal"
+                      ><ion-icon name="trash-outline"></ion-icon
+                    ></a>
+                  </form>
+                  <!-- end form -->
+                </div>
+                <!-- end card-body -->
+              </div>
+              <!--  -->
+            </div>
+            <!-- End invoice--details-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End invoice--details-hero -->
+
+        <!--=========================================== delete-Invoice-Modal--layout ===============================-->
+        <div id="delete-invoice-modal">
+          <div
+            class="modal fade"
+            id="deleteAccountModal"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title" id="staticBackdropLabel">
+                    Are you absolutely sure?
+                  </h6>
+                  <img
+                    id="close_img"
+                    src="{% static '/images/cancel.png' %}"
+                    class="img-fluid"
+                    alt="close_img"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  />
+                </div>
+                <div class="modal-body">
+                  <div id="modal-wrapper">
+                    <div id="warning">
+                      <h3>
+                        Unexpected bad things will happen if you don't read
+                        this!
+                      </h3>
+                    </div>
+                    <!-- end warning -->
+                    <h4>
+                      Are sure you want to delete this Invoice? This action
+                      cannot be undone. This will permanently delete this
+                      Invoice with all saved info.
+                    </h4>
+
+                    <h6>
+                      Please click on the Delete Button to confirm, or click
+                      Cancel
+                    </h6>
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <div class="modal-footer">
+                        <a href="#" data-bs-dismiss="modal" aria-label="Close">
+                          <h6>
+                            <span>Cancel, keep this Invoice</span>
+                          </h6>
+                        </a>
+                        <input
+                          type="submit"
+                          class="btn"
+                          name="delete_invoice"
+                          id="delete_Invoice"
+                          value="delete invoice"
+                        />
+                      </div>
+                      <!-- End modal-footer-->
+                    </form>
+                    <!-- End form-->
+                  </div>
+                  <!-- End modal-wrapper-->
+                </div>
+                <!-- End modal-body-->
+              </div>
+              <!-- End modal-content-->
+            </div>
+          </div>
+          <!-- End modal-->
+        </div>
+        <!-- End delete-folder-modal-->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/edit-invoice.js' %}"></script>
+  </body>
+</html>

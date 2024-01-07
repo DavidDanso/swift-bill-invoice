@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Invoice Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/invoice.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/invoice.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'invoice/nav.html' %}
+    <!-- end nav -->
+
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Section ===============================-->
+        {% if invoices %}
+        <div id="hero">
+          <div class="container-fluid">
+            <div class="hero-intro">
+              <p>
+                Invoices
+                <span class="badge">
+                  <img
+                    src="{% static '/images/calendar.png' %}"
+                    class="img-fluid calender-img"
+                    alt="calender-img"
+                  />
+                  {% now "D d M, Y" %}
+                </span>
+              </p>
+            </div>
+            <!-- End hero-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== Search-Section ===============================-->
+        <div id="search">
+          <div class="container-fluid">
+            <div class="search-intro">
+              <hr />
+              <div class="row g-3 d-flex justify-content-center">
+                <div class="col-md-8">
+                  <img
+                    src="{% static '/images/magnifying-glass.png' %}"
+                    class="img-fluid search--img"
+                    alt="search--img"
+                  />
+                  <input
+                    type="text"
+                    class="form-control search"
+                    placeholder="Search invoices..."
+                  />
+                </div>
+                <!-- end col -->
+                <div class="col-auto">
+                  <button
+                    type="submit"
+                    class="btn mb-3 invoice--btn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                  >
+                    Create Invoice +
+                  </button>
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- End search-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End search -->
+
+        <!--=========================================== Desktop--Table-Section ===============================-->
+        {% include 'invoice/desktop-table.html' %}
+        <!-- End desktop-table -->
+
+        <!--=========================================== Mobile--Table-Section ===============================-->
+        {% include 'invoice/mobile-table.html' %}
+        <!-- End mobile-table -->
+
+        {% else %}
+        <div id="no--invoices">
+          <p>
+            <span class="badge">
+              <img
+                src="{% static '/images/calendar.png' %}"
+                class="img-fluid calender-img"
+                alt="calender-img"
+              />
+              {% now "D d M, Y" %}
+            </span>
+          </p>
+          <img
+            src="{% static '/images/no-invoice.svg' %}"
+            class="img-fluid no--invoice-img d-flex mx-auto"
+            alt="no--invoice-img"
+          />
+          <p>Client created? If not, create one before making an invoice.</p>
+          <center>
+            <a
+              href="#"
+              class="btn"
+              id="create--btn"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
+            >
+              <ion-icon name="create-outline"></ion-icon>
+              Create new Invoice
+            </a>
+          </center>
+        </div>
+        <!-- end no--invoices -->
+
+        {% endif %}
+
+        <!--=========================================== Modal ===============================-->
+        {% include 'invoice/add-invoice-modal.html' %}
+        <!-- end add_invoice_modal -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/invoice.js' %}"></script>
+  </body>
+</html>

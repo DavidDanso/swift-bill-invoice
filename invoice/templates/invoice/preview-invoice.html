@@ -1,0 +1,207 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Preview Invoice Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link
+      rel="preload"
+      as="style"
+      href="{% static '/css/preview-invoice.css' %}"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/preview-invoice.css' %}" />
+
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="preview--invoice">
+          <div class="container-fluid">
+            <div class="preview--invoice-intro">
+              <div class="card d-flex mx-auto">
+                <div class="card-body">
+                  <div id="invoice--from">
+                    <div id="invoice--from-img">
+                      <img
+                        src="{% static '/images/gea.svg' %}"
+                        class="img-fluid"
+                        id="img_"
+                        alt="img_"
+                      />
+                    </div>
+                    <!-- end invoice--from-img -->
+
+                    <h3 id="name_">{{profile.name}}.</h3>
+                    <p id="email_">{{profile.email}}.</p>
+                  </div>
+                  <!-- end invoice--from -->
+
+                  <!--  -->
+                  <div class="row" id="invoice--info">
+                    <div class="col-5 col-md-5 align-self-center">
+                      <h1>
+                        Invoice
+                        <span>#0043M</span>
+                      </h1>
+                    </div>
+                    <!-- end invoice--txt -->
+
+                    <div class="col-7 col-md-5">
+                      <h4>Clients Info</h4>
+                      <h6>{{invoice.client_name}}.</h6>
+                      <h6>{{invoice.client_name.address}}.</h6>
+                      <h6>{{invoice.client_name.email}}.</h6>
+                    </div>
+                    <!-- end clients--info -->
+
+                    <div class="col-md-2 align-self-center">
+                      <h4>Due Date</h4>
+                      <h6>{{ invoice.payment_date|date:"d M, Y" }}.</h6>
+                    </div>
+                    <!-- end due--date -->
+                  </div>
+                  <!-- end invoice--info -->
+
+                  <!--  -->
+                  <h2>
+                    Service
+                    <span>Total</span>
+                  </h2>
+                  <hr id="line--divider" />
+
+                  <h3>
+                    UX/UI Design
+                    <span>$7,000.00</span>
+                  </h3>
+
+                  <h3>
+                    Logo Design
+                    <span>$17,000.00</span>
+                  </h3>
+
+                  <h3>
+                    Website Development
+                    <span>$10,000.00</span>
+                  </h3>
+
+                  <hr id="line--divider" />
+
+                  <h2 id="total_">
+                    Sub-total
+                    <span>$55,000.00</span>
+                  </h2>
+
+                  <!--  -->
+                  <div id="total--card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h2>
+                          Total
+                          <span>$55,000.00</span>
+                        </h2>
+                      </div>
+                      <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+                  </div>
+                  <!-- end total--card -->
+
+                  <!--  -->
+                  <p>
+                    ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut.
+                  </p>
+                </div>
+                <!-- end card-body -->
+              </div>
+              <!-- end card -->
+
+              <div id="btn--actions">
+                <center>
+                  <a href="#btns" class="btn download--btn">
+                    Download Invoice
+                  </a>
+                  <a href="{% url 'invoice' %}" class="btn return--btn">
+                    return to invoice page
+                  </a>
+                </center>
+              </div>
+              <!-- end btn--actions -->
+            </div>
+            <!-- End preview--intro-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End preview--invoice -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/preview-invoice.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!--=========================================== create-invoice-offcanvas ===============================-->
+<div id="create-invoice-offcanvas">
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+    data-bs-backdrop="static"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">
+        Create new Invoice <span>#MB2345</span>
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <!-- end offcanvas-header -->
+    <div class="offcanvas-body">
+      <!--  -->
+      <div class="card" id="ion--icons-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3 col-md-3">
+              <ion-icon name="newspaper-outline"></ion-icon> -
+            </div>
+            <!-- end col -->
+            <div class="col-3 col-md-3">
+              <ion-icon name="newspaper-outline"></ion-icon> -
+            </div>
+            <!-- end col -->
+            <div class="col-3 col-md-3">
+              <ion-icon name="newspaper-outline"></ion-icon> -
+            </div>
+            <!-- end col -->
+            <div class="col-3 col-md-3">
+              <ion-icon name="newspaper-outline"></ion-icon> -
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end card-body -->
+      </div>
+      <!-- end ion--icons-card -->
+      <!--  -->
+
+      <form action="{% url 'invoice' %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="exampleFormControlProjectName" class="form-label"
+                >Payment for?</label
+              >
+              {{form.project_name}}
+            </div>
+            <!-- end project-name -->
+          </div>
+          <!-- end col-project-name -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleEmail" class="form-label">Client Name</label>
+              <div class="input-group">{{form.client_name}}</div>
+              <!-- end input-group  -->
+            </div>
+            <!-- end client -->
+          </div>
+          <!-- end col-client -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleProject-Duration" class="form-label"
+                >Project Duration</label
+              >
+              {{form.project_duration}}
+            </div>
+            <!-- end project-duration -->
+          </div>
+          <!-- end col-project-duration -->
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="exampleEmail" class="form-label">Status</label>
+              <div class="input-group">{{form.invoice_status}}</div>
+              <!-- end input-group  -->
+            </div>
+            <!-- end status -->
+          </div>
+          <!-- end col-status -->
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="examplePaymentDate" class="form-label"
+                >Payment Date</label
+              >
+              {{form.payment_date}}
+            </div>
+            <!-- end payment-date -->
+          </div>
+          <!-- end col-payment-date -->
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="exampleEmail" class="form-label">Currency</label>
+              <div class="input-group">{{form.currency}}</div>
+              <!-- end input-group  -->
+            </div>
+            <!-- end currency -->
+          </div>
+          <!-- end col-currency -->
+        </div>
+        <!-- end row -->
+
+        <hr id="offcanvas--line" />
+
+        <!--  -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="mb-3">
+                  <label for="exampleItemTitle" class="form-label"
+                    >Item Title</label
+                  >
+                  {{form.item_title}}
+                </div>
+                <!-- end item-title -->
+              </div>
+              <!-- end item-title -->
+
+              <div class="col-6 col-md-3">
+                <div class="mb-3">
+                  <label for="exampleItemQuantity" class="form-label"
+                    >Quantity</label
+                  >
+                  {{form.quantity}}
+                </div>
+                <!-- end item-quantity -->
+              </div>
+              <!-- end item-quantity -->
+
+              <div class="col-6 col-md-3">
+                <div class="mb-3">
+                  <label for="exampleItemPrice" class="form-label">Price</label>
+                  {{form.price}}
+                </div>
+                <!-- end item-price -->
+              </div>
+              <!-- end item-price -->
+
+              <div class="col-md-1 align-self-center" id="form--delete-btn">
+                <button type="submit" class="btn">
+                  <ion-icon name="close-circle-outline"></ion-icon>
+                </button>
+              </div>
+              <!-- end delete-form-btn -->
+            </div>
+            <!-- end invoice--items-row -->
+
+            <hr id="offcanvas--line" />
+
+            <!-- form--add-more -->
+            <div id="form--add-more">
+              <a href="#">+ add more item</a>
+            </div>
+            <!-- end form--add-more -->
+          </div>
+          <!-- end card-body -->
+        </div>
+        <!-- end invoice-item--card -->
+
+        <!--  -->
+        <hr id="offcanvas--line" />
+
+        <!--  -->
+        <div class="row g-3" id="clients--note">
+          <div class="col-md-12">
+            <div class="input-container">
+              <div class="form-floating">
+                {{form.client_note}}
+                <label for="floatingTextarea2"
+                  >Enter Notes for Client here</label
+                >
+              </div>
+            </div>
+            <!-- end input-container  -->
+          </div>
+          <!-- end email -->
+        </div>
+        <!-- end clients--note -->
+
+        <input type="submit" id="save--btn" class="btn" value="Save invoice" />
+      </form>
+      <!-- end form -->
+    </div>
+    <!-- end offcanvas-body -->
+  </div>
+  <!-- end off-canvas -->
+</div>
+<!-- end create-invoice-offcanvas -->

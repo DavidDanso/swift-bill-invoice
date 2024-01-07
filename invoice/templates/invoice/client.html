@@ -1,0 +1,401 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empower your invoicing experience with Swift Bill Invoice App."
+    />
+    <meta name="keywords" content="invoice app, billing, invoicing software" />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>Swift Bill | Client Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/client.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/client.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'invoice/nav.html' %}
+    <!-- end nav -->
+    <main>
+      <!-- Show django messages -->
+      {% include 'toast.html' %}
+      <!--  end django message -->
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="client--hero">
+          <div class="container">
+            <div class="client--intro">
+              {% if clients %}
+              <div id="clients_">
+                <h6>
+                  <a
+                    href="#"
+                    class="btn"
+                    id="save_btn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                  >
+                    <ion-icon name="create-outline"></ion-icon>
+                    Create new Client
+                  </a>
+                </h6>
+                <!-- card -->
+                <div class="row">
+                  {% for client in clients %}
+                  <div class="col-md-4">
+                    <a href="{% url 'client-details' client.id %}">
+                      <div class="card">
+                        <div class="card-body">
+                          <div id="client--container">
+                            <h4>
+                              <img
+                                src="{{client.imageURL}}"
+                                class="img-fluid rounded-circle"
+                                id="avatar-img"
+                                alt="avatar-img"
+                              />
+                              {{client.name}}
+                            </h4>
+
+                            <h5>
+                              {{client.email | truncatechars:25}}
+                              <span class="badge" id="location">
+                                <ion-icon name="earth-outline"></ion-icon>
+                                {{client.country}}
+                              </span>
+                            </h5>
+
+                            <hr id="divider--line" />
+
+                            <h5>
+                              {{client.address | truncatechars:25}}
+                              <span class="badge"
+                                >{{client.city_state}}, {{client.country}}</span
+                              >
+                            </h5>
+
+                            <h5 id="postal--code">
+                              {{client.postal_code}}
+                              <span class="badge">
+                                <ion-icon name="open-outline"></ion-icon>
+                              </span>
+                            </h5>
+                          </div>
+                          <!-- end client--container -->
+                        </div>
+                        <!-- end card-body -->
+                      </div>
+                      <!-- end card -->
+                    </a>
+                  </div>
+                  <!-- end col -->
+                  {% endfor %}
+                </div>
+                <!-- end row -->
+
+                <!--  Page navigation -->
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination d-flex justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- end pagination -->
+              </div>
+              <!-- end clients_ -->
+              {% else %}
+              <div id="no--clients">
+                <img
+                  src="{% static '/images/no-client.svg' %}"
+                  class="img-fluid no--client-img d-flex mx-auto"
+                  alt="no--client-img"
+                />
+                <p>No clients created yet :)</p>
+                <center>
+                  <a
+                    href="#"
+                    class="btn"
+                    id="create--btn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                  >
+                    <ion-icon name="create-outline"></ion-icon>
+                    Create new Client
+                  </a>
+                </center>
+              </div>
+              <!-- end no--clients -->
+              {% endif %}
+            </div>
+            <!-- End client--intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End client-hero -->
+
+        <!--=============================================== Create--Client-offcanvas ===================================-->
+        <div id="create-client-offcanvas">
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel"
+            data-bs-backdrop="static"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">
+                Create new Client
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <!-- end offcanvas-header -->
+            <div class="offcanvas-body">
+              <h3>To create a new client, all fields must be filled out.</h3>
+              <!--  -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                    <div class="col-3 col-md-3">
+                      <ion-icon name="id-card-outline"></ion-icon> -
+                    </div>
+                    <!-- end col -->
+                  </div>
+                  <!-- end row -->
+                </div>
+                <!-- end card-body -->
+              </div>
+              <!-- end card -->
+              <!--  -->
+
+              <form
+                action="{% url 'clients' %}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Client name</label
+                      >
+                      {{form.name}}
+                    </div>
+                    <!-- end client--name -->
+                  </div>
+                  <!-- end col-client--name -->
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleEmail" class="form-label">email</label>
+                      {{form.email}}
+                    </div>
+                    <!-- end email -->
+                  </div>
+                  <!-- end col-email -->
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleAddress" class="form-label"
+                        >address</label
+                      >
+                      {{form.address}}
+                    </div>
+                    <!-- end address -->
+                  </div>
+                  <!-- end col-address -->
+
+                  <div class="col-md-4">
+                    <div class="mb-3">
+                      <label for="exampleFCity--State" class="form-label"
+                        >city/state</label
+                      >
+                      {{form.city_state}}
+                    </div>
+                    <!-- end city/state -->
+                  </div>
+                  <!-- end col-city/state -->
+
+                  <div class="col-md-4">
+                    <div class="mb-3">
+                      <label for="examplePostal--code" class="form-label"
+                        >postal code
+                      </label>
+                      {{form.postal_code}}
+                    </div>
+                    <!-- end postal--code -->
+                  </div>
+                  <!-- end col-postal--code -->
+
+                  <div class="col-md-4">
+                    <div class="mb-3">
+                      <label for="examplePhoneNumber" class="form-label"
+                        >phone number</label
+                      >
+                      {{form.phone_number}}
+                    </div>
+                    <!-- end phone_number -->
+                  </div>
+                  <!-- end col-phone_number -->
+
+                  <div class="col-md-4">
+                    <div class="mb-3">
+                      <label for="exampleCountry" class="form-label"
+                        >country</label
+                      >
+                      {{form.country}}
+                    </div>
+                    <!-- end country -->
+                  </div>
+                  <!-- end col-country -->
+
+                  <div class="col-md-8">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label">
+                            leave empty to use (default photo
+                            <img
+                              src="{% static '/images/emil-kowalski.png' %}"
+                              class="img-fluid rounded-circle"
+                              id="client--avatar_"
+                              alt="client--avatar_"
+                            />)
+                          </label>
+                          {{form.client_avatar}}
+                        </div>
+                      </div>
+                      <!-- end card-body -->
+                    </div>
+                  </div>
+                  <!-- end col-client--avatar -->
+                </div>
+                <!-- end row -->
+
+                <hr id="offcanvas--line" />
+                <input
+                  type="submit"
+                  id="save--btn"
+                  class="btn"
+                  value="Save client"
+                />
+              </form>
+              <!-- end form -->
+
+              <!--  -->
+              <img
+                src="{% static '/images/banner.jpeg' %}"
+                class="img-fluid offcanvas--banner"
+                alt="offcanvas--banner"
+              />
+              <!--  -->
+            </div>
+            <!-- end offcanvas-body -->
+          </div>
+          <!-- end off-canvas -->
+        </div>
+        <!-- end create-client-offcanvas -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/client.js' %}"></script>
+  </body>
+</html>
