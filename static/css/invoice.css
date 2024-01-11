@@ -427,6 +427,14 @@ a:hover {
   color: #f43e5c !important;
 }
 
+/* invoice--img */
+#invoice--img-default {
+  width: 10%;
+}
+#invoice--img-card input {
+  margin-bottom: -2%;
+}
+
 /* add more */
 #form--add-more a {
   color: #f43e5c;
@@ -653,6 +661,14 @@ footer p {
   #form--delete-btn ion-icon:hover {
     color: #f43e5ca0 !important;
     transition: all 0.5s ease-in-out;
+  }
+
+  /* invoice--img */
+  #invoice--img-default {
+    width: 5%;
+  }
+  #invoice--img-card input {
+    margin-bottom: -1%;
   }
 
   #form--add-more a {

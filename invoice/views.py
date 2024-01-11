@@ -6,6 +6,7 @@ from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
 
+
 # Create your views here.
 ########################################## home page views
 def homePage(request):
@@ -87,7 +88,7 @@ def create_invoice(request):
     invoices = profile.invoice_set.all()
 
     # Filter clients based on the current user
-    form = InvoiceCreationForm(request.user, request.POST if request.method == "POST" else None)
+    form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
 
     if request.method == "POST":
         if form.is_valid():
@@ -101,14 +102,15 @@ def create_invoice(request):
     return render(request, 'invoice/invoice.html', context)
 
 
-
 ########################################## edit-invoice page views
 @login_required(login_url='login')
 def edit_invoice(request, pk):
     profile = request.user.profile
     invoice = profile.invoice_set.get(id=pk)
-    form = InvoiceCreationForm(request.user, request.POST or None, instance=invoice)
-    
+
+    form = InvoiceCreationForm(request.user, request.POST or None, request.FILES or None, instance=invoice)
+
+    # 
     if request.method == "POST":
         if form.is_valid():
             form.save()
@@ -117,7 +119,10 @@ def edit_invoice(request, pk):
             invoice.delete()
             return redirect('invoice')
 
-    context = {'form': form, 'invoice': invoice}
+    context = {
+        'form': form,
+        'invoice': invoice, 
+    }
     return render(request, 'invoice/invoice-details.html', context)
 
 

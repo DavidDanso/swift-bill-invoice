@@ -115,7 +115,7 @@
                   </div>
                   <!--  -->
 
-                  <form action="" method="POST">
+                  <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                       <div class="col-md-12">
@@ -185,8 +185,31 @@
                         <!-- end currency -->
                       </div>
                       <!-- end col-currency -->
+
+                      <div class="col-md-12">
+                        <div class="card" id="invoice--img-card">
+                          <div class="card-body">
+                            <div class="mb-3">
+                              <label for="formFile" class="form-label">
+                                select a new image or keep the current one.
+                                (<img
+                                  src="{{invoice.invoiceImageURL}}"
+                                  class="img-fluid"
+                                  id="invoice--img-default"
+                                  alt="invoice--img-default"
+                                />)
+                              </label>
+                              {{form.invoice_image}}
+                            </div>
+                          </div>
+                          <!-- end card-body -->
+                        </div>
+                      </div>
+                      <!-- end col-invoice--img-default -->
                     </div>
                     <!-- end row -->
+
+                    <hr id="offcanvas--line" />
 
                     <!--  -->
                     <div class="card">

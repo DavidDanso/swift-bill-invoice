@@ -50,6 +50,10 @@
                   <!--  -->
                   €{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
+                  {% elif invoice.currency == "NGN" %}
+                  <!--  -->
+                  ₦{{ invoice.total|floatformat:2|intcomma }}
+                  <!--  -->
                   {% endif %}
                 </td>
 

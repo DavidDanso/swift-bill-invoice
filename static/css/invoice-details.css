@@ -189,6 +189,26 @@ a:hover {
   color: #f43e5c !important;
 }
 
+/* invoice--img */
+#invoice--img-card {
+  margin-top: -10%;
+  margin-bottom: 1%;
+}
+#invoice--img-default {
+  width: 10%;
+}
+#invoice--img-card input {
+  margin-bottom: -2%;
+}
+
+/*  */
+/* Hide "Clear" label and checkbox */
+#invoice_image-clear_id,
+#text,
+label[for="invoice_image-clear_id"] {
+  display: none;
+}
+
 /* add more */
 #form--add-more a {
   color: #f43e5c;
@@ -453,6 +473,18 @@ footer p {
   #form--delete-btn ion-icon:hover {
     color: #f43e5ca0 !important;
     transition: all 0.5s ease-in-out;
+  }
+
+  /* invoice--img */
+  #invoice--img-card {
+    margin-top: -3%;
+    margin-bottom: 1%;
+  }
+  #invoice--img-default {
+    width: 5%;
+  }
+  #invoice--img-card input {
+    margin-bottom: -1%;
   }
 
   #save--btn {

@@ -34,7 +34,7 @@ class InvoiceCreationForm(ModelForm):
     class Meta:
         model = Invoice
         fields = ['project_name', 'project_duration', 'client_name', 
-                  'invoice_status', 'payment_date', 'currency', 
+                  'invoice_status', 'payment_date', 'currency', 'invoice_image',
                   'item_title', 'quantity', 'price', 'client_note']
 
     def __init__(self, user, *args, **kwargs):

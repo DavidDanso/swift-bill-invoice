@@ -50,6 +50,7 @@ class Invoice(models.Model):
         ('GHC', 'GHC'),
         ('GBP', 'GBP'),
         ('EUR', 'EUR'),
+        ('NGN', 'NGN'),
     )
 
     account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -61,6 +62,7 @@ class Invoice(models.Model):
     invoice_status = models.CharField(max_length=200, choices=STATUS)
     payment_date = models.DateField(max_length=200, null=True)
     currency = models.CharField(max_length=200, choices=CURRENCY)
+    invoice_image = models.ImageField(null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
     item_title = models.CharField(max_length=255, null=True, blank=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
@@ -73,6 +75,14 @@ class Invoice(models.Model):
     @property
     def invoice_total(self):
         return self.quantity * self.price
+    
+    @property
+    def invoiceImageURL(self):
+        try:
+            url = self.invoice_image.url
+        except:
+            url = ''
+        return url
     
     # Override the save method to update the total before saving
     def save(self, *args, **kwargs):

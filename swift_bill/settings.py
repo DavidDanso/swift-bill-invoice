@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'invoice.apps.InvoiceConfig',
     'user.apps.UserConfig',
+
 ]
 
 MIDDLEWARE = [

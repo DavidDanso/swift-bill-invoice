@@ -51,7 +51,11 @@
       <!-- end ion--icons-card -->
       <!--  -->
 
-      <form action="{% url 'invoice' %}" method="POST">
+      <form
+        action="{% url 'invoice' %}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         {% csrf_token %}
         <div class="row">
           <div class="col-md-12">
@@ -116,6 +120,26 @@
             <!-- end currency -->
           </div>
           <!-- end col-currency -->
+
+          <div class="col-md-12">
+            <div class="card" id="invoice--img-card">
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">
+                    pick an image for the invoice or leave it blank to use (<img
+                      src="{% static '/images/invoice.png' %}"
+                      class="img-fluid"
+                      id="invoice--img-default"
+                      alt="invoice--img-default"
+                    />)
+                  </label>
+                  {{form.invoice_image}}
+                </div>
+              </div>
+              <!-- end card-body -->
+            </div>
+          </div>
+          <!-- end col-invoice--img-default -->
         </div>
         <!-- end row -->
 
