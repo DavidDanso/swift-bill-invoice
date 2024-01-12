@@ -1,6 +1,8 @@
 from django.db import models
 from user.models import Profile
 import uuid
+# import requests
+
 
 # client model   
 class Client(models.Model):
@@ -47,7 +49,7 @@ class Invoice(models.Model):
 
     CURRENCY = (
         ('USD', 'USD'),
-        ('GHC', 'GHC'),
+        ('GHS', 'GHS'),
         ('GBP', 'GBP'),
         ('EUR', 'EUR'),
         ('NGN', 'NGN'),
@@ -96,4 +98,27 @@ class Invoice(models.Model):
     # display invoice with project_names in the database
     def __str__(self):
         return self.project_name
+    
+
+####################################################### Function to get the exchange rate
+# def get_exchange_rate(from_currency, to_currency, amount):
+#     base_url = "https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert"
+
+#     # Using f-string to format the query string
+#     formatted_querystring = f"from={from_currency}&to={to_currency}&amount={amount}"
+
+#     headers = {
+#         "X-RapidAPI-Key": "877fa85497mshcb2a8df001265b4p1f183ajsnc0ec5d2cd852",
+#         "X-RapidAPI-Host": "currency-conversion-and-exchange-rates.p.rapidapi.com"
+#     }
+
+#     response = requests.get(base_url, headers=headers, params=formatted_querystring)
+#     data = response.json()
+
+#     # Access the 'result' key from the JSON response
+#     result_value = data.get('result')
+#     if result_value is not None:
+#         return result_value
+#     else:
+#         return 0.0  # Set value to 0 if result is None
     

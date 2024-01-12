@@ -34,7 +34,7 @@
                 <td>{{invoice.payment_date|date:"d F, Y"}}</td>
 
                 <td>
-                  {% if invoice.currency == "GHC" %}
+                  {% if invoice.currency == "GHS" %}
                   <!--  -->
                   ¢{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->

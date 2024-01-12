@@ -6,7 +6,7 @@ from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
 
-
+    
 # Create your views here.
 ########################################## home page views
 def homePage(request):
@@ -14,19 +14,49 @@ def homePage(request):
 
 ########################################## dashboard page views
 @login_required(login_url='login')
-def dashboardPage(request):
+def dashboard_page(request):
     profile = request.user.profile
+
+    # Clients
     clients = profile.client_set.all()
     clients_num = clients.count()
 
+    # Invoices
     invoices = profile.invoice_set.all()
     invoices_num = invoices.count()
 
-    pending_invoice = profile.invoice_set.filter(invoice_status='Pending').aggregate(Sum('total'))['total__sum']
-    paid_invoice = profile.invoice_set.filter(invoice_status='Paid').aggregate(Sum('total'))['total__sum']
+    # Currencies and Exchange Rates
+    currency_rates = {
+        'NGN': 0.00104407,
+        'GHS': 0.0836498,
+        'GBP': 1.27777,
+        'EUR': 1.09799,
+        'USD': 1.00000,
+    }
 
-    context = {'clients_num': clients_num, 'invoices_num': invoices_num, 
-               'pending_invoice': pending_invoice, 'paid_invoice': paid_invoice, 'clients': clients}
+    # Invoice Status by Currency
+    pending_invoices_by_currency = {}
+    paid_invoices_by_currency = {}
+
+    for currency, rate in currency_rates.items():
+        pending_total = invoices.filter(currency=currency, invoice_status='Pending').aggregate(Sum('total'))['total__sum'] or 0
+        paid_total = invoices.filter(currency=currency, invoice_status='Paid').aggregate(Sum('total'))['total__sum'] or 0
+
+        pending_invoices_by_currency[currency] = pending_total
+        paid_invoices_by_currency[currency] = paid_total
+
+    # Convert Amount to USD
+    def convert_to_usd(amount, rate):
+        return amount * rate
+
+    paid_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in paid_invoices_by_currency.items())
+    pending_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in pending_invoices_by_currency.items())
+
+    context = {
+        'clients_num': clients_num, 'invoices_num': invoices_num, 
+        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients,
+    }
+
     return render(request, 'invoice/dashboard.html', context)
 
 
@@ -76,7 +106,6 @@ def edit_client(request, pk):
             messages.success(request,  'Client deleted Successful👤')
             return redirect('clients')
         
-
     context = {'form': form, 'client': client}
     return render(request, 'invoice/client-details.html', context)
 

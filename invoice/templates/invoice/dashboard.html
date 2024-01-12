@@ -133,11 +133,12 @@
                       </div>
                       <!-- end info -->
                       <div class="data">
-                        {% if paid_invoice == None %}
+                        {% if paid_total_usd == 0 %}
                         <p><span>$</span>0.00</p>
                         {% else %}
                         <p>
-                          <span>$</span>{{paid_invoice|floatformat:2|intcomma}}
+                          <span>$</span
+                          >{{paid_total_usd|floatformat:2|intcomma}}
                         </p>
                         <!--  -->
                         {% endif %}
@@ -165,12 +166,12 @@
                       </div>
                       <!-- end info -->
                       <div class="data">
-                        {% if pending_invoice == None %}
+                        {% if pending_total_usd == 0 %}
                         <p><span>$</span>0.00</p>
                         {% else %}
                         <p>
                           <span>$</span
-                          >{{pending_invoice|floatformat:2|intcomma}}
+                          >{{pending_total_usd|floatformat:2|intcomma}}
                         </p>
                         <!--  -->
                         {% endif %}
