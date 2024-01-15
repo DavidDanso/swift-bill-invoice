@@ -1,0 +1,39 @@
+{% load static %}
+<!--  Page navigation -->
+{% if invoices.has_other_pages %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination d-flex justify-content-center">
+    {% if invoices.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{invoices.previous_page_number}}">
+        <span aria-hidden="true">&laquo;</span> prev
+      </a>
+    </li>
+    {% endif %}
+    <!--  -->
+    {% for page in custom_range %}
+    <!--  -->
+    {% if page == invoices.number %}
+    <li class="page-item">
+      <a class="page-link btn--sub" href="?page={{page}}">{{page}}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{page}}">{{page}}</a>
+    </li>
+    {% endif %}
+    <!--  -->
+    {% endfor %}
+    <!--  -->
+    {% if invoices.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{invoices.next_page_number}}">
+        next <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    <!--  -->
+  </ul>
+</nav>
+{% endif %}
+<!-- end pagination -->

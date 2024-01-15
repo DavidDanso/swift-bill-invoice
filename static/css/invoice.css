@@ -200,9 +200,20 @@ a:hover {
   transition: all 0.5s ease-in-out;
 }
 
+/*  */
+.no-data-found {
+  display: none;
+  font-size: 1.9vh;
+  font-family: var(--text-font);
+  color: #d24545;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+}
+
 /****************************************** Desktop-Table-Section ************************************/
 #desktop-table {
-  margin-top: -2%;
+  margin-top: -3%;
 }
 .desktop-table-intro {
   margin: 3%;
@@ -327,11 +338,6 @@ a:hover {
 }
 #divider--line {
   margin-top: 6%;
-}
-
-/* Page navigation */
-#mobile-table .pagination {
-  margin-top: 5%;
 }
 
 /****************************************** Add-Invoice-modal ************************************/
@@ -518,6 +524,24 @@ a:hover {
   vertical-align: middle;
 }
 
+/*  */
+/* Page navigation */
+#mobile-table .pagination {
+  margin-top: 5%;
+}
+.pagination .page-link {
+  color: var(--main-color);
+  font-size: 1.9vh;
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+}
+.pagination .btn--sub {
+  background: #9384d1;
+  color: var(--text-color);
+  font-size: 1.9vh;
+  border: 1px solid #9384d1;
+}
+
 /****************************************** Footer-Section ************************************/
 footer {
   margin-top: -2%;
@@ -622,6 +646,11 @@ footer p {
     font-size: 1.9vh;
   }
 
+  /*  */
+  .no-data-found {
+    font-size: 2vh;
+  }
+
   /****** create-invoice-offcanvas ******/
   #create-invoice-offcanvas .offcanvas {
     width: 695px;
@@ -720,6 +749,14 @@ footer p {
     font-size: 1.8vh;
   }
   #create--btn {
+    font-size: 1.9vh;
+  }
+
+  /* Page navigation */
+  .pagination .page-link {
+    font-size: 1.9vh;
+  }
+  .pagination .btn--sub {
     font-size: 1.9vh;
   }
 

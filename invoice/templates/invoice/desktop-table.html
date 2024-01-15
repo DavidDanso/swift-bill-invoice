@@ -1,12 +1,12 @@
 {% load static %}
 <!--  -->
 {% load humanize %}
-<div id="desktop-table">
+<div id="desktop-table" class="live-search-list">
   <div class="container">
     <div class="desktop-table-intro">
       <div class="card">
         <div class="card-body">
-          <table class="table table-hover">
+          <table class="table table-hover" id="invoice_table">
             <thead>
               <tr>
                 <th scope="col">Client</th>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
               {% for invoice in invoices %}
-              <tr>
+              <tr id="search_invoice">
                 <td>
                   <img
                     src="{{invoice.client_name.imageURL}}"
@@ -107,23 +107,7 @@
       <!-- end card -->
 
       <!--  Page navigation -->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination d-flex justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {% include 'invoice/page-paginator.html' %}
       <!-- end pagination -->
     </div>
     <!-- End desktop-table-intro-->

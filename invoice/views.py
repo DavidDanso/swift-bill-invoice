@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
+from .utils import paginateInvoice
 
     
 # Create your views here.
@@ -116,6 +118,8 @@ def create_invoice(request):
     profile = request.user.profile
     invoices = profile.invoice_set.all()
 
+    custom_range, invoices = paginateInvoice(request, 5, invoices)
+
     # Filter clients based on the current user
     form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
 
@@ -124,10 +128,12 @@ def create_invoice(request):
             invoice = form.save(commit=False)
             invoice.account_owner = profile
             invoice.save()
+            return redirect('invoice')
         else:
             messages.error(request, 'Invalid form: Please check and resubmit')
 
-    context = {'form': form, 'invoices': invoices}
+    context = {'form': form, 'invoices': invoices,
+               'custom_range': custom_range}
     return render(request, 'invoice/invoice.html', context)
 
 

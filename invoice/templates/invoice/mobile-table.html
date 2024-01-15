@@ -1,11 +1,11 @@
 {% load static %}
 <!--  -->
 {% load humanize %}
-<div id="mobile-table">
+<div id="mobile-table" class="live-search-list">
   <div class="container-fluid">
     <div class="mobile-table-intro">
       {% for invoice in invoices %}
-      <div class="card" id="invoice--table">
+      <div class="card" id="search_invoice">
         <div class="card-body">
           <div id="invoice--container">
             <h4>
@@ -48,11 +48,33 @@
             <hr id="divider--line" />
 
             <h5 id="invoice--amount">
-              <strong>${{invoice.total|floatformat:2|intcomma}}</strong>
+              <strong>
+                {% if invoice.currency == "GHS" %}
+                <!--  -->
+                ¢{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "USD" %}
+                <!--  -->
+                ${{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "GBP" %}
+                <!--  -->
+                £{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "EUR" %}
+                <!--  -->
+                €{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "NGN" %}
+                <!--  -->
+                ₦{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% endif %}
+              </strong>
               <span>{{invoice.payment_date|date:"d F, Y"}}</span>
             </h5>
 
-            <a href="#edit-invoice">
+            <a href="{% url 'invoice-details' invoice.id %}">
               <img
                 src="{% static '/images/list.png' %}"
                 class="img-fluid"
@@ -70,23 +92,7 @@
       <!-- end card / invoice--table -->
 
       <!--  Page navigation -->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination d-flex justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {% include 'invoice/page-paginator.html' %}
       <!-- end pagination -->
     </div>
     <!-- End mobile-table-intro-->

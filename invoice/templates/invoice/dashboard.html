@@ -223,7 +223,7 @@
             <div class="chart--data-intro">
               <div class="row">
                 <div class="col-md-8" id="myChart-col">
-                  {% if paid_invoice == None %}
+                  {% if paid_total_usd == 0 %}
                   <img
                     src="{% static 'images/graph.png' %}"
                     id="graph_img"

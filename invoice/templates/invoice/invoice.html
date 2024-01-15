@@ -97,7 +97,7 @@
                   />
                   <input
                     type="text"
-                    class="form-control search"
+                    class="form-control live-search-box"
                     placeholder="Search invoices..."
                   />
                 </div>
@@ -130,6 +130,8 @@
         <!--=========================================== Mobile--Table-Section ===============================-->
         {% include 'invoice/mobile-table.html' %}
         <!-- End mobile-table -->
+
+        <div class="no-data-found">No data found for your search</div>
 
         {% else %}
         <div id="no--invoices">
