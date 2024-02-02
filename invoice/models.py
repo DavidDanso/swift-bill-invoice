@@ -60,23 +60,14 @@ class Invoice(models.Model):
     project_duration = models.CharField(max_length=50)
     client_name = models.ForeignKey(Client, on_delete=models.CASCADE, to_field='name', related_name='invoice', 
                                     help_text='Select a client for this entry.')
-   
     invoice_status = models.CharField(max_length=200, choices=STATUS)
     payment_date = models.DateField(max_length=200, null=True)
     currency = models.CharField(max_length=200, choices=CURRENCY)
     invoice_image = models.ImageField(null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
-    item_title = models.CharField(max_length=255, null=True, blank=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    price = models.IntegerField(default=0, null=True, blank=True)
-    total = models.IntegerField(default=0, null=True, blank=True)
     client_note = models.TextField(max_length=100000, null=True, blank=True)
     updated_time_stamp = models.DateTimeField(auto_now=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
-    
-    @property
-    def invoice_total(self):
-        return self.quantity * self.price
     
     @property
     def invoiceImageURL(self):
@@ -100,25 +91,22 @@ class Invoice(models.Model):
         return self.project_name
     
 
-####################################################### Function to get the exchange rate
-# def get_exchange_rate(from_currency, to_currency, amount):
-#     base_url = "https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert"
+class Item(models.Model):
+    account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True)
+    item_title = models.CharField(max_length=255, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    price = models.IntegerField(default=0, null=True, blank=True)
+    total = models.IntegerField(default=0, null=True, blank=True)
+    updated_time_stamp = models.DateTimeField(auto_now=True)
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
 
-#     # Using f-string to format the query string
-#     formatted_querystring = f"from={from_currency}&to={to_currency}&amount={amount}"
+    @property
+    def invoice_total(self):
+        return self.quantity * self.price
 
-#     headers = {
-#         "X-RapidAPI-Key": "877fa85497mshcb2a8df001265b4p1f183ajsnc0ec5d2cd852",
-#         "X-RapidAPI-Host": "currency-conversion-and-exchange-rates.p.rapidapi.com"
-#     }
+    class Meta:
+        ordering = ['-updated_time_stamp']
 
-#     response = requests.get(base_url, headers=headers, params=formatted_querystring)
-#     data = response.json()
-
-#     # Access the 'result' key from the JSON response
-#     result_value = data.get('result')
-#     if result_value is not None:
-#         return result_value
-#     else:
-#         return 0.0  # Set value to 0 if result is None
-    
+    def __str__(self):
+        return str(self.item_title)

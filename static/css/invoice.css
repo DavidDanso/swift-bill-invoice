@@ -425,12 +425,12 @@ a:hover {
 }
 
 /*  */
-#form--delete-btn button {
+#addd--item-btn button {
   margin-top: -5%;
 }
-#form--delete-btn ion-icon {
+#addd--item-btn ion-icon {
   font-size: 4vh !important;
-  color: #f43e5c !important;
+  color: #3860be !important;
 }
 
 /* invoice--img */
@@ -441,9 +441,31 @@ a:hover {
   margin-bottom: -2%;
 }
 
-/* add more */
-#form--add-more a {
-  color: #f43e5c;
+/* display--items  */
+#display--items h3 {
+  color: var(--main-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+}
+#display--items h3 span {
+  color: #b4b4b8;
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+}
+#display--items button {
+  margin-top: -2%;
+  margin-bottom: -5%;
+}
+#display--items ion-icon {
+  font-size: 2.5vh !important;
+  color: #bf3131 !important;
+}
+
+/* sub total */
+#sub-total a {
+  color: #9384d1;
   font-family: var(--header-font);
   letter-spacing: 1px;
   font-size: 2.4vh;
@@ -455,11 +477,11 @@ a:hover {
   margin-bottom: -5%;
   transition: all 0.5s ease-in-out;
 }
-#form--add-more a:hover {
-  color: #f43e5cbe;
+#sub-total a:hover {
+  color: #9484d1d6;
   transition: all 0.5s ease-in-out;
 }
-#form--add-more a h4 {
+#sub-total a h4 {
   color: var(--main-color);
   margin-top: 25px;
   font-size: 4vh;
@@ -661,7 +683,7 @@ footer p {
 
   /****** create-invoice-offcanvas ******/
   #create-invoice-offcanvas .offcanvas {
-    width: 695px;
+    width: 795px;
   }
   #create-invoice-offcanvas .offcanvas ion-icon {
     font-size: 1.3rem;
@@ -686,18 +708,29 @@ footer p {
   }
 
   /*  */
-  #form--delete-btn button {
-    margin-top: 20%;
+  #addd--item-btn button {
+    margin-top: 30%;
     margin-left: -5%;
   }
-  #form--delete-btn ion-icon {
+  #addd--item-btn ion-icon {
     font-size: 4vh !important;
-    color: #f43e5c !important;
+    color: #3860be !important;
     transition: all 0.5s ease-in-out;
   }
-  #form--delete-btn ion-icon:hover {
-    color: #f43e5ca0 !important;
+  #addd--item-btn ion-icon:hover {
+    color: #3860beb2 !important;
     transition: all 0.5s ease-in-out;
+  }
+
+  /* display--items  */
+  #display--items h3 {
+    font-size: 1.2rem;
+  }
+  #display--items h3 span {
+    font-size: 1.3rem;
+  }
+  #display--items button {
+    margin-bottom: -4%;
   }
 
   /* invoice--img */
@@ -708,7 +741,7 @@ footer p {
     margin-bottom: -1%;
   }
 
-  #form--add-more a {
+  #sub-total a {
     font-size: 2.4vh;
     margin-top: 3%;
     padding: 0%;
@@ -716,7 +749,7 @@ footer p {
     line-height: 1;
     margin-bottom: -2%;
   }
-  #form--add-more a h4 {
+  #sub-total a h4 {
     float: right;
     font-size: 3vh;
     margin-top: -1px;

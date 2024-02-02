@@ -1,44 +1,41 @@
 <!-- add invoice items -->
-<form
-  action=""
-  hx-post="{% url 'add-items' %}"
-  hx-trigger="click from:#save--btn"
->
+<form action="" method="POST">
+  {% csrf_token %}
   <div class="row">
     <div class="col-md-5">
       <div class="mb-3">
         <label for="exampleItemTitle" class="form-label">Item Title</label>
-        {{form.item_title}}
+        <input type="text" class="form-control input" id="exampleItemTitle" />
       </div>
       <!-- end item-title -->
     </div>
     <!-- end item-title -->
 
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-2">
       <div class="mb-3">
         <label for="exampleItemQuantity" class="form-label">Quantity</label>
-        {{form.quantity}}
+        <input
+          type="number"
+          class="form-control input"
+          id="exampleItemQuantity"
+        />
       </div>
       <!-- end item-quantity -->
     </div>
     <!-- end item-quantity -->
 
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-4">
       <div class="mb-3">
         <label for="exampleItemPrice" class="form-label">Price</label>
-        {{form.price}}
+        <input type="number" class="form-control input" id="exampleItemPrice" />
       </div>
       <!-- end item-price -->
     </div>
     <!-- end item-price -->
 
-    <div class="col-md-1 align-self-center" id="form--delete-btn">
-      <button
-        type="submit"
-        class="btn"
-        hx-on="click: this.closest('form').remove()"
-      >
-        <ion-icon name="close-circle-outline"></ion-icon>
+    <div class="col-md-1 align-self-center" id="addd--item-btn">
+      <button type="submit" class="btn">
+        <ion-icon name="arrow-up-circle-sharp"></ion-icon>
       </button>
     </div>
   </div>
