@@ -1,0 +1,47 @@
+<!-- add invoice items -->
+<form
+  action=""
+  hx-post="{% url 'add-items' %}"
+  hx-trigger="click from:#save--btn"
+>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="mb-3">
+        <label for="exampleItemTitle" class="form-label">Item Title</label>
+        {{form.item_title}}
+      </div>
+      <!-- end item-title -->
+    </div>
+    <!-- end item-title -->
+
+    <div class="col-6 col-md-3">
+      <div class="mb-3">
+        <label for="exampleItemQuantity" class="form-label">Quantity</label>
+        {{form.quantity}}
+      </div>
+      <!-- end item-quantity -->
+    </div>
+    <!-- end item-quantity -->
+
+    <div class="col-6 col-md-3">
+      <div class="mb-3">
+        <label for="exampleItemPrice" class="form-label">Price</label>
+        {{form.price}}
+      </div>
+      <!-- end item-price -->
+    </div>
+    <!-- end item-price -->
+
+    <div class="col-md-1 align-self-center" id="form--delete-btn">
+      <button
+        type="submit"
+        class="btn"
+        hx-on="click: this.closest('form').remove()"
+      >
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+  <!-- end row -->
+</form>
+<!-- end delete-form-btn -->

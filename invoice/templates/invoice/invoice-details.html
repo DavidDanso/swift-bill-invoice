@@ -180,7 +180,7 @@
                           <label for="exampleCurrency" class="form-label"
                             >Currency</label
                           >
-                          {{form.currency}}
+                          {{ form.currency }}
                         </div>
                         <!-- end currency -->
                       </div>
@@ -268,8 +268,36 @@
                         <div id="form--add-more">
                           <a href="#">
                             + add more item
-                            <h4>
-                              ${{invoice.invoice_total|floatformat:2|intcomma}}
+                            <h4
+                              id="total_price"
+                              data-currency="{{ invoice.currency }}"
+                            >
+                              {% if invoice.currency == "GHS" %}
+                              <!--  -->
+                              <span class="currency-symbol">¢</span
+                              >{{invoice.invoice_total|floatformat:2|intcomma}}
+                              <!--  -->
+                              {% elif invoice.currency == "USD" %}
+                              <!--  -->
+                              <span class="currency-symbol">$</span
+                              >{{invoice.invoice_total|floatformat:2|intcomma}}
+                              <!--  -->
+                              {% elif invoice.currency == "GBP" %}
+                              <!--  -->
+                              <span class="currency-symbol">£</span
+                              >{{invoice.invoice_total|floatformat:2|intcomma}}
+                              <!--  -->
+                              {% elif invoice.currency == "EUR" %}
+                              <!--  -->
+                              <span class="currency-symbol">€</span
+                              >{{invoice.invoice_total|floatformat:2|intcomma}}
+                              <!--  -->
+                              {% elif invoice.currency == "NGN" %}
+                              <!--  -->
+                              <span class="currency-symbol">₦</span
+                              >{{invoice.invoice_total|floatformat:2|intcomma}}
+                              <!--  -->
+                              {% endif %}
                             </h4>
                           </a>
                         </div>
@@ -419,5 +447,36 @@
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/edit-invoice.js' %}"></script>
+
+    <script>
+      // Function to calculate total price
+      function calc(currencySymbol) {
+        var price = parseFloat(document.getElementById("id_price").value);
+        var quantity = parseInt(document.getElementById("id_quantity").value);
+        var total = price * quantity;
+        // Disable the currency field
+
+        if (!isNaN(total)) {
+          document.getElementById("total_price").innerHTML =
+            currencySymbol + total.toFixed(2);
+        }
+      }
+
+      // Attach the 'calc' function to input change events
+      document
+        .getElementById("id_quantity")
+        .addEventListener("input", function () {
+          calc(
+            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
+          );
+        });
+      document
+        .getElementById("id_price")
+        .addEventListener("input", function () {
+          calc(
+            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
+          );
+        });
+    </script>
   </body>
 </html>

@@ -49,6 +49,9 @@ class InvoiceCreationForm(ModelForm):
         # Filter clients based on the current user
         self.fields['client_name'].queryset = Client.objects.filter(account_owner=user.profile)
 
+        # Add 'id' attribute for the currency field
+        self.fields['currency'].widget.attrs.update({'id': 'currency_field'})
+
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input form-control'})
 

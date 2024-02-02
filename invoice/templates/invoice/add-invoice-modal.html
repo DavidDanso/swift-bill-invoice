@@ -55,6 +55,7 @@
         action="{% url 'invoice' %}"
         method="POST"
         enctype="multipart/form-data"
+        id="invoice_form"
       >
         {% csrf_token %}
         <div class="row">
@@ -148,52 +149,71 @@
         <!--  -->
         <div class="card">
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-5">
-                <div class="mb-3">
-                  <label for="exampleItemTitle" class="form-label"
-                    >Item Title</label
-                  >
-                  {{form.item_title}}
+            <div id="input-wrapper">
+              <!-- take to a new file -->
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="mb-3">
+                    <label for="exampleItemTitle" class="form-label"
+                      >Item Title</label
+                    >
+                    {{form.item_title}}
+                  </div>
+                  <!-- end item-title -->
                 </div>
                 <!-- end item-title -->
-              </div>
-              <!-- end item-title -->
 
-              <div class="col-6 col-md-3">
-                <div class="mb-3">
-                  <label for="exampleItemQuantity" class="form-label"
-                    >Quantity</label
-                  >
-                  {{form.quantity}}
+                <div class="col-6 col-md-3">
+                  <div class="mb-3">
+                    <label for="exampleItemQuantity" class="form-label"
+                      >Quantity</label
+                    >
+                    {{form.quantity}}
+                  </div>
+                  <!-- end item-quantity -->
                 </div>
                 <!-- end item-quantity -->
-              </div>
-              <!-- end item-quantity -->
 
-              <div class="col-6 col-md-3">
-                <div class="mb-3">
-                  <label for="exampleItemPrice" class="form-label">Price</label>
-                  {{form.price}}
+                <div class="col-6 col-md-3">
+                  <div class="mb-3">
+                    <label for="exampleItemPrice" class="form-label"
+                      >Price</label
+                    >
+                    {{form.price}}
+                  </div>
+                  <!-- end item-price -->
                 </div>
                 <!-- end item-price -->
-              </div>
-              <!-- end item-price -->
 
-              <div class="col-md-1 align-self-center" id="form--delete-btn">
-                <button type="submit" class="btn">
-                  <ion-icon name="close-circle-outline"></ion-icon>
-                </button>
+                <div class="col-md-1 align-self-center" id="form--delete-btn">
+                  <button
+                    type="submit"
+                    class="btn"
+                    hx-on="click: this.closest('form').remove()"
+                  >
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                  </button>
+                </div>
               </div>
-              <!-- end delete-form-btn -->
+              <!-- end row -->
             </div>
-            <!-- end invoice--items-row -->
+            <!-- end input-wrapper -->
 
             <hr id="offcanvas--line" />
 
             <!-- form--add-more -->
             <div id="form--add-more">
-              <a href="#">+ add more item</a>
+              <a
+                href="#"
+                hx-get="{% url 'add-items' %}"
+                hx-target="#input-wrapper"
+                hx-swap="beforeend"
+              >
+                + add more item
+                <h4 id="total_price" data-currency="{{ invoice.currency }}">
+                  0.00
+                </h4>
+              </a>
             </div>
             <!-- end form--add-more -->
           </div>

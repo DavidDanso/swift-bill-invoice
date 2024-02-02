@@ -459,6 +459,14 @@ a:hover {
   color: #f43e5cbe;
   transition: all 0.5s ease-in-out;
 }
+#form--add-more a h4 {
+  color: var(--main-color);
+  margin-top: 25px;
+  font-size: 4vh;
+  cursor: text;
+  margin-bottom: -5%;
+  display: inline-block;
+}
 
 /* textarea */
 #create-invoice-offcanvas textarea {
@@ -707,6 +715,12 @@ footer p {
     margin-top: 15px;
     line-height: 1;
     margin-bottom: -2%;
+  }
+  #form--add-more a h4 {
+    float: right;
+    font-size: 3vh;
+    margin-top: -1px;
+    margin-bottom: 0%;
   }
 
   /* textarea */

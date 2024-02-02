@@ -228,6 +228,7 @@ label[for="invoice_image-clear_id"] {
   font-size: 4vh;
   cursor: text;
   margin-bottom: -5%;
+  display: inline-block;
 }
 
 /* textarea */
@@ -357,6 +358,12 @@ label[for="invoice_image-clear_id"] {
   text-align: left;
 }
 
+/*  */
+#currency_field {
+  background-color: #eee; /* Add a background color to indicate disabled state */
+  pointer-events: none; /* Disable pointer events to make it visually disabled */
+  opacity: 0.6; /* Optionally reduce opacity to further indicate disabled state */
+}
 /****************************************** Footer-Section ************************************/
 footer {
   margin-top: 6%;

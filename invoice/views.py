@@ -169,3 +169,26 @@ def preview_invoice(request, pk):
 
     context = {'invoice': invoice, 'profile': profile}
     return render(request, 'invoice/preview-invoice.html', context)
+
+
+
+########################################## add-invoice items page views
+def add_invoiceItems(request):
+    profile = request.user.profile
+    # Filter clients based on the current user
+    form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            invoice = form.save(commit=False)
+            invoice.account_owner = profile
+            invoice.save()
+            context = {'invoice': invoice}
+            return render(request, 'invoice/add-items.html', context)
+        else:
+            messages.error(request, 'Invalid form: Please check and resubmit')
+
+    context = {'form': form}
+    return render(request, 'invoice/add-items.html', context)
+
+
