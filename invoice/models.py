@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import Profile
 import uuid
+from django.db.models import Sum
 # import requests
 
 
@@ -65,6 +66,9 @@ class Invoice(models.Model):
     currency = models.CharField(max_length=200, choices=CURRENCY)
     invoice_image = models.ImageField(null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
     client_note = models.TextField(max_length=100000, null=True, blank=True)
+
+    total = models.IntegerField(default=0, null=True, blank=True)
+
     updated_time_stamp = models.DateTimeField(auto_now=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
@@ -77,11 +81,6 @@ class Invoice(models.Model):
             url = ''
         return url
     
-    # Override the save method to update the total before saving
-    def save(self, *args, **kwargs):
-        self.total = self.invoice_total
-        super(Invoice, self).save(*args, **kwargs)
-    
     # display new invoice first
     class Meta:
         ordering = ['-updated_time_stamp']
@@ -93,8 +92,8 @@ class Invoice(models.Model):
 
 class Item(models.Model):
     account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
-    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True)
-    item_title = models.CharField(max_length=255, null=True, blank=True)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True, related_name='items')
+    title = models.CharField(max_length=255, null=True, blank=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
     total = models.IntegerField(default=0, null=True, blank=True)
@@ -104,9 +103,21 @@ class Item(models.Model):
     @property
     def invoice_total(self):
         return self.quantity * self.price
+    
+    def save(self, *args, **kwargs):
+        # Convert quantity, price, and invoice_total to integers before saving
+        self.quantity = int(self.quantity)
+        self.price = int(self.price)
+        self.total = int(self.invoice_total)
+
+        super(Item, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-updated_time_stamp']
 
     def __str__(self):
-        return str(self.item_title)
+        return str(self.title)
+
+
+
+

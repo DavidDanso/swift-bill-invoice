@@ -1,11 +1,16 @@
 <!-- add invoice items -->
-<form action="" method="POST">
+<form id="addItemForm" action="" method="POST">
   {% csrf_token %}
   <div class="row">
     <div class="col-md-5">
       <div class="mb-3">
         <label for="exampleItemTitle" class="form-label">Item Title</label>
-        <input type="text" class="form-control input" id="exampleItemTitle" />
+        <input
+          type="text"
+          class="form-control input"
+          name="title"
+          id="exampleItemTitle"
+        />
       </div>
       <!-- end item-title -->
     </div>
@@ -17,6 +22,7 @@
         <input
           type="number"
           class="form-control input"
+          name="quantity"
           id="exampleItemQuantity"
         />
       </div>
@@ -27,15 +33,20 @@
     <div class="col-6 col-md-4">
       <div class="mb-3">
         <label for="exampleItemPrice" class="form-label">Price</label>
-        <input type="number" class="form-control input" id="exampleItemPrice" />
+        <input
+          type="number"
+          class="form-control input"
+          name="price"
+          id="exampleItemPrice"
+        />
       </div>
       <!-- end item-price -->
     </div>
     <!-- end item-price -->
 
     <div class="col-md-1 align-self-center" id="addd--item-btn">
-      <button type="submit" class="btn">
-        <ion-icon name="arrow-up-circle-sharp"></ion-icon>
+      <button type="submit" class="btn" name="addItem">
+        <ion-icon name="add-circle"></ion-icon>
       </button>
     </div>
   </div>

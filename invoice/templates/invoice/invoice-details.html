@@ -94,29 +94,22 @@
                     <ion-icon name="eye-outline"></ion-icon> Preview Invoice /
                     Download
                   </a>
-                  <!--  -->
-                  <div class="row" id="ion-icon--card">
-                    <div class="col-3 col-md-3">
-                      <ion-icon name="newspaper-outline"></ion-icon> -
-                    </div>
-                    <!-- end col -->
-                    <div class="col-3 col-md-3">
-                      <ion-icon name="newspaper-outline"></ion-icon> -
-                    </div>
-                    <!-- end col -->
-                    <div class="col-3 col-md-3">
-                      <ion-icon name="newspaper-outline"></ion-icon> -
-                    </div>
-                    <!-- end col -->
-                    <div class="col-3 col-md-3">
-                      <ion-icon name="newspaper-outline"></ion-icon> -
-                    </div>
-                    <!-- end col -->
-                  </div>
-                  <!--  -->
 
                   <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+
+                    <!--  -->
+                    <input
+                      type="submit"
+                      id="save--btn"
+                      name="updateInvoice"
+                      class="btn"
+                      value="save Invoice changes"
+                    />
+                    <!--  -->
+
+                    <hr id="offcanvas--header-line" />
+
                     <div class="row">
                       <div class="col-md-12">
                         <div class="mb-3">
@@ -131,7 +124,7 @@
                       </div>
                       <!-- end col-payment--for -->
 
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <div class="mb-3">
                           <label for="exampleClientName" class="form-label"
                             >Client Name</label
@@ -142,7 +135,7 @@
                       </div>
                       <!-- end col-client--name -->
 
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <div class="mb-3">
                           <label for="exampleProjectDuration" class="form-label"
                             >Project Duration</label
@@ -186,6 +179,17 @@
                       </div>
                       <!-- end col-currency -->
 
+                      <div class="col-md-4">
+                        <div class="mb-3">
+                          <label for="exampleInvoiceAmount" class="form-label"
+                            >Invoice Amount</label
+                          >
+                          {{form.total}}
+                        </div>
+                        <!-- end project-duration -->
+                      </div>
+                      <!-- end col-project-duration -->
+
                       <div class="col-md-12">
                         <div class="card" id="invoice--img-card">
                           <div class="card-body">
@@ -208,139 +212,55 @@
                       <!-- end col-invoice--img-default -->
                     </div>
                     <!-- end row -->
-
-                    <hr id="offcanvas--line" />
-
-                    <!--  -->
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-5">
-                            <div class="mb-3">
-                              <label for="exampleItemTitle" class="form-label"
-                                >Item Title</label
-                              >
-                              {{form.item_title}}
-                            </div>
-                            <!-- end item-title -->
-                          </div>
-                          <!-- end item-title -->
-
-                          <div class="col-6 col-md-3">
-                            <div class="mb-3">
-                              <label
-                                for="exampleItemQuantity"
-                                class="form-label"
-                                >Quantity</label
-                              >
-                              {{form.quantity}}
-                            </div>
-                            <!-- end item-quantity -->
-                          </div>
-                          <!-- end item-quantity -->
-
-                          <div class="col-6 col-md-3">
-                            <div class="mb-3">
-                              <label for="exampleItemPrice" class="form-label"
-                                >Price</label
-                              >
-                              {{form.price}}
-                            </div>
-                            <!-- end item-price -->
-                          </div>
-                          <!-- end item-price -->
-
-                          <div
-                            class="col-md-1 align-self-center"
-                            id="form--delete-btn"
-                          >
-                            <button type="submit" class="btn">
-                              <ion-icon name="close-circle-outline"></ion-icon>
-                            </button>
-                          </div>
-                          <!-- end delete-form-btn -->
-                        </div>
-                        <!-- end invoice--items-row -->
-
-                        <hr id="offcanvas--line" />
-
-                        <!-- form--add-more -->
-                        <div id="form--add-more">
-                          <a href="#">
-                            + add more item
-                            <h4
-                              id="total_price"
-                              data-currency="{{ invoice.currency }}"
-                            >
-                              {% if invoice.currency == "GHS" %}
-                              <!--  -->
-                              <span class="currency-symbol">¢</span
-                              >{{invoice.invoice_total|floatformat:2|intcomma}}
-                              <!--  -->
-                              {% elif invoice.currency == "USD" %}
-                              <!--  -->
-                              <span class="currency-symbol">$</span
-                              >{{invoice.invoice_total|floatformat:2|intcomma}}
-                              <!--  -->
-                              {% elif invoice.currency == "GBP" %}
-                              <!--  -->
-                              <span class="currency-symbol">£</span
-                              >{{invoice.invoice_total|floatformat:2|intcomma}}
-                              <!--  -->
-                              {% elif invoice.currency == "EUR" %}
-                              <!--  -->
-                              <span class="currency-symbol">€</span
-                              >{{invoice.invoice_total|floatformat:2|intcomma}}
-                              <!--  -->
-                              {% elif invoice.currency == "NGN" %}
-                              <!--  -->
-                              <span class="currency-symbol">₦</span
-                              >{{invoice.invoice_total|floatformat:2|intcomma}}
-                              <!--  -->
-                              {% endif %}
-                            </h4>
-                          </a>
-                        </div>
-                        <!-- end form--add-more -->
-                      </div>
-                      <!-- end card-body -->
-                    </div>
-                    <!-- end invoice-item--card -->
-
-                    <!--  -->
-                    <hr id="offcanvas--line" />
-
-                    <!--  -->
-                    <div class="row g-3" id="clients--note">
-                      <div class="col-md-12">
-                        <div class="input-container">
-                          <div class="form-floating">
-                            {{form.client_note}}
-                            <label for="floatingTextarea2">Comments</label>
-                          </div>
-                        </div>
-                        <!-- end input-container  -->
-                      </div>
-                      <!-- end email -->
-                    </div>
-                    <!-- end clients--note -->
-
-                    <input
-                      type="submit"
-                      id="save--btn"
-                      class="btn"
-                      value="save Invoice changes"
-                    />
-
-                    <a
-                      id="delete--btn"
-                      class="btn"
-                      data-bs-toggle="modal"
-                      data-bs-target="#deleteAccountModal"
-                      ><ion-icon name="trash-outline"></ion-icon
-                    ></a>
                   </form>
                   <!-- end form -->
+
+                  <!--  -->
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="input-wrapper">
+                        <!-- take to a new file -->
+                        {% include 'invoice/add-items.html' %}
+                        <!-- end row -->
+                      </div>
+                      <!-- end input-wrapper -->
+
+                      <hr id="offcanvas--line" />
+
+                      <!-- list of invoice-items -->
+                      {% include 'invoice/invoice-items.html' %}
+                      <!-- end display--items -->
+
+                      <!-- sub-total -->
+                      <div id="sub-total">
+                        <a href="#">
+                          Sub-total
+                          <h4
+                            id="total_price"
+                            data-currency="{{ invoice.currency }}"
+                          >
+                            {% include 'invoice/items-total.html' %}
+                          </h4>
+                        </a>
+                      </div>
+                      <!-- end sub-total -->
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end invoice-item--card -->
+
+                  <!--  -->
+                  <hr id="offcanvas--line" />
+
+                  <a
+                    id="delete--btn"
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteAccountModal"
+                    ><span>delete invoice</span
+                    ><ion-icon name="trash-outline"></ion-icon
+                  ></a>
+                  <!--  -->
                 </div>
                 <!-- end card-body -->
               </div>
@@ -447,36 +367,5 @@
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/edit-invoice.js' %}"></script>
-
-    <script>
-      // Function to calculate total price
-      function calc(currencySymbol) {
-        var price = parseFloat(document.getElementById("id_price").value);
-        var quantity = parseInt(document.getElementById("id_quantity").value);
-        var total = price * quantity;
-        // Disable the currency field
-
-        if (!isNaN(total)) {
-          document.getElementById("total_price").innerHTML =
-            currencySymbol + total.toFixed(2);
-        }
-      }
-
-      // Attach the 'calc' function to input change events
-      document
-        .getElementById("id_quantity")
-        .addEventListener("input", function () {
-          calc(
-            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
-          );
-        });
-      document
-        .getElementById("id_price")
-        .addEventListener("input", function () {
-          calc(
-            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
-          );
-        });
-    </script>
   </body>
 </html>

@@ -35,7 +35,7 @@ class InvoiceCreationForm(ModelForm):
         model = Invoice
         fields = ['project_name', 'project_duration', 'client_name', 
                   'invoice_status', 'payment_date', 'currency', 'invoice_image',
-                  'client_note']
+                  'client_note', 'total']
 
     def __init__(self, user, *args, **kwargs):
         super(InvoiceCreationForm, self).__init__(*args, **kwargs)

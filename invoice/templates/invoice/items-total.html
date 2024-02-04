@@ -1,0 +1,24 @@
+<!--  -->
+{% load humanize %}
+<!--  -->
+{% if invoice.currency == "GHS" %}
+<!--  -->
+¢{{ total_amount |floatformat:2|intcomma }}
+<!--  -->
+{% elif invoice.currency == "USD" %}
+<!--  -->
+${{ total_amount |floatformat:2|intcomma }}
+<!--  -->
+{% elif invoice.currency == "GBP" %}
+<!--  -->
+£{{ total_amount |floatformat:2|intcomma }}
+<!--  -->
+{% elif invoice.currency == "EUR" %}
+<!--  -->
+€{{ total_amount |floatformat:2|intcomma }}
+<!--  -->
+{% elif invoice.currency == "NGN" %}
+<!--  -->
+₦{{ total_amount |floatformat:2|intcomma }}
+<!--  -->
+{% endif %}

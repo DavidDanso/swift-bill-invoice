@@ -7,6 +7,8 @@ from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
 from .utils import paginateInvoice
+from django.db.models import Sum
+
 
     
 # Create your views here.
@@ -142,14 +144,43 @@ def create_invoice(request):
 def edit_invoice(request, pk):
     profile = request.user.profile
     invoice = profile.invoice_set.get(id=pk)
+    display_items = invoice.items.all()
 
-    form = InvoiceCreationForm(request.user, request.POST or None, request.FILES or None, instance=invoice)
+    invoice_amt = Invoice.objects.get(id=pk)
 
+    # Use the aggregate function Sum to get the total of all items for the given invoice
+    items_total = invoice.items.aggregate(total=Sum('total'))['total']
+    items_total = items_total if items_total is not None else 0
+    
+    total_amount = invoice_amt.total + items_total
+
+    form = InvoiceCreationForm(request.user, instance=invoice)
     # 
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            return redirect('invoice')
+    if request.method == 'POST':
+        if 'updateInvoice' in request.POST:
+            form = InvoiceCreationForm(request.user, request.POST or None, request.FILES or None, instance=invoice)
+            if form.is_valid():
+                form.save()
+                return redirect('invoice')
+            
+        elif 'addItem' in request.POST:
+            item = Item.objects.create(
+                account_owner = profile,
+                title = request.POST.get('title'),
+                quantity = request.POST.get('quantity'),
+                price = request.POST.get('price'),
+                invoice = invoice,
+            )
+            return redirect('invoice-details', pk=invoice.id)
+        
+        elif "deleteItem" in request.POST:
+            item_id = request.POST.get('deleteItem')
+
+            item_to_delete = invoice.items.get(id=item_id)
+            item_to_delete.delete()
+            # Redirect to the same page after deletion
+            return redirect('invoice-details', pk=invoice.id)
+        
         elif "delete_invoice" in request.POST:
             invoice.delete()
             return redirect('invoice')
@@ -157,6 +188,8 @@ def edit_invoice(request, pk):
     context = {
         'form': form,
         'invoice': invoice, 
+        'display_items': display_items,
+        'total_amount': total_amount,
     }
     return render(request, 'invoice/invoice-details.html', context)
 
@@ -173,22 +206,22 @@ def preview_invoice(request, pk):
 
 
 ########################################## add-invoice items page views
-def add_invoiceItems(request):
-    profile = request.user.profile
-    # Filter clients based on the current user
-    form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
+# def add_invoiceItems(request):
+#     profile = request.user.profile
+#     # Filter clients based on the current user
+#     form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
 
-    if request.method == "POST":
-        if form.is_valid():
-            invoice = form.save(commit=False)
-            invoice.account_owner = profile
-            invoice.save()
-            context = {'invoice': invoice}
-            return render(request, 'invoice/add-items.html', context)
-        else:
-            messages.error(request, 'Invalid form: Please check and resubmit')
+#     if request.method == "POST":
+#         if form.is_valid():
+#             invoice = form.save(commit=False)
+#             invoice.account_owner = profile
+#             invoice.save()
+#             context = {'invoice': invoice}
+#             return render(request, 'invoice/add-items.html', context)
+#         else:
+#             messages.error(request, 'Invalid form: Please check and resubmit')
 
-    context = {'form': form}
-    return render(request, 'invoice/add-items.html', context)
+#     context = {'form': form}
+#     return render(request, 'invoice/add-items.html', context)
 
 

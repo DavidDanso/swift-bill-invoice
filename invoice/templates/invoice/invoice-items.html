@@ -1,0 +1,52 @@
+<!--  -->
+{% load humanize %}
+<!--  -->
+<div id="display--items">
+  {% for item in display_items %}
+  <div class="row">
+    <div class="col-12 col-md-11">
+      <h6>{{item.title}}</h6>
+      <h3>
+        <span>[ {{item.quantity}} ]</span>
+        <!--  -->
+        {% if invoice.currency == "GHS" %}
+        <!--  -->
+        ¢{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "USD" %}
+        <!--  -->
+        ${{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "GBP" %}
+        <!--  -->
+        £{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "EUR" %}
+        <!--  -->
+        €{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "NGN" %}
+        <!--  -->
+        ₦{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% endif %}
+      </h3>
+    </div>
+    <!-- end col-title -->
+
+    <div class="col-md-1">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn" name="deleteItem" value="{{item.id}}">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </form>
+      <!-- end form -->
+    </div>
+    <!-- end col-delete -->
+  </div>
+  <!-- end row -->
+
+  <hr id="offcanvas--line" />
+  {% endfor %}
+</div>

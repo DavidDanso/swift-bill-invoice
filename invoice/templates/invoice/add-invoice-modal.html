@@ -28,19 +28,23 @@
         <div class="card-body">
           <div class="row">
             <div class="col-3 col-md-3">
-              <ion-icon name="newspaper-outline"></ion-icon> -
+              <ion-icon name="receipt"></ion-icon>
+              <ion-icon name="receipt"></ion-icon> -
             </div>
             <!-- end col -->
             <div class="col-3 col-md-3">
-              <ion-icon name="newspaper-outline"></ion-icon> -
+              <ion-icon name="receipt"></ion-icon>
+              <ion-icon name="receipt"></ion-icon> -
             </div>
             <!-- end col -->
             <div class="col-3 col-md-3">
-              <ion-icon name="newspaper-outline"></ion-icon> -
+              <ion-icon name="receipt"></ion-icon>
+              <ion-icon name="receipt"></ion-icon> -
             </div>
             <!-- end col -->
             <div class="col-3 col-md-3">
-              <ion-icon name="newspaper-outline"></ion-icon> -
+              <ion-icon name="receipt"></ion-icon>
+              <ion-icon name="receipt"></ion-icon> -
             </div>
             <!-- end col -->
           </div>
@@ -49,6 +53,7 @@
         <!-- end card-body -->
       </div>
       <!-- end ion--icons-card -->
+
       <!--  -->
 
       <form
@@ -69,7 +74,7 @@
           </div>
           <!-- end col-project-name -->
 
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="mb-3">
               <label for="exampleEmail" class="form-label">Client Name</label>
               <div class="input-group">{{form.client_name}}</div>
@@ -78,17 +83,6 @@
             <!-- end client -->
           </div>
           <!-- end col-client -->
-
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="exampleProject-Duration" class="form-label"
-                >Project Duration</label
-              >
-              {{form.project_duration}}
-            </div>
-            <!-- end project-duration -->
-          </div>
-          <!-- end col-project-duration -->
 
           <div class="col-md-4">
             <div class="mb-3">
@@ -99,6 +93,17 @@
             <!-- end status -->
           </div>
           <!-- end col-status -->
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="exampleProject-Duration" class="form-label"
+                >Project Duration</label
+              >
+              {{form.project_duration}}
+            </div>
+            <!-- end project-duration -->
+          </div>
+          <!-- end col-project-duration -->
 
           <div class="col-md-4">
             <div class="mb-3">
@@ -113,13 +118,25 @@
 
           <div class="col-md-4">
             <div class="mb-3">
-              <label for="exampleEmail" class="form-label">Currency</label>
+              <label for="exampleCurrency" class="form-label">Currency</label>
               <div class="input-group">{{form.currency}}</div>
               <!-- end input-group  -->
             </div>
             <!-- end currency -->
           </div>
           <!-- end col-currency -->
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="exampleInvoiceAmount" class="form-label"
+                >Invoice Amount</label
+              >
+              <div class="input-group">{{form.total}}</div>
+              <!-- end input-group  -->
+            </div>
+            <!-- end currency -->
+          </div>
+          <!-- end col-total_amout -->
 
           <div class="col-md-12">
             <div class="card" id="invoice--img-card">
@@ -143,58 +160,9 @@
         </div>
         <!-- end row -->
 
-        <hr id="offcanvas--line" />
+        <!-- invoice-item--card -->
 
-        <!--  -->
-        <div class="card">
-          <div class="card-body">
-            <div id="input-wrapper">
-              <!-- take to a new file -->
-              {% include 'invoice/add-items.html' %}
-              <!-- end row -->
-            </div>
-            <!-- end input-wrapper -->
-
-            <hr id="offcanvas--line" />
-
-            <!--  -->
-            <div id="display--items" style="display: none">
-              <div class="row">
-                <div class="col-12 col-md-11">
-                  <h3>website design - <span>10</span> - $10,0000</h3>
-                </div>
-                <!-- end col-title -->
-
-                <div class="col-md-1">
-                  <button type="button" class="btn">
-                    <ion-icon name="trash-sharp"></ion-icon>
-                  </button>
-                </div>
-                <!-- end col-delete -->
-              </div>
-              <!-- end row -->
-
-              <hr id="offcanvas--line" />
-            </div>
-            <!-- end display--items -->
-
-            <!-- sub-total -->
-            <div id="sub-total">
-              <a href="#">
-                Sub-total
-                <h4 id="total_price" data-currency="{{ invoice.currency }}">
-                  0.00
-                </h4>
-              </a>
-            </div>
-            <!-- end sub-total -->
-          </div>
-          <!-- end card-body -->
-        </div>
         <!-- end invoice-item--card -->
-
-        <!--  -->
-        <hr id="offcanvas--line" />
 
         <!--  -->
         <div class="row g-3" id="clients--note">
