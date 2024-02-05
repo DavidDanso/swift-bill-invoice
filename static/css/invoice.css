@@ -250,7 +250,7 @@ a:hover {
 #paid_status .badge {
   background: #64e3a86d;
   border-radius: 15px;
-  color: #3ddc91;
+  color: #1a5d1ac8;
 }
 .desktop-table-intro span {
   font-size: 1.7vh;
@@ -314,7 +314,7 @@ a:hover {
 #invoice--container #paid_status {
   background: #64e3a86d;
   border-radius: 15px;
-  color: #3ddc91;
+  color: #1a5d1ac8;
   margin-top: 3%;
   margin-bottom: 5%;
 }
