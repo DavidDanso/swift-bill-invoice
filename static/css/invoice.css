@@ -248,9 +248,9 @@ a:hover {
   border-radius: 15px;
 }
 #paid_status .badge {
-  background: #22c55e;
+  background: #64e3a86d;
   border-radius: 15px;
-  color: var(--text-color);
+  color: #3ddc91;
 }
 .desktop-table-intro span {
   font-size: 1.7vh;
@@ -305,23 +305,23 @@ a:hover {
   float: right;
 }
 #invoice--container #unpaid_status {
-  background: #f3f4f6;
+  background: #b4d5ff9d;
   border-radius: 15px;
   font-size: 1.7vh;
   margin-top: 3%;
   margin-bottom: 5%;
 }
 #invoice--container #paid_status {
-  background: #22c55e;
+  background: #64e3a86d;
   border-radius: 15px;
-  color: var(--text-color);
+  color: #3ddc91;
   margin-top: 3%;
   margin-bottom: 5%;
 }
 .mobile-table-intro span {
   font-size: 1.9vh;
   font-family: var(--text-font);
-  color: #6b7280;
+  color: #0a6ebd;
   letter-spacing: 1px;
 }
 #clock-img {
