@@ -199,36 +199,5 @@
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/invoice.js' %}"></script>
-
-    <script>
-      // Function to calculate total price
-      function calc(currencySymbol) {
-        var price = parseFloat(document.getElementById("id_price").value);
-        var quantity = parseInt(document.getElementById("id_quantity").value);
-        var total = price * quantity;
-        // Disable the currency field
-
-        if (!isNaN(total)) {
-          document.getElementById("total_price").innerHTML =
-            currencySymbol + total.toFixed(2);
-        }
-      }
-
-      // Attach the 'calc' function to input change events
-      document
-        .getElementById("id_quantity")
-        .addEventListener("input", function () {
-          calc(
-            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
-          );
-        });
-      document
-        .getElementById("id_price")
-        .addEventListener("input", function () {
-          calc(
-            "{% if invoice.currency == 'GHS' %}¢{% elif invoice.currency == 'USD' %}${% elif invoice.currency == 'GBP' %}£{% elif invoice.currency == 'EUR' %}€{% elif invoice.currency == 'NGN' %}₦{% endif %}"
-          );
-        });
-    </script>
   </body>
 </html>

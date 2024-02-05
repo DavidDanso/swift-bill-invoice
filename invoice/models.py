@@ -2,6 +2,8 @@ from django.db import models
 from user.models import Profile
 import uuid
 from django.db.models import Sum
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 # import requests
 
 
@@ -117,7 +119,19 @@ class Item(models.Model):
 
     def __str__(self):
         return str(self.title)
+    
 
+@receiver(post_save, sender=Item)
+@receiver(post_delete, sender=Item)
+def update_invoice_total(sender, instance, **kwargs):
+    """
+    Signal handler to update the corresponding Invoice total
+    when a new Item is created, an existing Item is updated,
+    or an Item is deleted.
+    """
+    invoice = instance.invoice
+    items = invoice.items.all()
 
-
-
+    # Recalculate the total based on the sum of Item totals
+    invoice.total = sum(item.total for item in items)
+    invoice.save()

@@ -31,10 +31,10 @@ def dashboard_page(request):
 
     # Currencies and Exchange Rates
     currency_rates = {
-        'NGN': 0.00104407,
-        'GHS': 0.0836498,
-        'GBP': 1.27777,
-        'EUR': 1.09799,
+        'NGN': 0.000712758,
+        'GHS': 0.0811322, 
+        'GBP': 1.25401,
+        'EUR': 1.07450,
         'USD': 1.00000,
     }
 
@@ -146,13 +146,13 @@ def edit_invoice(request, pk):
     invoice = profile.invoice_set.get(id=pk)
     display_items = invoice.items.all()
 
-    invoice_amt = Invoice.objects.get(id=pk)
+    # invoice_amt = Invoice.objects.get(id=pk)
 
     # Use the aggregate function Sum to get the total of all items for the given invoice
     items_total = invoice.items.aggregate(total=Sum('total'))['total']
-    items_total = items_total if items_total is not None else 0
+    # items_total = items_total if items_total is not None else 0
     
-    total_amount = invoice_amt.total + items_total
+    # total_amount = invoice_amt.total + items_total
 
     form = InvoiceCreationForm(request.user, instance=invoice)
     # 
@@ -189,7 +189,7 @@ def edit_invoice(request, pk):
         'form': form,
         'invoice': invoice, 
         'display_items': display_items,
-        'total_amount': total_amount,
+        'items_total': items_total,
     }
     return render(request, 'invoice/invoice-details.html', context)
 

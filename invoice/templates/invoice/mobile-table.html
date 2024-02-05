@@ -48,7 +48,29 @@
             <hr id="divider--line" />
 
             <h5 id="invoice--amount">
-              <strong>$100,000.00</strong>
+              <strong>
+                {% if invoice.currency == "GHS" %}
+                <!--  -->
+                ¢{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "USD" %}
+                <!--  -->
+                ${{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "GBP" %}
+                <!--  -->
+                £{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "EUR" %}
+                <!--  -->
+                €{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% elif invoice.currency == "NGN" %}
+                <!--  -->
+                ₦{{ invoice.total|floatformat:2|intcomma }}
+                <!--  -->
+                {% endif %}
+              </strong>
               <span>{{invoice.payment_date|date:"d F, Y"}}</span>
             </h5>
 

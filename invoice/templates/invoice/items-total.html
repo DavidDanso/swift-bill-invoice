@@ -1,24 +1,65 @@
 <!--  -->
 {% load humanize %}
 <!--  -->
+<!-- Display item price in Ghanaian Cedis -->
 {% if invoice.currency == "GHS" %}
 <!--  -->
-¢{{ total_amount |floatformat:2|intcomma }}
+{% if items_total != None %}
 <!--  -->
+¢{{ items_total|floatformat:2|intcomma }}
+<!--  -->
+{% else %}
+<!--  -->
+¢0.00
+<!--  -->
+{% endif %}
+<!-- Display item price in US Dollars  -->
 {% elif invoice.currency == "USD" %}
 <!--  -->
-${{ total_amount |floatformat:2|intcomma }}
+{% if items_total != None %}
 <!--  -->
+${{ items_total|floatformat:2|intcomma }}
+<!--  -->
+{% else %}
+<!--  -->
+$0.00
+<!--  -->
+{% endif %}
+<!-- Display item price in British Pounds -->
 {% elif invoice.currency == "GBP" %}
 <!--  -->
-£{{ total_amount |floatformat:2|intcomma }}
+{% if items_total != None %}
 <!--  -->
+£{{ items_total|floatformat:2|intcomma }}
+<!--  -->
+{% else %}
+<!--  -->
+£0.00
+<!--  -->
+{% endif %}
+<!-- Display item price in Euros -->
 {% elif invoice.currency == "EUR" %}
 <!--  -->
-€{{ total_amount |floatformat:2|intcomma }}
+{% if items_total != None %}
 <!--  -->
+€{{ items_total|floatformat:2|intcomma }}
+<!--  -->
+{% else %}
+<!--  -->
+€0.00
+<!--  -->
+{% endif %}
+<!-- Display item price in Nigerian Naira -->
 {% elif invoice.currency == "NGN" %}
 <!--  -->
-₦{{ total_amount |floatformat:2|intcomma }}
+{% if invoice.total != None %}
+<!--  -->
+₦{{ invoice.total|floatformat:2|intcomma }}
+<!--  -->
+{% else %}
+<!--  -->
+₦0.00
+<!--  -->
+{% endif %}
 <!--  -->
 {% endif %}
