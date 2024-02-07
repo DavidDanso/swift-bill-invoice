@@ -21,6 +21,11 @@
             <h5>
               {{invoice.client_name.email | truncatechars:25}}
               <!--  -->
+              {% if invoice.days_until_due <= 3 %}
+              <span class="badge" id="due_date"> overdue close </span>
+              <!--  -->
+              {% else %}
+              <!--  -->
               {% if invoice.invoice_status == 'Pending' %}
               <span class="badge" id="unpaid_status">
                 {{invoice.invoice_status}}
@@ -41,6 +46,8 @@
                   alt="clock-img"
                 />
               </span>
+              <!--  -->
+              {% endif %}
               <!--  -->
               {% endif %}
             </h5>

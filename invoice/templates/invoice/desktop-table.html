@@ -59,6 +59,12 @@
 
                 <td>{{invoice.project_name | truncatechars:17}}</td>
 
+                {% if invoice.due <= 3 and invoice.invoice_status != 'Paid' %}
+                <td id="due_date">
+                  <span class="badge">overdue close</span>
+                </td>
+                {% else %}
+                <!--  -->
                 {% if invoice.invoice_status == 'Pending' %}
                 <td id="unpaid_status">
                   <span class="badge">
@@ -84,6 +90,8 @@
                     />
                   </span>
                 </td>
+                {% endif %}
+                <!--  -->
                 {% endif %}
                 <td>
                   <a href="{% url 'invoice-details' invoice.id %}">

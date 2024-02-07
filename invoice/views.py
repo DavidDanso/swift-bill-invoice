@@ -8,6 +8,7 @@ from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
 from .utils import paginateInvoice
 from django.db.models import Sum
+from datetime import datetime
 
 
     
@@ -122,6 +123,10 @@ def create_invoice(request):
 
     custom_range, invoices = paginateInvoice(request, 5, invoices)
 
+    # Calculate days until due for each invoice
+    for invoice in invoices:
+        invoice.due = (invoice.payment_date - datetime.now().date()).days
+
     # Filter clients based on the current user
     form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)
 
@@ -130,6 +135,7 @@ def create_invoice(request):
             invoice = form.save(commit=False)
             invoice.account_owner = profile
             invoice.save()
+            messages.success(request, 'Invoice created! Click [view invoice] to add items and calculate amount.📝')
             return redirect('invoice')
         else:
             messages.error(request, 'Invalid form: Please check and resubmit')
