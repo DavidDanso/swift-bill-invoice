@@ -119,21 +119,45 @@
 
                   <!--  -->
                   <h2>
-                    Services
+                    Invoice Items
                     <span>Total</span>
                   </h2>
                   <hr id="line--divider" />
 
+                  {% for item in items %}
                   <h3>
-                    UX/UI Design
-                    <span>$7,000.00</span>
+                    {{item.title}}
+                    <span>
+                      {% if invoice.currency == "GHS" %}
+                      <!--  -->
+                      ¢{{ item.price|floatformat:2|intcomma }}
+                      <!--  -->
+                      {% elif invoice.currency == "USD" %}
+                      <!--  -->
+                      ${{ item.price|floatformat:2|intcomma }}
+                      <!--  -->
+                      {% elif invoice.currency == "GBP" %}
+                      <!--  -->
+                      £{{ item.price|floatformat:2|intcomma }}
+                      <!--  -->
+                      {% elif invoice.currency == "EUR" %}
+                      <!--  -->
+                      €{{ item.price|floatformat:2|intcomma }}
+                      <!--  -->
+                      {% elif invoice.currency == "NGN" %}
+                      <!--  -->
+                      ₦{{ item.price|floatformat:2|intcomma }}
+                      <!--  -->
+                      {% endif %}
+                    </span>
                   </h3>
+                  {% endfor %}
 
                   <hr id="line--divider" />
 
                   <h2 id="total_">
                     Sub-total
-                    <span>$55,000.00</span>
+                    <span> $55,000.00</span>
                   </h2>
 
                   <!--  -->

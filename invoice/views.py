@@ -206,7 +206,9 @@ def preview_invoice(request, pk):
     profile = request.user.profile
     invoice = profile.invoice_set.get(id=pk)
 
-    context = {'invoice': invoice, 'profile': profile}
+    items = invoice.items.all()
+
+    context = {'invoice': invoice, 'profile': profile, 'items': items}
     return render(request, 'invoice/preview-invoice.html', context)
 
 
