@@ -51,11 +51,11 @@ class Invoice(models.Model):
     )
 
     CURRENCY = (
-        ('USD', 'USD'),
-        ('GHS', 'GHS'),
-        ('GBP', 'GBP'),
-        ('EUR', 'EUR'),
-        ('NGN', 'NGN'),
+        ('USD 🇺🇸', 'USD 🇺🇸'),
+        ('GHS 🇬🇭', 'GHS 🇬🇭'),
+        ('GBP 🇬🇧', 'GBP 🇬🇧'),
+        ('EUR 🇪🇺', 'EUR 🇪🇺'),
+        ('NGN 🇳🇬', 'NGN 🇳🇬'),
     )
 
     account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE)

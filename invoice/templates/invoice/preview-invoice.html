@@ -119,8 +119,8 @@
 
                   <!--  -->
                   <h2>
-                    Invoice Items
-                    <span>Total</span>
+                    Invoice Item(s)
+                    <span>Price</span>
                   </h2>
                   <hr id="line--divider" />
 
@@ -128,23 +128,23 @@
                   <h3>
                     {{item.title}}
                     <span>
-                      {% if invoice.currency == "GHS" %}
+                      {% if invoice.currency == "GHS 🇬🇭" %}
                       <!--  -->
                       ¢{{ item.price|floatformat:2|intcomma }}
                       <!--  -->
-                      {% elif invoice.currency == "USD" %}
+                      {% elif invoice.currency == "USD 🇺🇸" %}
                       <!--  -->
                       ${{ item.price|floatformat:2|intcomma }}
                       <!--  -->
-                      {% elif invoice.currency == "GBP" %}
+                      {% elif invoice.currency == "GBP 🇬🇧" %}
                       <!--  -->
                       £{{ item.price|floatformat:2|intcomma }}
                       <!--  -->
-                      {% elif invoice.currency == "EUR" %}
+                      {% elif invoice.currency == "'EUR 🇪🇺" %}
                       <!--  -->
                       €{{ item.price|floatformat:2|intcomma }}
                       <!--  -->
-                      {% elif invoice.currency == "NGN" %}
+                      {% elif invoice.currency == "NGN 🇳🇬" %}
                       <!--  -->
                       ₦{{ item.price|floatformat:2|intcomma }}
                       <!--  -->
@@ -157,7 +157,7 @@
 
                   <h2 id="total_">
                     Sub-total
-                    <span> $55,000.00</span>
+                    <span>{% include 'invoice/items-total.html' %}</span>
                   </h2>
 
                   <!--  -->
@@ -166,7 +166,9 @@
                       <div class="card-body">
                         <h2>
                           Total
-                          <span>$55,000.00</span>
+                          <span>
+                            {% include 'invoice/items-total.html' %}
+                          </span>
                         </h2>
                       </div>
                       <!-- end card-body -->

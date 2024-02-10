@@ -21,30 +21,30 @@
             <h5>
               {{invoice.client_name.email | truncatechars:25}}
               <!--  -->
-              {% if invoice.days_until_due <= 3 %}
+              {% if invoice.due <= 3 and invoice.invoice_status != 'Paid' %}
               <span class="badge" id="due_date"> overdue close </span>
               <!--  -->
               {% else %}
               <!--  -->
               {% if invoice.invoice_status == 'Pending' %}
               <span class="badge" id="unpaid_status">
-                {{invoice.invoice_status}}
                 <img
-                  src="{% static '/images/clock.png' %}"
+                  src="{% static '/images/pending.svg' %}"
                   class="img-fluid"
                   id="clock-img"
                   alt="clock-img"
                 />
+                {{invoice.invoice_status}}
               </span>
               {% else %}
               <span class="badge" id="paid_status">
-                {{invoice.invoice_status}}
                 <img
-                  src="{% static '/images/paid-icon.svg' %}"
+                  src="{% static '/images/paid.svg' %}"
                   class="img-fluid"
                   id="clock-img"
                   alt="clock-img"
                 />
+                {{invoice.invoice_status}}
               </span>
               <!--  -->
               {% endif %}
@@ -56,29 +56,31 @@
 
             <h5 id="invoice--amount">
               <strong>
-                {% if invoice.currency == "GHS" %}
+                {% if invoice.currency == "GHS 🇬🇭" %}
                 <!--  -->
                 ¢{{ invoice.total|floatformat:2|intcomma }}
                 <!--  -->
-                {% elif invoice.currency == "USD" %}
+                {% elif invoice.currency == "USD 🇺🇸" %}
                 <!--  -->
                 ${{ invoice.total|floatformat:2|intcomma }}
                 <!--  -->
-                {% elif invoice.currency == "GBP" %}
+                {% elif invoice.currency == "GBP 🇬🇧" %}
                 <!--  -->
                 £{{ invoice.total|floatformat:2|intcomma }}
                 <!--  -->
-                {% elif invoice.currency == "EUR" %}
+                {% elif invoice.currency == "'EUR 🇪🇺" %}
                 <!--  -->
                 €{{ invoice.total|floatformat:2|intcomma }}
                 <!--  -->
-                {% elif invoice.currency == "NGN" %}
+                {% elif invoice.currency == "NGN 🇳🇬" %}
                 <!--  -->
                 ₦{{ invoice.total|floatformat:2|intcomma }}
                 <!--  -->
                 {% endif %}
               </strong>
-              <span>{{invoice.payment_date|date:"d F, Y"}}</span>
+              <span class="text-secondary"
+                >{{invoice.payment_date|date:"d F, Y"}}</span
+              >
             </h5>
 
             <a href="{% url 'invoice-details' invoice.id %}">

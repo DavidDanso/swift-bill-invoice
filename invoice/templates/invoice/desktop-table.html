@@ -34,23 +34,23 @@
                 <td>{{invoice.payment_date|date:"d F, Y"}}</td>
 
                 <td>
-                  {% if invoice.currency == "GHS" %}
+                  {% if invoice.currency == "GHS 🇬🇭" %}
                   <!--  -->
                   ¢{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
-                  {% elif invoice.currency == "USD" %}
+                  {% elif invoice.currency == "USD 🇺🇸" %}
                   <!--  -->
                   ${{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
-                  {% elif invoice.currency == "GBP" %}
+                  {% elif invoice.currency == "GBP 🇬🇧" %}
                   <!--  -->
                   £{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
-                  {% elif invoice.currency == "EUR" %}
+                  {% elif invoice.currency == "'EUR 🇪🇺" %}
                   <!--  -->
                   €{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
-                  {% elif invoice.currency == "NGN" %}
+                  {% elif invoice.currency == "NGN 🇳🇬" %}
                   <!--  -->
                   ₦{{ invoice.total|floatformat:2|intcomma }}
                   <!--  -->
@@ -68,26 +68,26 @@
                 {% if invoice.invoice_status == 'Pending' %}
                 <td id="unpaid_status">
                   <span class="badge">
-                    {{invoice.invoice_status}}
                     <img
-                      src="{% static '/images/clock.png' %}"
+                      src="{% static '/images/pending.svg' %}"
                       class="img-fluid"
                       id="clock-img"
                       alt="clock-img"
                     />
+                    {{invoice.invoice_status}}
                   </span>
                 </td>
 
                 {% else %}
                 <td id="paid_status">
                   <span class="badge">
-                    {{invoice.invoice_status}}
                     <img
-                      src="{% static '/images/paid-icon.svg' %}"
+                      src="{% static '/images/paid.svg' %}"
                       class="img-fluid"
                       id="clock-img"
                       alt="clock-img"
                     />
+                    {{invoice.invoice_status}}
                   </span>
                 </td>
                 {% endif %}

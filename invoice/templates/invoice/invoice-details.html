@@ -85,7 +85,15 @@
               <!--  -->
               <div class="card d-flex mx-auto" id="main--card">
                 <div class="card-body">
-                  <h5>Edit Invoice <span>#MB2345</span></h5>
+                  <h5>
+                    Edit Invoice
+                    <!--  -->
+                    {% if invoice.invoice_status == 'Paid' %}
+                    <span id="paid">{{invoice.invoice_status}}</span>
+                    {% else %}
+                    <span id="pending">{{invoice.invoice_status}}</span>
+                    {% endif %}
+                  </h5>
                   <a
                     href="{% url 'preview-invoice' invoice.id %}"
                     class="btn"

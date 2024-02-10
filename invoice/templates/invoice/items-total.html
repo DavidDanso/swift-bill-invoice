@@ -2,7 +2,7 @@
 {% load humanize %}
 <!--  -->
 <!-- Display item price in Ghanaian Cedis -->
-{% if invoice.currency == "GHS" %}
+{% if invoice.currency == "GHS 🇬🇭" %}
 <!--  -->
 {% if items_total != None %}
 <!--  -->
@@ -14,7 +14,7 @@
 <!--  -->
 {% endif %}
 <!-- Display item price in US Dollars  -->
-{% elif invoice.currency == "USD" %}
+{% elif invoice.currency == "USD 🇺🇸" %}
 <!--  -->
 {% if items_total != None %}
 <!--  -->
@@ -26,7 +26,7 @@ $0.00
 <!--  -->
 {% endif %}
 <!-- Display item price in British Pounds -->
-{% elif invoice.currency == "GBP" %}
+{% elif invoice.currency == "GBP 🇬🇧" %}
 <!--  -->
 {% if items_total != None %}
 <!--  -->
@@ -38,7 +38,7 @@ $0.00
 <!--  -->
 {% endif %}
 <!-- Display item price in Euros -->
-{% elif invoice.currency == "EUR" %}
+{% elif invoice.currency == "EUR 🇪🇺" %}
 <!--  -->
 {% if items_total != None %}
 <!--  -->
@@ -50,7 +50,7 @@ $0.00
 <!--  -->
 {% endif %}
 <!-- Display item price in Nigerian Naira -->
-{% elif invoice.currency == "NGN" %}
+{% elif invoice.currency == "NGN 🇳🇬" %}
 <!--  -->
 {% if invoice.total != None %}
 <!--  -->

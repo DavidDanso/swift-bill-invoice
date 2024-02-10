@@ -32,11 +32,11 @@ def dashboard_page(request):
 
     # Currencies and Exchange Rates
     currency_rates = {
-        'NGN': 0.000712758,
-        'GHS': 0.0811322, 
-        'GBP': 1.25401,
-        'EUR': 1.07450,
-        'USD': 1.00000,
+        'NGN 🇳🇬': 0.000712758,
+        'GHS 🇬🇭': 0.0811322, 
+        'GBP 🇬🇧': 1.25401,
+        'EUR 🇪🇺': 1.07450,
+        'USD 🇺🇸': 1.00000,
     }
 
     # Invoice Status by Currency
@@ -121,6 +121,7 @@ def create_invoice(request):
     profile = request.user.profile
     invoices = profile.invoice_set.all()
 
+
     custom_range, invoices = paginateInvoice(request, 5, invoices)
 
     # Calculate days until due for each invoice
@@ -150,14 +151,13 @@ def create_invoice(request):
 def edit_invoice(request, pk):
     profile = request.user.profile
     invoice = profile.invoice_set.get(id=pk)
+    
     display_items = invoice.items.all()
 
     # invoice_amt = Invoice.objects.get(id=pk)
-
     # Use the aggregate function Sum to get the total of all items for the given invoice
     items_total = invoice.items.aggregate(total=Sum('total'))['total']
     # items_total = items_total if items_total is not None else 0
-    
     # total_amount = invoice_amt.total + items_total
 
     form = InvoiceCreationForm(request.user, instance=invoice)
@@ -207,8 +207,10 @@ def preview_invoice(request, pk):
     invoice = profile.invoice_set.get(id=pk)
 
     items = invoice.items.all()
+    items_total = invoice.items.aggregate(total=Sum('total'))['total']
 
-    context = {'invoice': invoice, 'profile': profile, 'items': items}
+    context = {'invoice': invoice, 'profile': profile, 'items': items, 
+               'items_total': items_total}
     return render(request, 'invoice/preview-invoice.html', context)
 
 
