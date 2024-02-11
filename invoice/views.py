@@ -30,6 +30,13 @@ def dashboard_page(request):
     invoices = profile.invoice_set.all()
     invoices_num = invoices.count()
 
+    # 
+    """ for invoice in invoices:
+        date_created = invoice.created_time_stamp
+
+        print(date_created) """
+    
+
     # Currencies and Exchange Rates
     currency_rates = {
         'NGN 🇳🇬': 0.000712758,
@@ -57,9 +64,14 @@ def dashboard_page(request):
     paid_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in paid_invoices_by_currency.items())
     pending_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in pending_invoices_by_currency.items())
 
+    data = [1200, 340, 0, 1450, 1200, 3000, 5000]
+    labels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
     context = {
         'clients_num': clients_num, 'invoices_num': invoices_num, 
         'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients,
+        'data': data, 'labels': labels
     }
 
     return render(request, 'invoice/dashboard.html', context)

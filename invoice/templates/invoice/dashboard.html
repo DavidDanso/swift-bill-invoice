@@ -45,6 +45,8 @@
           "Please view this work in a modern browser that supports CSS Variables."
         );
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body
     id="pageTop"
@@ -218,97 +220,7 @@
         <!-- End card -->
 
         <!--=========================================== Chart--Data-Section ===============================-->
-        <div id="chart--data">
-          <div class="container">
-            <div class="chart--data-intro">
-              <div class="row">
-                <div class="col-md-8" id="myChart-col">
-                  {% if paid_total_usd == 0 %}
-                  <img
-                    src="{% static 'images/graph.png' %}"
-                    id="graph_img"
-                    class="img-fluid d-flex mx-auto"
-                    alt="graph_img"
-                  />
-                  <h4>No Data available yet!</h4>
-                  {% else %}
-                  <canvas id="myChart"></canvas>
-                  {% endif %}
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4 align-self-center">
-                  <div class="card">
-                    <div class="card-body">
-                      <h3>
-                        Clients
-                        <ion-icon name="unlink-outline"></ion-icon>
-                      </h3>
-                      <hr />
-                      {% if clients_num == 0 %}
-                      <h4>No Clients created yet!</h4>
-                      <div class="d-flex justify-content-center">
-                        <a
-                          href="{% url 'clients' %}"
-                          id="clients--btn"
-                          class="btn"
-                        >
-                          <ion-icon name="create-outline"></ion-icon>
-                          Create new clients</a
-                        >
-                      </div>
-
-                      {% elif clients_num < 3 %}
-                      <h4>Data appears with three or more clients.</h4>
-
-                      {% else %}
-                      <div class="clients_sec">
-                        <div class="row">
-                          {% for client in clients|slice:":3" %}
-                          <div class="col-4 col-md-3">
-                            <div id="initial_con">
-                              <h6>{{client.name|first|upper}}</h6>
-                            </div>
-                            <!-- end initial_con -->
-                            <small
-                              >{{client.first_name | truncatechars:7}}</small
-                            >
-                          </div>
-                          <!-- end col -->
-                          {% endfor %}
-                          <!--  -->
-                          <div class="col-4 col-md-3">
-                            <a href="{% url 'clients' %}">
-                              <div id="initial_con">
-                                <h6>
-                                  <ion-icon
-                                    name="arrow-forward-outline"
-                                  ></ion-icon>
-                                </h6>
-                              </div>
-                              <!-- end initial_con -->
-                              <small>View all</small>
-                            </a>
-                          </div>
-                          <!-- end col -->
-                        </div>
-                        <!-- end row -->
-                      </div>
-                      <!-- end clients_sec -->
-                      {% endif %}
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-            </div>
-            <!-- End chart--data-intro -->
-          </div>
-          <!-- End container -->
-        </div>
+        {% include 'invoice/invoice-chart.html' %}
         <!-- End chart--data -->
 
         <!--=========================================== Footer-Text ===============================-->
@@ -340,7 +252,6 @@
     ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{% static '/js/dashboard.js' %}"></script>
   </body>
 </html>
