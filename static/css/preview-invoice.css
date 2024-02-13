@@ -246,6 +246,35 @@ a:hover {
   transition: all 0.5s ease-in-out;
 }
 
+/****************************************** mob-preview-invoice-Section ************************************/
+#mob-preview-invoice {
+  margin-top: 60%;
+}
+.mob-preview-intro {
+  margin: 3%;
+}
+#mob-invoice-img {
+  width: 30%;
+}
+.mob-preview-intro p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  margin-top: 3%;
+}
+.mob-preview-intro .return--btn {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  background: #4d6dd9;
+  transition: all 0.5s ease-in-out;
+}
+.mob-preview-intro .return--btn:hover {
+  background: #4d6ed97d;
+  transition: all 0.5s ease-in-out;
+}
 /****************************************** Footer-Section ************************************/
 footer {
   margin-top: 6%;
@@ -260,6 +289,9 @@ footer p {
 
 /********************** Extra small devices (portrait phones, less than 576px) ****************************/
 @media (max-width: 575.98px) {
+  #preview--invoice {
+    display: none;
+  }
 }
 /************************ Small devices (landscape phones, 576px and up) *****************************/
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -281,6 +313,9 @@ footer p {
 }
 /************************ Extra large devices (large desktops, 1200px and up) ********************************/
 @media (min-width: 1200px) {
+  #mob-preview-invoice {
+    display: none;
+  }
   /****** preview--invoice-Section ******/
   #preview--invoice {
     margin-top: 2%;
@@ -291,6 +326,10 @@ footer p {
   .preview--invoice-intro .card {
     width: 65%;
     padding: 1%;
+  }
+
+  #desktop-preview-invoice {
+    margin-top: 8%;
   }
 
   /*  */

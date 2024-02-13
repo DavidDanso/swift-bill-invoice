@@ -73,7 +73,7 @@
         <div id="preview--invoice">
           <div class="container-fluid">
             <div class="preview--invoice-intro">
-              <div class="card d-flex mx-auto">
+              <div class="card d-flex mx-auto" id="download-invoice">
                 <div class="card-body">
                   <div id="invoice--from">
                     <div id="invoice--from-img">
@@ -117,43 +117,9 @@
                   </div>
                   <!-- end invoice--info -->
 
-                  <!--  -->
-                  <h2>
-                    Invoice Item(s)
-                    <span>Price</span>
-                  </h2>
-                  <hr id="line--divider" />
-
-                  {% for item in items %}
-                  <h3>
-                    {{item.title}}
-                    <span>
-                      {% if invoice.currency == "GHS 🇬🇭" %}
-                      <!--  -->
-                      ¢{{ item.price|floatformat:2|intcomma }}
-                      <!--  -->
-                      {% elif invoice.currency == "USD 🇺🇸" %}
-                      <!--  -->
-                      ${{ item.price|floatformat:2|intcomma }}
-                      <!--  -->
-                      {% elif invoice.currency == "GBP 🇬🇧" %}
-                      <!--  -->
-                      £{{ item.price|floatformat:2|intcomma }}
-                      <!--  -->
-                      {% elif invoice.currency == "'EUR 🇪🇺" %}
-                      <!--  -->
-                      €{{ item.price|floatformat:2|intcomma }}
-                      <!--  -->
-                      {% elif invoice.currency == "NGN 🇳🇬" %}
-                      <!--  -->
-                      ₦{{ item.price|floatformat:2|intcomma }}
-                      <!--  -->
-                      {% endif %}
-                    </span>
-                  </h3>
-                  {% endfor %}
-
-                  <hr id="line--divider" />
+                  <!--  desktop-preview-invoice -->
+                  {% include 'invoice/preview-desktop-invoice.html' %}
+                  <!--  end desktop-preview-invoice -->
 
                   <h2 id="total_">
                     Sub-total
@@ -201,6 +167,33 @@
           <!-- End container-fluid -->
         </div>
         <!-- End preview--invoice -->
+
+        <!--=========================================== Mob-Preview-Invoice ===============================-->
+        <div id="mob-preview-invoice">
+          <div class="container">
+            <div class="mob-preview-intro">
+              <img
+                src="{% static 'images/receipt.svg' %}"
+                class="img-fluid d-flex mx-auto"
+                id="mob-invoice-img"
+                alt="mob-invoice-img"
+              />
+              <p>
+                To download your invoice, kindly switch to a larger screen for
+                an optimal experience. Our system provides a more user-friendly
+                interface on desktop screens to ensure a seamless and efficient
+                download process.
+              </p>
+
+              <a href="javascript:history.back()" class="btn return--btn">
+                Back to Previous Page
+              </a>
+            </div>
+            <!-- end mob-preview-intro -->
+          </div>
+          <!-- end container -->
+        </div>
+        <!-- end mob-preview-invoice -->
       </div>
       <!-- End page--layout -->
     </main>

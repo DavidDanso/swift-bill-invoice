@@ -1,0 +1,104 @@
+<!--  -->
+{% load humanize %}
+<!--  desktop-preview-invoice -->
+<div id="desktop-preview-invoice">
+  <!-- invoice header-titles -->
+  <div class="row">
+    <div class="col-md-3">
+      <h2>Invoice Item(s)</h2>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h2>Quantity</h2>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h2>Price</h2>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h2 class="text-end">Total</h2>
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end invoice header-titles -->
+
+  <hr id="line--divider" />
+
+  <!-- invoice data-titles -->
+  {% for item in items %}
+  <div class="row">
+    <div class="col-md-3">
+      <h3>{{item.title}}</h3>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h3>{{item.quantity}}</h3>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h3>
+        {% if invoice.currency == "GHS 🇬🇭" %}
+        <!--  -->
+        ¢{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "USD 🇺🇸" %}
+        <!--  -->
+        ${{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "GBP 🇬🇧" %}
+        <!--  -->
+        £{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "EUR 🇪🇺" %}
+        <!--  -->
+        €{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "NGN 🇳🇬" %}
+        <!--  -->
+        ₦{{ item.price|floatformat:2|intcomma }}
+        <!--  -->
+        {% endif %}
+      </h3>
+    </div>
+    <!-- end col -->
+
+    <div class="col-md-3">
+      <h3 class="text-end">
+        {% if invoice.currency == "GHS 🇬🇭" %}
+        <!--  -->
+        ¢{{ item.total|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "USD 🇺🇸" %}
+        <!--  -->
+        ${{ item.total|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "GBP 🇬🇧" %}
+        <!--  -->
+        £{{ item.total|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "EUR 🇪🇺" %}
+        <!--  -->
+        €{{ item.total|floatformat:2|intcomma }}
+        <!--  -->
+        {% elif invoice.currency == "NGN 🇳🇬" %}
+        <!--  -->
+        ₦{{ item.total|floatformat:2|intcomma }}
+        <!--  -->
+        {% endif %}
+      </h3>
+    </div>
+    <!-- end col -->
+  </div>
+
+  <hr id="line--divider" />
+  {% endfor %}
+
+  <!-- end invoice data-titles -->
+</div>
+<!--  end desktop-preview-invoice -->
