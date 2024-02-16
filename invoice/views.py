@@ -163,14 +163,9 @@ def create_invoice(request):
 def edit_invoice(request, pk):
     profile = request.user.profile
     invoice = profile.invoice_set.get(id=pk)
-    
+    # 
     display_items = invoice.items.all()
-
-    # invoice_amt = Invoice.objects.get(id=pk)
-    # Use the aggregate function Sum to get the total of all items for the given invoice
     items_total = invoice.items.aggregate(total=Sum('total'))['total']
-    # items_total = items_total if items_total is not None else 0
-    # total_amount = invoice_amt.total + items_total
 
     form = InvoiceCreationForm(request.user, instance=invoice)
     # 

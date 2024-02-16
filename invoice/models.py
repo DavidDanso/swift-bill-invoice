@@ -94,7 +94,7 @@ class Invoice(models.Model):
 
 class Item(models.Model):
     account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
-    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True, related_name='items')
+    invoice = models.ForeignKey(Invoice, on_delete=models.SET_NULL, null=True, related_name='items')
     title = models.CharField(max_length=255, null=True, blank=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
@@ -122,16 +122,28 @@ class Item(models.Model):
     
 
 @receiver(post_save, sender=Item)
-@receiver(post_delete, sender=Item)
-def update_invoice_total(sender, instance, **kwargs):
+def update_invoice_total_on_item_change(sender, instance, **kwargs):
     """
     Signal handler to update the corresponding Invoice total
-    when a new Item is created, an existing Item is updated,
-    or an Item is deleted.
+    when a new Item is created or an existing Item is updated.
     """
-    invoice = instance.invoice
-    items = invoice.items.all()
+    update_invoice_total(instance.invoice)
 
-    # Recalculate the total based on the sum of Item totals
-    invoice.total = sum(item.total for item in items)
-    invoice.save()
+@receiver(post_delete, sender=Item)
+def update_invoice_total_on_item_delete(sender, instance, **kwargs):
+    """
+    Signal handler to update the corresponding Invoice total
+    when an Item is deleted.
+    """
+    update_invoice_total(instance.invoice)
+
+def update_invoice_total(invoice):
+    """
+    Helper function to update the total of an Invoice based on its items.
+    """
+    if invoice:
+        items = invoice.items.all()
+        invoice.total = sum(item.total for item in items)
+        invoice.save()
+
+
