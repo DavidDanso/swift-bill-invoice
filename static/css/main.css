@@ -81,27 +81,40 @@ a:hover {
   border-radius: 6px;
 }
 
-/* django message styles */
-#alert_message {
-  width: 80%;
-  text-align: center;
-  letter-spacing: 1px;
+/****************************************** NAVIGATION ************************************/
+#mainNav {
+  transform: translateY(0);
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  background: var(--text-color);
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 9;
+  width: 100vw;
+}
+#logo {
+  width: 35px;
+  height: auto;
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.left--links li {
   font-family: var(--text-font);
-  font-size: 1.1rem;
-  margin-top: 2%;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  z-index: 100;
-  border: none;
+  color: #999;
+  letter-spacing: 1px;
+  font-size: 1.7vh;
 }
-.alert-error {
-  background: #dc8686 !important;
-  color: var(--main-color) !important;
+#rightNav a {
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-size: 2vh;
+  margin-bottom: -3%;
 }
-.alert-success {
-  background: #c3e2c2 !important;
-  color: var(--main-color) !important;
+#lock-img {
+  width: 7%;
 }
 
 /****************************************** Hero-Section ************************************/
@@ -155,6 +168,31 @@ footer p {
 }
 /************************ Extra large devices (large desktops, 1200px and up) ********************************/
 @media (min-width: 1200px) {
+  /* logo */
+  #logo {
+    width: 30px;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .left--links {
+    margin-left: 1%;
+  }
+  .left--links li {
+    letter-spacing: 1px;
+    font-size: 1.8vh;
+  }
+  #rightNav a {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-bottom: 0%;
+  }
+  #lock-img {
+    width: 35%;
+    vertical-align: middle;
+  }
+
   /****** hero-Section ******/
 }
 

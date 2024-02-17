@@ -10,6 +10,11 @@ from .models import *
 def welcomeEmail(request):
     return render(request, 'welcome_email.html')
 
+########################################## home page views
+def homePage(request):
+    context = {}
+    return render(request, 'user/index.html', context)
+
 
 ########################################## profile page views
 @login_required(login_url='login')

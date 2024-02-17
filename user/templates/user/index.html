@@ -51,6 +51,50 @@
     data-target="#mainNav"
   >
     <!--======================== Main-Section ================================-->
+    <!--======================== Nav-Section ================================-->
+    <nav class="navbar navbar-expand-lg fixed-top menu" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="{% static '/images/swift_logo.svg' %}"
+            class="img-fluid"
+            id="logo"
+            alt="logo"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
+            <li class="nav-item">| Swift Bill Invoice</li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0" id="rightNav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="{% url 'login' %}">
+                <img
+                  src="{% static 'images/lock.svg' %}"
+                  class="img-fluid"
+                  id="lock-img"
+                  alt="lock-img"
+                />
+                login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <main>
       <!--=========================================== smooth-scroll-effect ===============================-->
       <div data-scroll class="page page--layout-2" id="main">
@@ -59,11 +103,40 @@
 
         <!--=========================================== Hero-Text ===============================-->
         <div id="hero">
-          <div class="container-fluid">
-            <div class="hero-intro"></div>
+          <div class="container">
+            <div class="hero-intro">
+              <div class="row">
+                <div class="col-md-7 order-last order-md-first">
+                  <img
+                    src="{% static 'images/index-img.png' %}"
+                    id="index-img"
+                    class="img-fluid"
+                    alt="index-img"
+                  />
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">
+                      Button
+                    </button>
+                  </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-md-5 order-first order-md-last">
+                  <span class="badge text-bg-secondary">simple invocing</span>
+                  <h1>Effortless Invoicing for Modern Businesses</h1>
+                  <p>
+                    Streamline your billing process with our intuitive invoice
+                    app. Easily create, send, and track invoices, allowing you
+                    to focus on your business.
+                  </p>
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+            </div>
             <!-- End hero-intro-->
           </div>
-          <!-- End container-fluid -->
+          <!-- End container -->
         </div>
         <!-- End hero -->
       </div>

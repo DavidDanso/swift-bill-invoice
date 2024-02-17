@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
@@ -13,10 +11,6 @@ from datetime import datetime
 
     
 # Create your views here.
-########################################## home page views
-def homePage(request):
-    return HttpResponse("<h1>Index page under construction 🚧🦺.</h1>")
-
 ########################################## dashboard page views
 @login_required(login_url='login')
 def dashboard_page(request):
