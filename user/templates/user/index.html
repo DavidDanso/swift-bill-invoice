@@ -106,33 +106,104 @@
           <div class="container">
             <div class="hero-intro">
               <div class="row">
-                <div class="col-md-7 order-last order-md-first">
+                <div class="col-md-6">
+                  <span class="badge text-bg-secondary"
+                    >Simplify Invoicing</span
+                  >
+                  <h1>Fast. Easy. Professional.</h1>
+                  <p>
+                    Streamline your billing process with our intuitive invoice
+                    app. From creating professional invoices to tracking
+                    payments, we make it easy for you to manage your finances,
+                    so you can focus on growing your business.
+                  </p>
+                  <ul>
+                    <li>
+                      <img
+                        src="{% static 'images/checkmark.svg' %}"
+                        class="img-fluid"
+                        id="checkmark-svg"
+                        alt="checkmark-svg"
+                      />
+                      Create professional invoices in minutes.
+                    </li>
+                    <li>
+                      <img
+                        src="{% static 'images/checkmark.svg' %}"
+                        class="img-fluid"
+                        id="checkmark-svg"
+                        alt="checkmark-svg"
+                      />
+                      Download, send, and track invoices seamlessly.
+                    </li>
+                    <li>
+                      <img
+                        src="{% static 'images/checkmark.svg' %}"
+                        class="img-fluid"
+                        id="checkmark-svg"
+                        alt="checkmark-svg"
+                      />
+                      Generate detailed reports for financial insights
+                    </li>
+                  </ul>
+
+                  <div id="action-btns">
+                    <a href="{% url 'signup' %}" class="btn sign-up"
+                      >Get Started</a
+                    >
+                    <a href="{% url 'login' %}" class="btn login"
+                      ><span>Login</span></a
+                    >
+                  </div>
+                  <!-- end action-btns -->
+                </div>
+                <!-- end col -->
+
+                <div class="col-md-6 align-self-center">
                   <img
                     src="{% static 'images/index-img.png' %}"
                     id="index-img"
                     class="img-fluid"
                     alt="index-img"
                   />
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">
-                      Button
-                    </button>
-                  </div>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-5 order-first order-md-last">
-                  <span class="badge text-bg-secondary">simple invocing</span>
-                  <h1>Effortless Invoicing for Modern Businesses</h1>
-                  <p>
-                    Streamline your billing process with our intuitive invoice
-                    app. Easily create, send, and track invoices, allowing you
-                    to focus on your business.
-                  </p>
                 </div>
                 <!-- end col -->
               </div>
               <!-- end row -->
+
+              <!-- hero-footer -->
+              <div id="hero-footer">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h6>
+                      Start creating <span>with Swift Bill Invoice.</span>
+                    </h6>
+                  </div>
+                  <!-- end col -->
+
+                  <div class="col-md-9 align-self-center">
+                    <img
+                      src="{% static 'images/line.svg' %}"
+                      class="img-fluid"
+                      id="line-svg"
+                      alt="line-svg"
+                    />
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div id="default--img">
+                  <img
+                    src="{% static 'images/invoice.webp' %}"
+                    class="img-fluid"
+                    id="default-invoice-img"
+                    alt="default-invoice-img"
+                  />
+                </div>
+                <!-- end default--img -->
+              </div>
+              <!-- end hero-footer -->
             </div>
             <!-- End hero-intro-->
           </div>
