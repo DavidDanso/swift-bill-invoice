@@ -4,12 +4,11 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
-from .utils import paginateInvoice
+from .utils import paginateInvoice, calculate_currency_totals
 from django.db.models import Sum
 from datetime import datetime
 
 
-    
 # Create your views here.
 ########################################## dashboard page views
 @login_required(login_url='login')
@@ -23,40 +22,20 @@ def dashboard_page(request):
     # Invoices
     invoices = profile.invoice_set.all()
     invoices_num = invoices.count()
-
-    # 
-    """ for invoice in invoices:
-        date_created = invoice.created_time_stamp
-
-        print(date_created) """
     
+    # Retrieve and print the paid dates for invoices in the current month
+    current_month = datetime.now().month  # Get the current month
+    paid_dates = []  # Initialize a list to store paid dates
 
-    # Currencies and Exchange Rates
-    currency_rates = {
-        'NGN 🇳🇬': 0.000712758,
-        'GHS 🇬🇭': 0.0811322, 
-        'GBP 🇬🇧': 1.25401,
-        'EUR 🇪🇺': 1.07450,
-        'USD 🇺🇸': 1.00000,
-    }
+    # Iterate through invoices to find those paid in the current month
+    for invoice in invoices:
+        if invoice.paid_date and invoice.paid_date.month == current_month:
+            paid_dates.append(invoice.paid_date)  # Add the paid date to the list
+            print(invoice.paid_date)  # Print the paid date for reference
 
-    # Invoice Status by Currency
-    pending_invoices_by_currency = {}
-    paid_invoices_by_currency = {}
 
-    for currency, rate in currency_rates.items():
-        pending_total = invoices.filter(currency=currency, invoice_status='Pending').aggregate(Sum('total'))['total__sum'] or 0
-        paid_total = invoices.filter(currency=currency, invoice_status='Paid').aggregate(Sum('total'))['total__sum'] or 0
-
-        pending_invoices_by_currency[currency] = pending_total
-        paid_invoices_by_currency[currency] = paid_total
-
-    # Convert Amount to USD
-    def convert_to_usd(amount, rate):
-        return amount * rate
-
-    paid_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in paid_invoices_by_currency.items())
-    pending_total_usd = sum(convert_to_usd(amount, currency_rates[currency]) for currency, amount in pending_invoices_by_currency.items())
+    # Calculate currency totals for paid and pending invoices
+    paid_total_usd, pending_total_usd = calculate_currency_totals(invoices)
 
     data = [1200, 340, 0, 1450, 1200, 3000, 5000]
     labels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
@@ -142,6 +121,7 @@ def create_invoice(request):
             invoice = form.save(commit=False)
             invoice.account_owner = profile
             invoice.save()
+
             messages.success(request, 'Invoice created! Click [view invoice] to add items and calculate amount.📝')
             return redirect('invoice')
         else:
@@ -168,6 +148,11 @@ def edit_invoice(request, pk):
             form = InvoiceCreationForm(request.user, request.POST or None, request.FILES or None, instance=invoice)
             if form.is_valid():
                 form.save()
+
+                # Check if the invoice is paid, and update the payment_date
+                if invoice.invoice_status == 'Paid':
+                    invoice.paid_date = datetime.now().date()
+                    invoice.save()
                 return redirect('invoice')
             
         elif 'addItem' in request.POST:

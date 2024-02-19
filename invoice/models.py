@@ -70,6 +70,7 @@ class Invoice(models.Model):
     client_note = models.TextField(max_length=100000, null=True, blank=True)
 
     total = models.IntegerField(default=0, null=True, blank=True)
+    paid_date = models.DateField(null=True, blank=True)
 
     updated_time_stamp = models.DateTimeField(auto_now=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True)
