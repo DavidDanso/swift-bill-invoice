@@ -252,7 +252,7 @@ a:hover {
   padding-top: 22%;
 }
 .clients_sec small {
-  font-size: 2.1vh;
+  font-size: 1.9vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -512,7 +512,7 @@ footer p {
     margin-top: 6%;
   }
   #monthly-stats h5 span {
-    font-size: 2.7vh;
+    font-size: 2.6vh;
   }
 
   /****** hero-Section ******/
