@@ -23,21 +23,34 @@ def dashboard_page(request):
     invoices = profile.invoice_set.all()
     invoices_num = invoices.count()
     
-    # Retrieve and print the paid dates for invoices in the current month
+    # Assuming invoices is a queryset of Invoice model
     current_month = datetime.now().month  # Get the current month
-    paid_dates = []  # Initialize a list to store paid dates
+    total_paid_in_current_month_usd = 0  # Initialize a variable to store the total paid in USD in the current month
+
+    # Exchange rates for currencies
+    currency_rates = {
+        'NGN 🇳🇬': 0.000712758,
+        'GHS 🇬🇭': 0.0811322, 
+        'GBP 🇬🇧': 1.25401,
+        'EUR 🇪🇺': 1.07450,
+        'USD 🇺🇸': 1.00000,
+    }
+
 
     # Iterate through invoices to find those paid in the current month
     for invoice in invoices:
         if invoice.paid_date and invoice.paid_date.month == current_month:
-            paid_dates.append(invoice.paid_date)  # Add the paid date to the list
-            print(invoice.paid_date)  # Print the paid date for reference
+            # Assuming 'currency' is a field in your Invoice model
+            currency = invoice.currency
+            total_paid_in_current_month_usd += invoice.total * currency_rates[currency]
+
+    print(f"Total paid in the current month (USD): {total_paid_in_current_month_usd}")
 
 
     # Calculate currency totals for paid and pending invoices
     paid_total_usd, pending_total_usd = calculate_currency_totals(invoices)
 
-    data = [1200, 340, 0, 1450, 1200, 3000, 5000]
+    data = [1200, 200]
     labels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -121,6 +134,11 @@ def create_invoice(request):
             invoice = form.save(commit=False)
             invoice.account_owner = profile
             invoice.save()
+
+            # Check if the invoice is paid, and update the payment_date
+            if invoice.invoice_status == 'Paid':
+                invoice.paid_date = datetime.now().date()
+                invoice.save()
 
             messages.success(request, 'Invoice created! Click [view invoice] to add items and calculate amount.📝')
             return redirect('invoice')
