@@ -1,0 +1,132 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<div id="stats--data">
+  <div class="container">
+    <div class="stats--data-intro">
+      <div class="row">
+        <div class="col-md-8" id="monthly-stats">
+          <div class="card">
+            <div class="card-body">
+              <h3>
+                monthly invoice activity
+                <img
+                  src="{% static 'images/dash-icon.svg'%}"
+                  class="img-fluid"
+                  id="dash-icon"
+                  alt="dash-icon"
+                />
+              </h3>
+              <!--  -->
+              <img
+                src="{% static 'images/dash_line.svg'%}"
+                class="img-fluid"
+                id="dash-line"
+                alt="dash-line"
+              />
+              <!--  -->
+
+              <h2>
+                <ion-icon class="up--arrow" name="arrow-up-circle"></ion-icon>
+                January <span id="paid-status" class="badge">paid</span>
+                <span id="amount">$5,000.00</span>
+              </h2>
+
+              <h2>
+                <ion-icon name="alert-circle" class="down--arrow"></ion-icon>
+                Febuary <span id="pending-status" class="badge">pending</span>
+                <span id="amount">$15,000.00</span>
+              </h2>
+
+              <img
+                src="{% static 'images/dash_line.svg'%}"
+                class="img-fluid"
+                id="dash-line"
+                alt="dash-line"
+              />
+
+              <!--  -->
+              <img
+                src="{% static 'images/reciepts.svg'%}"
+                class="img-fluid d-flex mx-auto"
+                id="reciept--img"
+                alt="reciept--img"
+              />
+              <!--  -->
+
+              <h5>
+                Total amount for [ 2024 ]
+                <span>$10,000.00</span>
+              </h5>
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!-- end card -->
+        </div>
+        <!-- end monthly-stats -->
+
+        <div class="col-md-4 align-self-center">
+          <div class="card">
+            <div class="card-body">
+              <h3>
+                Clients
+                <ion-icon name="unlink-outline"></ion-icon>
+              </h3>
+              <hr />
+              {% if clients_num == 0 %}
+              <h4>No Clients created yet!</h4>
+              <div class="d-flex justify-content-center">
+                <a href="{% url 'clients' %}" id="clients--btn" class="btn">
+                  <ion-icon name="create-outline"></ion-icon>
+                  Create new clients</a
+                >
+              </div>
+
+              {% elif clients_num < 3 %}
+              <h4>Data appears with three or more clients.</h4>
+
+              {% else %}
+              <div class="clients_sec">
+                <div class="row">
+                  {% for client in clients|slice:":3" %}
+                  <div class="col-4 col-md-3">
+                    <div id="initial_con">
+                      <h6>{{client.name|first|upper}}</h6>
+                    </div>
+                    <!-- end initial_con -->
+                    <small>{{client.first_name | truncatechars:7}}</small>
+                  </div>
+                  <!-- end col -->
+                  {% endfor %}
+                  <!--  -->
+                  <div class="col-4 col-md-3">
+                    <a href="{% url 'clients' %}">
+                      <div id="initial_con">
+                        <h6>
+                          <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </h6>
+                      </div>
+                      <!-- end initial_con -->
+                      <small>View all</small>
+                    </a>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+              </div>
+              <!-- end clients_sec -->
+              {% endif %}
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!-- end card -->
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- End stats--data-intro -->
+  </div>
+  <!-- End container -->
+</div>
+<!-- End stats--data -->
