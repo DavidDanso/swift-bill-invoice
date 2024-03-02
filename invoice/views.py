@@ -36,31 +36,49 @@ def dashboard_page(request):
         'USD 🇺🇸': 1.00000,
     }
 
-    # Iterate through invoices to find those paid in the current month
-    for invoice in invoices:
-        if invoice.paid_date and invoice.paid_date.month == current_month:
-            # Assuming 'currency' is a field in your Invoice model
-            currency = invoice.currency
-            total_paid_in_current_month_usd += invoice.total * currency_rates[currency]
-
     # List of months
-    label = [
-        'January', 'February', 'March', 'April','May', 'June', 'July', 'August',
+    months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
         'September', 'October', 'November', 'December'
     ]
-    get_month = datetime.now().strftime('%B')
-    for month in label:
-        if month == get_month:
-            print(month)
 
-    print(total_paid_in_current_month_usd)
+    # Create or update the monthly_activity list of dictionaries
+    monthly_activity = []
+
+    # Iterate through invoices to find those paid in each month
+    for current_month in range(1, 13):
+        total_paid_in_current_month_usd = 0  # Initialize a variable to store the total paid in USD in the current month
+
+        for invoice in invoices:
+            if invoice.paid_date and invoice.paid_date.month == current_month:
+                # Assuming 'currency' is a field in your Invoice model
+                currency = invoice.currency
+                total_paid_in_current_month_usd += invoice.total * currency_rates.get(currency, 0)
+
+        current_month_name = months[current_month - 1]
+
+        # Check if there is an entry for the current month
+        current_month_entry = next((entry for entry in monthly_activity if entry['month'] == current_month_name), None)
+
+        if current_month_entry:
+            # Update the existing entry for the current month
+            current_month_entry['amount'] += total_paid_in_current_month_usd
+        else:
+            # Create a new entry for the current month
+            monthly_activity.append({'month': current_month_name, 'amount': total_paid_in_current_month_usd})
+
+    # Now, monthly_activity will contain a list of dictionaries, each representing a month and its corresponding total amount paid in USD.
 
     # Calculate currency totals for paid and pending invoices
     paid_total_usd, pending_total_usd = calculate_currency_totals(invoices)
 
+    current_month_num = datetime.now().month
+
+    # 
     context = {
         'clients_num': clients_num, 'invoices_num': invoices_num, 
-        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients
+        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients,
+        'monthly_activity': monthly_activity, 'num': current_month_num
     }
 
     return render(request, 'invoice/dashboard.html', context)

@@ -34,7 +34,7 @@
                 alt="dash-line"
               />
               <!--  -->
-
+              {% for data in monthly_activity|slice:":"|slice:num %}
               <h2>
                 <img
                   src="{% static 'images/coins.png'%}"
@@ -42,31 +42,12 @@
                   id="coin-img"
                   alt="coin-img"
                 />
-                January
-                <span id="amount">$0.00</span>
+                {{ data.month }}
+                <span id="amount"
+                  >${{ data.amount|floatformat:2|intcomma }}</span
+                >
               </h2>
-
-              <h2>
-                <img
-                  src="{% static 'images/coins.png'%}"
-                  class="img-fluid"
-                  id="coin-img"
-                  alt="coin-img"
-                />
-                Febuary
-                <span id="amount">$5,000.00</span>
-              </h2>
-
-              <h2>
-                <img
-                  src="{% static 'images/coins.png'%}"
-                  class="img-fluid"
-                  id="coin-img"
-                  alt="coin-img"
-                />
-                March
-                <span id="amount">$0.00</span>
-              </h2>
+              {% endfor %}
 
               <!--  -->
               <img
@@ -87,7 +68,7 @@
 
               <h5>
                 Total amount for [ 2024 ]
-                <span>$10,000.00</span>
+                <span>${{paid_total_usd|floatformat:2|intcomma}}</span>
               </h5>
             </div>
             <!-- end card-body -->
