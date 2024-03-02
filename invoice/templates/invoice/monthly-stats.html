@@ -6,6 +6,15 @@
     <div class="stats--data-intro">
       <div class="row">
         <div class="col-md-8" id="monthly-stats">
+          {% if paid_total_usd == 0 %}
+          <img
+            src="{% static 'images/receipt.svg'%}"
+            class="img-fluid d-flex mx-auto reciept"
+            id="reciept--img"
+            alt="reciept--img"
+          />
+          <h4 id="no_data">No Data available yet!</h4>
+          {% else%}
           <div class="card">
             <div class="card-body">
               <h3>
@@ -74,6 +83,7 @@
             <!-- end card-body -->
           </div>
           <!-- end card -->
+          {% endif %}
         </div>
         <!-- end monthly-stats -->
 
@@ -86,7 +96,7 @@
               </h3>
               <hr />
               {% if clients_num == 0 %}
-              <h4>No Clients created yet!</h4>
+              <h4 id="no_clients">No Clients created yet!</h4>
               <div class="d-flex justify-content-center">
                 <a href="{% url 'clients' %}" id="clients--btn" class="btn">
                   <ion-icon name="create-outline"></ion-icon>

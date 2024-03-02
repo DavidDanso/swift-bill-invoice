@@ -278,6 +278,12 @@ a:hover {
 #clients--btn ion-icon {
   vertical-align: middle;
 }
+#no_clients {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+}
 
 /* monthly-stats */
 #monthly-stats h3 span {
@@ -315,6 +321,14 @@ a:hover {
   color: var(--main-color);
   font-family: var(--header-font);
   float: right;
+}
+#no_data {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: -2%;
 }
 
 /****************************************** Footer-Section ************************************/
@@ -467,6 +481,10 @@ footer p {
   #clients--btn {
     font-size: 1.1rem;
   }
+  #no_clients {
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+  }
 
   /* monthly-stats */
   #chart-icon {
@@ -497,6 +515,16 @@ footer p {
   }
   #monthly-stats h5 span {
     font-size: 2.6vh;
+  }
+  #no_data {
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+    margin-bottom: -2%;
+    margin-top: 1%;
+  }
+  .reciept {
+    width: 150px !important;
+    margin-top: 2%;
   }
 
   /****** hero-Section ******/
