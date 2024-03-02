@@ -11,11 +11,20 @@
               <h3>
                 monthly invoice activity
                 <img
-                  src="{% static 'images/dash-icon.svg'%}"
+                  src="{% static 'images/chart.png'%}"
                   class="img-fluid"
-                  id="dash-icon"
-                  alt="dash-icon"
+                  id="chart-icon"
+                  alt="chart-icon"
                 />
+
+                <span>
+                  <img
+                    src="{% static 'images/dash-icon.svg'%}"
+                    class="img-fluid"
+                    id="dash-icon"
+                    alt="dash-icon"
+                  />
+                </span>
               </h3>
               <!--  -->
               <img
@@ -27,27 +36,49 @@
               <!--  -->
 
               <h2>
-                <ion-icon class="up--arrow" name="arrow-up-circle"></ion-icon>
-                January <span id="paid-status" class="badge">paid</span>
+                <img
+                  src="{% static 'images/coins.png'%}"
+                  class="img-fluid"
+                  id="coin-img"
+                  alt="coin-img"
+                />
+                January
+                <span id="amount">$0.00</span>
+              </h2>
+
+              <h2>
+                <img
+                  src="{% static 'images/coins.png'%}"
+                  class="img-fluid"
+                  id="coin-img"
+                  alt="coin-img"
+                />
+                Febuary
                 <span id="amount">$5,000.00</span>
               </h2>
 
               <h2>
-                <ion-icon name="alert-circle" class="down--arrow"></ion-icon>
-                Febuary <span id="pending-status" class="badge">pending</span>
-                <span id="amount">$15,000.00</span>
+                <img
+                  src="{% static 'images/coins.png'%}"
+                  class="img-fluid"
+                  id="coin-img"
+                  alt="coin-img"
+                />
+                March
+                <span id="amount">$0.00</span>
               </h2>
 
+              <!--  -->
               <img
                 src="{% static 'images/dash_line.svg'%}"
                 class="img-fluid"
                 id="dash-line"
                 alt="dash-line"
               />
-
               <!--  -->
+
               <img
-                src="{% static 'images/reciepts.svg'%}"
+                src="{% static 'images/receipt.svg'%}"
                 class="img-fluid d-flex mx-auto"
                 id="reciept--img"
                 alt="reciept--img"
@@ -83,7 +114,7 @@
               </div>
 
               {% elif clients_num < 3 %}
-              <h4>Data appears with three or more clients.</h4>
+              <h4>Data appears with four or more clients.</h4>
 
               {% else %}
               <div class="clients_sec">

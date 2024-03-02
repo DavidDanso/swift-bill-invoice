@@ -24,7 +24,7 @@ def dashboard_page(request):
     invoices_num = invoices.count()
     
     # Assuming invoices is a queryset of Invoice model
-    current_month = datetime.now().month  # Get the current month
+    current_month = datetime.now().month # Get the current month
     total_paid_in_current_month_usd = 0  # Initialize a variable to store the total paid in USD in the current month
 
     # Exchange rates for currencies
@@ -36,7 +36,6 @@ def dashboard_page(request):
         'USD 🇺🇸': 1.00000,
     }
 
-
     # Iterate through invoices to find those paid in the current month
     for invoice in invoices:
         if invoice.paid_date and invoice.paid_date.month == current_month:
@@ -44,20 +43,24 @@ def dashboard_page(request):
             currency = invoice.currency
             total_paid_in_current_month_usd += invoice.total * currency_rates[currency]
 
-    print(f"Total paid in the current month (USD): {total_paid_in_current_month_usd}")
+    # List of months
+    label = [
+        'January', 'February', 'March', 'April','May', 'June', 'July', 'August',
+        'September', 'October', 'November', 'December'
+    ]
+    get_month = datetime.now().strftime('%B')
+    for month in label:
+        if month == get_month:
+            print(month)
 
+    print(total_paid_in_current_month_usd)
 
     # Calculate currency totals for paid and pending invoices
     paid_total_usd, pending_total_usd = calculate_currency_totals(invoices)
 
-    data = [1200, 200]
-    labels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-
     context = {
         'clients_num': clients_num, 'invoices_num': invoices_num, 
-        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients,
-        'data': data, 'labels': labels
+        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients
     }
 
     return render(request, 'invoice/dashboard.html', context)
@@ -118,7 +121,6 @@ def edit_client(request, pk):
 def create_invoice(request):
     profile = request.user.profile
     invoices = profile.invoice_set.all()
-
 
     custom_range, invoices = paginateInvoice(request, 5, invoices)
 

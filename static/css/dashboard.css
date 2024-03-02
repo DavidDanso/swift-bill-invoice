@@ -280,7 +280,7 @@ a:hover {
 }
 
 /* monthly-stats */
-#monthly-stats h3 img {
+#monthly-stats h3 span {
   float: right;
 }
 #dash-icon {
@@ -293,15 +293,9 @@ a:hover {
   letter-spacing: 1px;
   margin-top: 4%;
 }
-#monthly-stats ion-icon {
-  font-size: 2.7vh;
+#monthly-stats #coin-img {
+  width: 22px;
   vertical-align: middle;
-}
-#monthly-stats .up--arrow {
-  color: #1a5d1a90;
-}
-#monthly-stats .down--arrow {
-  color: #de9b12;
 }
 #monthly-stats h2 #amount {
   float: right;
@@ -340,7 +334,8 @@ footer p {
 /********************** Extra small devices (portrait phones, less than 576px) ****************************/
 @media (max-width: 575.98px) {
   #monthly-stats #paid-status,
-  #pending-status {
+  #pending-status,
+  #chart-icon {
     display: none;
   }
 }
@@ -434,7 +429,7 @@ footer p {
 
   /******** stats--Data-Section ********/
   #stats--data {
-    margin-top: -6%;
+    margin-top: -8%;
     margin-bottom: 5%;
   }
   .stats--data-intro {
@@ -474,6 +469,10 @@ footer p {
   }
 
   /* monthly-stats */
+  #chart-icon {
+    width: 32px;
+    vertical-align: middle;
+  }
   #dash-icon {
     width: 22px;
   }
@@ -482,23 +481,8 @@ footer p {
     margin-top: 1%;
     margin-bottom: 2%;
   }
-  #monthly-stats ion-icon {
-    font-size: 2.7vh;
-    vertical-align: middle;
-  }
-  #monthly-stats #paid-status {
-    margin-left: 1%;
-    font-size: 1.5vh;
-    background: #64e3a86d;
-    border-radius: 15px;
-    color: #1a5d1ac8;
-  }
-  #monthly-stats #pending-status {
-    margin-left: 1%;
-    font-size: 1.5vh;
-    background: #fff8e5;
-    border-radius: 15px;
-    color: #de9a12bd;
+  #monthly-stats #coin-img {
+    width: 22px;
   }
   #monthly-stats h2 #amount {
     font-size: 2.2vh;
