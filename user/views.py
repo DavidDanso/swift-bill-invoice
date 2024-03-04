@@ -10,6 +10,12 @@ from .models import *
 def welcomeEmail(request):
     return render(request, 'welcome_email.html')
 
+
+################################ welcome_email view
+def welcomeUser(request):
+    return render(request, 'welcome_msg.html')
+
+
 ########################################## home page views
 def homePage(request):
     context = {}
