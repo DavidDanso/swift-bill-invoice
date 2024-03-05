@@ -83,65 +83,111 @@ a:hover {
 
 /****************************************** Hero-Section ************************************/
 #hero {
-  margin-top: 30%;
+  margin-top: 25%;
 }
 .hero-intro {
   margin: 3%;
-}
-.hero-intro #logo {
-  width: 20%;
 }
 .hero-intro h1 {
   color: var(--text-color);
   letter-spacing: 1px;
   font-family: var(--header-font);
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   text-align: center;
-  margin-top: 2%;
+}
+.hero-intro h2 {
+  color: #5e3030;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 4%;
+}
+.hero-intro ul {
+  padding-left: 0rem;
+}
+.hero-intro li {
+  list-style: none;
+  display: flex;
+  align-items: center;
 }
 .hero-intro h6 {
-  color: #7b8fa1;
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.4rem;
-  text-align: center;
-  margin-top: 2%;
-  vertical-align: middle;
-}
-.hero-intro ion-icon {
-  vertical-align: middle;
-}
-.hero-intro .card {
-  background: var(--text-color);
-  margin-top: 3%;
-}
-.hero-intro p {
-  color: var(--main-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.4rem;
-  line-height: 1.2;
-}
-.hero-intro span {
-  color: var(--main-color);
+  color: #5e3030;
   letter-spacing: 1px;
   font-family: var(--header-font);
   font-size: 1.4rem;
+  display: flex;
+  align-items: center;
 }
-#login_btn {
-  color: var(--text-color);
+.hero-intro h6 img {
+  width: 14%;
+  margin-right: 5px;
+}
+.hero-intro h6 .text-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.hero-intro h6 span {
+  color: #828282;
   letter-spacing: 1px;
   font-family: var(--text-font);
-  font-size: 2vh;
-  background: #9384d1;
-  transition: all 0.5s ease-in-out;
-  margin-top: 3%;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-top: 5px;
 }
-#login_btn:hover {
-  color: var(--text-color);
-  background: #9484d1d6;
-  transition: all 0.5s ease-in-out;
-}
+
+/* .hero-intro h1 { */
+/* color: var(--text-color); */
+/* letter-spacing: 1px; */
+/* font-family: var(--header-font); */
+/* font-size: 1.7rem; */
+/* text-align: center; */
+/* margin-top: 2%; */
+/* } */
+/* .hero-intro h6 { */
+/* color: #7b8fa1; */
+/* letter-spacing: 1px; */
+/* font-family: var(--text-font); */
+/* font-size: 1.4rem; */
+/* text-align: center; */
+/* margin-top: 2%; */
+/* vertical-align: middle; */
+/* } */
+/* .hero-intro ion-icon { */
+/* vertical-align: middle; */
+/* } */
+/* .hero-intro .card { */
+/* background: var(--text-color); */
+/* margin-top: 3%; */
+/* } */
+/* .hero-intro p { */
+/* color: var(--main-color); */
+/* letter-spacing: 1px; */
+/* font-family: var(--text-font); */
+/* font-size: 1.4rem; */
+/* line-height: 1.2; */
+/* } */
+/* .hero-intro span { */
+/* color: var(--main-color); */
+/* letter-spacing: 1px; */
+/* font-family: var(--header-font); */
+/* font-size: 1.4rem; */
+/* } */
+/* #login_btn { */
+/* color: var(--text-color); */
+/* letter-spacing: 1px; */
+/* font-family: var(--text-font); */
+/* font-size: 2vh; */
+/* background: #9384d1; */
+/* transition: all 0.5s ease-in-out; */
+/* margin-top: 3%; */
+/* } */
+/* #login_btn:hover { */
+/* color: var(--text-color); */
+/* background: #9484d1d6; */
+/* transition: all 0.5s ease-in-out; */
+/* } */
 
 /****************************************** Footer-Section ************************************/
 footer {
@@ -184,32 +230,6 @@ footer p {
   }
   .hero-intro {
     margin: 3%;
-  }
-  .hero-intro #logo {
-    width: 5%;
-  }
-  .hero-intro h1 {
-    font-size: 1.4rem;
-    margin-top: 1%;
-  }
-  .hero-intro h6 {
-    font-size: 1.2rem;
-    margin-top: 1%;
-  }
-  .hero-intro .card {
-    margin-top: 1%;
-    width: 70%;
-  }
-  .hero-intro p {
-    font-size: 1.3rem;
-    line-height: 1.2;
-  }
-  .hero-intro span {
-    font-size: 1.3rem;
-  }
-  #login_btn {
-    font-size: 2vh;
-    margin-top: 1%;
   }
 }
 
