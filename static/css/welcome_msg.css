@@ -14,7 +14,9 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  background: var(--main-color);
+  background-color: var(--main-color);
+  height: 100vh;
+  height: 100svh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -101,7 +103,7 @@ a:hover {
   font-family: var(--text-font);
   font-size: 1.4rem;
   text-align: center;
-  margin-bottom: 4%;
+  margin-bottom: 8%;
 }
 .hero-intro ul {
   padding-left: 0rem;
@@ -110,6 +112,7 @@ a:hover {
   list-style: none;
   display: flex;
   align-items: center;
+  margin-bottom: 5%;
 }
 .hero-intro h6 {
   color: #5e3030;
@@ -136,58 +139,19 @@ a:hover {
   display: inline-block;
   margin-top: 5px;
 }
-
-/* .hero-intro h1 { */
-/* color: var(--text-color); */
-/* letter-spacing: 1px; */
-/* font-family: var(--header-font); */
-/* font-size: 1.7rem; */
-/* text-align: center; */
-/* margin-top: 2%; */
-/* } */
-/* .hero-intro h6 { */
-/* color: #7b8fa1; */
-/* letter-spacing: 1px; */
-/* font-family: var(--text-font); */
-/* font-size: 1.4rem; */
-/* text-align: center; */
-/* margin-top: 2%; */
-/* vertical-align: middle; */
-/* } */
-/* .hero-intro ion-icon { */
-/* vertical-align: middle; */
-/* } */
-/* .hero-intro .card { */
-/* background: var(--text-color); */
-/* margin-top: 3%; */
-/* } */
-/* .hero-intro p { */
-/* color: var(--main-color); */
-/* letter-spacing: 1px; */
-/* font-family: var(--text-font); */
-/* font-size: 1.4rem; */
-/* line-height: 1.2; */
-/* } */
-/* .hero-intro span { */
-/* color: var(--main-color); */
-/* letter-spacing: 1px; */
-/* font-family: var(--header-font); */
-/* font-size: 1.4rem; */
-/* } */
-/* #login_btn { */
-/* color: var(--text-color); */
-/* letter-spacing: 1px; */
-/* font-family: var(--text-font); */
-/* font-size: 2vh; */
-/* background: #9384d1; */
-/* transition: all 0.5s ease-in-out; */
-/* margin-top: 3%; */
-/* } */
-/* #login_btn:hover { */
-/* color: var(--text-color); */
-/* background: #9484d1d6; */
-/* transition: all 0.5s ease-in-out; */
-/* } */
+.welcome--btn {
+  background: #9384d1;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-size: 2.3vh;
+  transition: all 0.5s ease-in-out;
+}
+.welcome--btn:hover {
+  background: #9484d1d6;
+  color: var(--text-color);
+  transition: all 0.5s ease-in-out;
+}
 
 /****************************************** Footer-Section ************************************/
 footer {
@@ -226,16 +190,60 @@ footer p {
 @media (min-width: 1200px) {
   /****** hero-Section ******/
   #hero {
-    margin-top: 10%;
+    margin-top: 0%;
   }
   .hero-intro {
     margin: 3%;
+  }
+  .hero-intro #content-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-intro .card {
+    width: 45%;
+    padding: 2%;
+  }
+  .hero-intro h1 {
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    margin-bottom: 2%;
+  }
+  .hero-intro h2 {
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+    margin-top: 4%;
+    margin-bottom: 6%;
+  }
+  .hero-intro li {
+    margin-bottom: 4%;
+  }
+  .hero-intro h6 {
+    letter-spacing: 1px;
+    font-size: 2.2vh;
+  }
+  .hero-intro h6 img {
+    width: 7%;
+    margin-right: 5px;
+  }
+  .hero-intro h6 .text-container {
+    margin-left: 10px;
+  }
+  .hero-intro h6 span {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-top: 5px;
+  }
+  .welcome--btn {
+    background: #9384d1;
+    font-family: var(--text-font);
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-size: 2.3vh;
+    transition: all 0.5s ease-in-out;
   }
 }
 
 /************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
 @media (min-width: 2000px) {
-  body {
-    display: none;
-  }
 }

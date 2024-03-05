@@ -61,35 +61,106 @@
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
-              <h1>Swift Bill</h1>
-              <div class="card">
-                <div class="card-body">
-                  <h2>Welcome to Swift Bill Invoice</h2>
+              <div id="content-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h2>Welcome to Swift Bill Invoice</h2>
 
-                  <ul class="ul-intro">
-                    <li>
-                      <h6>
-                        <img
-                          src="{% static 'images/clients.png' %}"
-                          class="img-fluid"
-                          id="clients--img"
-                          alt="clients--img"
-                        />
-                        <div class="text-container">
-                          Clients
-                          <span>
-                            Transfer funds across borders using any of the
-                            available payment methods on the app.
-                          </span>
-                        </div>
-                      </h6>
-                    </li>
-                  </ul>
-                  <!-- end ul-intro -->
+                    <ul class="ul-intro">
+                      <li>
+                        <h6>
+                          <img
+                            src="{% static 'images/clients.png' %}"
+                            class="img-fluid"
+                            id="clients--img"
+                            alt="clients--img"
+                          />
+                          <div class="text-container">
+                            Clients
+                            <span>
+                              Transfer funds across borders using any of the
+                              available payment methods on the app.
+                            </span>
+                          </div>
+                        </h6>
+                      </li>
+                      <!--  -->
+
+                      <li>
+                        <h6>
+                          <img
+                            src="{% static 'images/receipt.png' %}"
+                            class="img-fluid"
+                            id="clients--img"
+                            alt="clients--img"
+                          />
+                          <div class="text-container">
+                            Invoice
+                            <span>
+                              Add and/or edit the information of people who
+                              receive money from you.
+                            </span>
+                          </div>
+                        </h6>
+                      </li>
+                      <!--  -->
+
+                      <li>
+                        <h6>
+                          <img
+                            src="{% static 'images/dashboard.png' %}"
+                            class="img-fluid"
+                            id="clients--img"
+                            alt="clients--img"
+                          />
+                          <div class="text-container">
+                            Transactions
+                            <span>
+                              Check the details and status of all your payments
+                              in one dashboard
+                            </span>
+                          </div>
+                        </h6>
+                      </li>
+                      <!--  -->
+
+                      <li>
+                        <h6>
+                          <img
+                            src="{% static 'images/profile.png' %}"
+                            class="img-fluid"
+                            id="clients--img"
+                            alt="clients--img"
+                          />
+                          <div class="text-container">
+                            Profile
+                            <span>
+                              Find your personal details provided during signup.
+                              Easily update your info antime.
+                            </span>
+                          </div>
+                        </h6>
+                      </li>
+                      <!--  -->
+                    </ul>
+                    <!-- end ul-intro -->
+
+                    <!--  -->
+                    <div class="d-grid gap-2">
+                      <a
+                        href="{% url 'clients' %}"
+                        class="btn welcome--btn"
+                        type="button"
+                        >Okay</a
+                      >
+                    </div>
+                    <!--  -->
+                  </div>
+                  <!-- end card-body -->
                 </div>
-                <!-- end card-body -->
+                <!-- end card -->
               </div>
-              <!-- end card -->
+              <!-- end content-card -->
             </div>
             <!-- End hero-intro-->
           </div>
