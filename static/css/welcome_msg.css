@@ -190,7 +190,7 @@ footer p {
 @media (min-width: 1200px) {
   /****** hero-Section ******/
   #hero {
-    margin-top: 0%;
+    margin-top: 7%;
   }
   .hero-intro {
     margin: 3%;
@@ -203,7 +203,12 @@ footer p {
   .hero-intro .card {
     width: 45%;
     padding: 2%;
+    transition: transform 0.3s ease-in-out; /* Add a smooth scale transition */
   }
+  .hero-intro .card:hover {
+    transform: scale(1.01); /* Scale up the card on hover */
+  }
+
   .hero-intro h1 {
     letter-spacing: 1px;
     font-size: 1.7rem;

@@ -104,7 +104,7 @@ a:hover {
   width: 35px;
 }
 #mainNav small {
-  font-size: 1.8vh;
+  font-size: 1.2rem;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -114,6 +114,8 @@ a:hover {
   font-family: var(--text-font);
   color: #999;
   letter-spacing: 1px;
+  font-size: 1.2rem;
+  line-height: normal;
 }
 
 /****************************************** Hero-Section ************************************/
@@ -349,11 +351,14 @@ footer p {
   }
 
   /*  */
+  #mainNav small {
+    font-size: 1.1rem;
+  }
   .left--links {
     margin-left: 4%;
   }
   .left--links a {
-    font-size: 1.9vh;
+    font-size: 1.1rem;
   }
 
   /****** hero-Section ******/
@@ -478,7 +483,4 @@ footer p {
 
 /************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
 @media (min-width: 2000px) {
-  body {
-    display: none;
-  }
 }
