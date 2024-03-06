@@ -41,7 +41,6 @@ def profilePage(request):
     
         elif 'delete_account' in request.POST:
                 profile.delete()
-                # create new folder message
                 messages.success(request, 'Account delete Successful')
                 return redirect('signup')
 

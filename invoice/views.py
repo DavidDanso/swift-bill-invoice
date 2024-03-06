@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -174,7 +175,9 @@ def create_invoice(request):
 @login_required(login_url='login')
 def edit_invoice(request, pk):
     profile = request.user.profile
-    invoice = profile.invoice_set.get(id=pk)
+    # Use get_object_or_404 to handle the case where the invoice does not exist
+    invoice = get_object_or_404(profile.invoice_set, id=pk)
+    
     # 
     display_items = invoice.items.all()
     items_total = invoice.items.aggregate(total=Sum('total'))['total']
