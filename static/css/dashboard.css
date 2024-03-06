@@ -287,6 +287,12 @@ a:hover {
   font-family: var(--text-font);
   font-size: 1.3rem;
 }
+#text-data {
+  font-size: 1.3rem;
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
 
 /* monthly-stats */
 #monthly-stats h3 span {
@@ -492,6 +498,9 @@ footer p {
   #no_clients {
     letter-spacing: 1px;
     font-size: 1.2rem;
+  }
+  #text-data {
+    font-size: 2.2vh;
   }
 
   /* monthly-stats */
