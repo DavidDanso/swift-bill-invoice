@@ -1,0 +1,46 @@
+{% load static %}
+<div class="modal-content">
+  <div class="modal-header">
+    <h6 class="modal-title" id="staticBackdropLabel">
+      Account deletion not allowed.
+    </h6>
+    <img
+      id="close_img"
+      src="{% static '/images/cancel.png' %}"
+      class="img-fluid"
+      alt="close_img"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    />
+  </div>
+  <div class="modal-body">
+    <div id="modal-wrapper">
+      <div id="warning">
+        <h3>
+          Delete all invoices created before you can proceed with account
+          deletion.
+        </h3>
+      </div>
+      <!-- end warning -->
+
+      <h6>
+        Click the "Invoice" button to return to the invoice page, or click
+        "Cancel."
+      </h6>
+      <div class="modal-footer">
+        <a href="#" data-bs-dismiss="modal" aria-label="Close">
+          <h6>
+            <span>Cancel, keep this account</span>
+          </h6>
+        </a>
+        <a href="{% url 'invoice' %}" class="btn" id="invoice_btn"
+          >Invoice Page</a
+        >
+      </div>
+      <!-- End modal-footer-->
+    </div>
+    <!-- End modal-wrapper-->
+  </div>
+  <!-- End modal-body-->
+</div>
+<!-- End modal-content-->

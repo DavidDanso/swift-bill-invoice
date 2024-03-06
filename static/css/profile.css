@@ -140,7 +140,7 @@ a:hover {
 }
 .hero-intro h1 {
   margin-top: 2%;
-  font-size: 6vh;
+  font-size: 5vh;
   color: var(--text-color);
   font-family: var(--header-font);
   letter-spacing: 1px;
@@ -151,6 +151,9 @@ a:hover {
   color: var(--text-color);
   font-family: var(--text-font);
   letter-spacing: 1px;
+  display: block;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 #user_profile {
   border: 1px solid #f6f6f669;
@@ -304,6 +307,22 @@ a:hover {
   margin-bottom: -2%;
 }
 
+/*  */
+#invoice_btn {
+  color: var(--text-color);
+  background: #9384d1;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+#invoice_btn:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+
 /****************************************** Footer-Section ************************************/
 footer {
   margin-top: 2%;
@@ -391,6 +410,8 @@ footer p {
   .hero-intro small {
     font-size: 2vh;
     letter-spacing: 1px;
+    margin-top: 1%;
+    margin-bottom: 0%;
   }
   .hero-intro h3 {
     font-size: 2.5vh;
@@ -478,6 +499,13 @@ footer p {
   }
   #delete-account-modal .modal-footer {
     margin-bottom: -2%;
+  }
+
+  /*  */
+  #invoice_btn {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-left: 10px;
   }
 }
 

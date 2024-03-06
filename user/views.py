@@ -28,6 +28,11 @@ def profilePage(request):
     # user profile
     profile = Profile.objects.get(user=request.user)
 
+    # Invoices
+    invoices = profile.invoice_set.all()
+    invoice_count = invoices.count()
+
+
     # user profile form INSTANCE
     form = UserProfileForm(instance=profile)
 
@@ -44,7 +49,7 @@ def profilePage(request):
                 messages.success(request, 'Account delete Successful')
                 return redirect('signup')
 
-    context = {'form': form}
+    context = {'form': form, 'invoice_count': invoice_count}
     return render(request, 'user/profile.html', context)
 
 
