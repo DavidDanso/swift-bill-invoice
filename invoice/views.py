@@ -7,7 +7,10 @@ from .forms import ClientCreationForm, InvoiceCreationForm
 from django.db.models import Sum
 from .utils import paginateInvoice, calculate_currency_totals
 from django.db.models import Sum
+from django.http import HttpResponse
 from datetime import datetime
+from django.template.loader import render_to_string
+from weasyprint import HTML
 
 
 # Create your views here.
@@ -228,6 +231,31 @@ def edit_invoice(request, pk):
 
 
 ########################################## preview-invoice page views
+# @login_required(login_url='login')
+# def preview_invoice(request, pk):
+#     profile = request.user.profile
+#     invoice = profile.invoice_set.get(id=pk)
+
+#     items = invoice.items.all()
+#     items_total = invoice.items.aggregate(total=Sum('total'))['total']
+
+#     context = {'invoice': invoice, 'profile': profile, 'items': items, 
+#                'items_total': items_total}
+
+#     # Render HTML content
+#     html_content = render_to_string('invoice/preview-invoice.html', context)
+
+#     # Create a PDF file using WeasyPrint
+#     pdf_file = HTML(string=html_content).write_pdf()
+
+#     # Create a response with the PDF file
+#     response = HttpResponse(pdf_file, content_type='application/pdf')
+    
+#     # Set the filename for the download as "invoice.pdf"
+#     response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+
+#     return response
+
 @login_required(login_url='login')
 def preview_invoice(request, pk):
     profile = request.user.profile

@@ -149,51 +149,12 @@
                 <!-- end card-body -->
               </div>
               <!-- end card -->
-
-              <div id="btn--actions">
-                <center>
-                  <a href="#btns" class="btn download--btn">
-                    Download Invoice
-                  </a>
-                  <a href="javascript:history.back()" class="btn return--btn">
-                    Back to Previous Page
-                  </a>
-                </center>
-              </div>
-              <!-- end btn--actions -->
             </div>
             <!-- End preview--intro-intro-->
           </div>
           <!-- End container-fluid -->
         </div>
         <!-- End preview--invoice -->
-
-        <!--=========================================== Mob-Preview-Invoice ===============================-->
-        <div id="mob-preview-invoice">
-          <div class="container">
-            <div class="mob-preview-intro">
-              <img
-                src="{% static 'images/receipt.svg' %}"
-                class="img-fluid d-flex mx-auto"
-                id="mob-invoice-img"
-                alt="mob-invoice-img"
-              />
-              <p>
-                To download your invoice, kindly switch to a larger screen for
-                an optimal experience. Our system provides a more user-friendly
-                interface on desktop screens to ensure a seamless and efficient
-                download process.
-              </p>
-
-              <a href="javascript:history.back()" class="btn return--btn">
-                Back to Previous Page
-              </a>
-            </div>
-            <!-- end mob-preview-intro -->
-          </div>
-          <!-- end container -->
-        </div>
-        <!-- end mob-preview-invoice -->
       </div>
       <!-- End page--layout -->
     </main>
@@ -209,5 +170,36 @@
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/preview-invoice.js' %}"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelector("#downloadInvoiceBtn")
+          .addEventListener("click", function () {
+            var invoiceUrl = "{% url 'preview-invoice' invoice.id %}";
+
+            fetch(invoiceUrl, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/pdf",
+              },
+            })
+              .then((response) => response.blob())
+              .then((blob) => {
+                var blobUrl = URL.createObjectURL(blob);
+
+                var link = document.createElement("a");
+                link.href = blobUrl;
+                link.download = "invoice.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                URL.revokeObjectURL(blobUrl);
+              })
+              .catch((error) => console.error("Error fetching PDF:", error));
+          });
+      });
+    </script>
   </body>
 </html>

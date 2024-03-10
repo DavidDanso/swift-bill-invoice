@@ -99,7 +99,7 @@ a:hover {
   margin-bottom: 3%;
 }
 #preview--invoice {
-  color: var(--main-color);
+  color: #3860be;
   letter-spacing: 1px;
   font-family: var(--text-font);
   font-size: 1.3rem;
@@ -108,13 +108,16 @@ a:hover {
   margin-bottom: 5%;
   margin-top: -2%;
 }
+#preview--invoice span {
+  border-bottom: 1px solid #3860be;
+}
 #preview--invoice:hover {
   color: #2728295b;
   transition: all 0.5s ease-in-out;
 }
 #preview--invoice ion-icon {
   font-size: 1.4rem;
-  color: #d24545e5;
+  color: #3860be;
   vertical-align: middle;
 }
 
@@ -486,7 +489,8 @@ footer p {
     margin-left: -1%;
   }
   #preview--invoice ion-icon {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin-top: -3%;
   }
   #save--btn {
     font-size: 1.2rem;
@@ -676,7 +680,4 @@ footer p {
 
 /************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
 @media (min-width: 2000px) {
-  body {
-    display: none;
-  }
 }
