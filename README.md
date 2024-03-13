@@ -45,6 +45,11 @@ An invoice management web application built with Django, PostgreSQL, and AWS ser
    ```bash
    source env/bin/activate
 
+5. Install the required dependencies::
+
+   ```bash
+   pip install -r requirements.txt
+
 ### Configuring PostgreSQL, AWS S3, and RDS
 
 1. Configure PostgreSQL:
