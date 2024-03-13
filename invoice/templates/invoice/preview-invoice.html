@@ -46,7 +46,6 @@
         width: 100%;
         overflow-x: hidden;
         background: #fff;
-        font-family: Arial, sans-serif;
       }
 
       /* Fonts */
@@ -92,10 +91,10 @@
         margin-left: 10%;
       }
       #invoice--from-img {
-        margin-left: 85%;
+        margin-left: 90%;
       }
       .preview--invoice-intro #img_ {
-        width: 6rem;
+        width: 4rem;
       }
       #invoice--from h3 {
         font-size: 16px;
@@ -116,7 +115,7 @@
 
       /* invoice--info */
       #invoice--info {
-        margin-top: 12%;
+        margin-top: 11%;
         display: flex;
         justify-content: space-between;
       }
@@ -132,25 +131,25 @@
         margin-left: 10%;
       }
       #invoice--info h1 {
-        font-size: 26px;
+        font-size: 35px;
         color: #171b23;
         letter-spacing: 1px;
         font-family: var(--header-font);
       }
       #invoice--info h1 span {
-        font-size: 19px;
+        font-size: 24px;
         color: #898b99;
         display: block;
         font-family: var(--text-font);
       }
       #invoice--info h4 {
-        font-size: 19px;
+        font-size: 21px;
         color: #171b23;
         letter-spacing: 1px;
         font-family: var(--header-font);
       }
       #invoice--info h6 {
-        font-size: 15px;
+        font-size: 16px;
         color: #171b23;
         letter-spacing: 1px;
         font-weight: 100;
@@ -161,7 +160,7 @@
       .invoice-header-titles {
         display: flex;
         justify-content: space-between;
-        margin-top: 9%;
+        margin-top: 8%;
       }
       .header-title {
         flex: 1;
@@ -171,6 +170,7 @@
         color: #171b23;
         letter-spacing: 1px;
         margin-top: 10%;
+        font-family: var(--header-font);
       }
 
       /* flex-container [invoice-items ] */
@@ -192,10 +192,11 @@
         text-align: end;
       }
       .preview--invoice-intro h3 {
-        font-size: 14px;
+        font-size: 16px;
         color: #171b23;
         letter-spacing: 1px;
         margin-top: 3%;
+        font-family: var(--text-font);
       }
 
       /* total_ */
@@ -207,10 +208,11 @@
         font-size: 16px;
         color: #171b23;
         letter-spacing: 1px;
+        font-family: var(--text-font);
       }
       #total_ span {
         font-size: 18px;
-        font-weight: bold;
+        font-family: var(--header-font);
       }
 
       /* total--card */
@@ -231,7 +233,7 @@
         margin-bottom: -5%;
         text-align: center;
         font-size: 22px;
-        font-weight: bold;
+        font-family: var(--header-font);
       }
 
       /*  */
@@ -240,10 +242,29 @@
         color: #898b99;
         letter-spacing: 1px;
         text-align: center;
+        font-family: var(--text-font);
       }
       #line--divider {
         border-top: 1px solid #898b9979; /* Adjust the color and style as needed */
         margin: 10px 0; /* Adjust the margin as needed */
+      }
+
+      /* footer */
+      footer {
+        position: absolute;
+        top: 94%;
+        left: 38%;
+      }
+
+      footer p {
+        font-size: 14px;
+        color: #898b99;
+        letter-spacing: 1px;
+        font-family: var(--text-font);
+      }
+
+      #footer--img {
+        width: 5rem;
       }
     </style>
   </head>
@@ -346,6 +367,21 @@
         <!-- End container-fluid -->
       </div>
       <!-- End preview--invoice -->
+
+      <!-- footer -->
+      <footer>
+        <div class="footer-intro">
+          <p>
+            powered by
+            <img
+              src="{% static 'images/footer_img.png' %}"
+              id="footer--img"
+              class="img-fluid"
+              alt="footer--img"
+            />
+          </p>
+        </div>
+      </footer>
     </main>
     <!-- End Main-Section -->
 
