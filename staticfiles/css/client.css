@@ -1,0 +1,492 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/* django message styles */
+#alert_message {
+  width: 80%;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  margin-top: 2%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 100;
+  border: none;
+}
+.alert-error {
+  background: #dc8686 !important;
+  color: var(--main-color) !important;
+}
+.alert-success {
+  background: #c3e2c2 !important;
+  color: var(--main-color) !important;
+}
+
+/****************************************** NAVIGATION ************************************/
+#mainNav {
+  transform: translateY(0);
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  background: var(--text-color);
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 9;
+  width: 100vw;
+}
+#logo {
+  width: 35px;
+  height: auto;
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+#profile_img {
+  width: 35px;
+}
+#mainNav small {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+.left--links a {
+  font-family: var(--text-font);
+  color: #999;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  line-height: normal;
+}
+
+/****************************************** Client--Hero-Section ************************************/
+#client--hero {
+  margin-top: 24%;
+}
+.client---intro {
+  margin: 3%;
+}
+.client--intro h6 {
+  font-size: 1.3rem;
+  font-family: var(--text-font);
+  color: #7b8fa1;
+  letter-spacing: 1px;
+  margin-bottom: 3%;
+}
+/*  */
+#save_btn {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  background: #9384d1;
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 2%;
+  margin-left: 43%;
+}
+#save_btn:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+.client--intro ion-icon {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+/* card */
+.client--intro .card {
+  border: 1px solid var(--text-color);
+  background: #f7f7f7f9;
+  margin-bottom: 3%;
+}
+.client--intro .card h5 span {
+  float: right;
+}
+.client--intro .card h4 {
+  font-size: 1.3rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+.client--intro #avatar-img {
+  width: 11%;
+}
+.client--intro .card h5 {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  margin-bottom: 2%;
+}
+.client--intro .card h5 span {
+  font-size: 1.1rem;
+  color: #7b8fa1;
+  text-transform: capitalize;
+}
+
+/* no--client */
+#no--clients {
+  margin-top: 70%;
+}
+.no--client-img {
+  width: 70%;
+}
+#no--clients p {
+  font-size: 1.5rem;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  margin-top: 3%;
+  text-align: center;
+}
+#create--btn {
+  background: #9384d1;
+  color: var(--text-color);
+  font-size: 1.9vh;
+  transition: all 0.5s ease-in-out;
+}
+#create--btn:hover {
+  background: #9484d1d6;
+  color: var(--text-color);
+  transition: all 0.5s ease-in-out;
+}
+
+/* create-client-offcanvas */
+#create-client-offcanvas .offcanvas {
+  max-width: 95%;
+}
+#create-client-offcanvas .offcanvas h3 {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: #dc8686;
+  letter-spacing: 1px;
+}
+#create-client-offcanvas .offcanvas .card {
+  border: 1px solid #6b728067;
+}
+#create-client-offcanvas .offcanvas ion-icon {
+  font-size: 1.4rem;
+  color: #9384d1;
+  vertical-align: middle;
+}
+#create-client-offcanvas .offcanvas h5 {
+  font-size: 1.5rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  margin-bottom: -2%;
+}
+
+/* offcanvas input fields */
+#create-client-offcanvas .offcanvas .col-md-12 {
+  margin-top: 10%;
+}
+#create-client-offcanvas .offcanvas label {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+#create-client-offcanvas .offcanvas .input {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#create-client-offcanvas .offcanvas form input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--main-color);
+}
+#client--avatar_ {
+  width: 10%;
+}
+#save--btn {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  background: #9384d1;
+  transition: all 0.5s ease-in-out;
+}
+#save--btn:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+#save--btn ion-icon {
+  font-size: 1.4rem;
+  color: var(--text-color) !important;
+  vertical-align: middle;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: -2%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  text-align: center;
+}
+
+/****************************************** Add-Invoice-modal ************************************/
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  #create-client-offcanvas .offcanvas .col-md-12,
+  .col-md-4,
+  .col-md-8 {
+    margin-bottom: 1px;
+  }
+  .offcanvas--banner {
+    display: none;
+  }
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #mobile-table {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /* django message styles */
+  #alert_message {
+    width: 25%;
+    font-size: 1rem;
+    margin-top: 2%;
+    top: 7%;
+    left: 40%;
+  }
+
+  /* logo */
+  #logo {
+    width: 30px;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  /*  */
+  #mainNav small {
+    font-size: 1.1rem;
+  }
+  .left--links {
+    margin-left: 4%;
+  }
+  .left--links a {
+    font-size: 1.1rem;
+  }
+
+  /************** Client--Hero-Section ***************/
+  #client--hero {
+    margin-top: 7%;
+  }
+  .client---intro {
+    margin: 3%;
+  }
+  .client--intro h6 {
+    font-size: 1.2rem;
+    margin-bottom: 1%;
+  }
+  /*  */
+  #save_btn {
+    font-size: 1.1rem;
+    margin-bottom: 1%;
+    margin-left: 85%;
+  }
+  .client--intro ion-icon {
+    font-size: 1.4rem;
+  }
+
+  /* card */
+  .client--intro .card {
+    margin-bottom: 2%;
+  }
+  .client--intro .card h4 {
+    font-size: 1.2rem;
+  }
+  .client--intro #avatar-img {
+    width: 9%;
+  }
+  .client--intro .card h5 {
+    font-size: 1.1rem;
+  }
+  .client--intro .card h5 span {
+    font-size: 1rem;
+  }
+
+  /*  */
+  .client--intro .card #postal--code ion-icon {
+    transition: all 0.5s ease-in-out;
+  }
+  .client--intro .card:hover #postal--code ion-icon {
+    color: #cf1616;
+    transition: all 0.5s ease-in-out;
+  }
+  .client--intro .pagination {
+    margin-top: 1%;
+  }
+
+  /* no--client */
+  #no--clients {
+    margin-top: 18%;
+  }
+  .no--client-img {
+    width: 30%;
+  }
+  #no--clients p {
+    font-size: 1.5rem;
+    margin-top: 1%;
+    margin-bottom: 4px;
+  }
+  #create--btn {
+    font-size: 1.9vh;
+  }
+
+  /* create-client-offcanvas */
+  #create-client-offcanvas .offcanvas {
+    width: 695px;
+  }
+  #create-client-offcanvas .offcanvas h3 {
+    font-size: 1.2rem;
+  }
+  #create-client-offcanvas .offcanvas ion-icon {
+    font-size: 1.4rem;
+  }
+
+  /* offcanvas input fields */
+  #create-client-offcanvas .offcanvas .col-md-12 {
+    margin-top: 5%;
+  }
+  #create-client-offcanvas .offcanvas label {
+    font-size: 1.1rem;
+  }
+  #create-client-offcanvas .offcanvas .input {
+    font-size: 1.1rem;
+  }
+  #client--avatar_ {
+    width: 9%;
+  }
+  #save--btn {
+    font-size: 1.2rem;
+    float: right;
+  }
+  #save--btn ion-icon {
+    font-size: 1.3rem;
+  }
+
+  /*  */
+  .offcanvas--banner {
+    margin-top: 5%;
+    height: 17vh;
+    width: 100%;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+}

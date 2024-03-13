@@ -1,0 +1,805 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/****************************************** Hero-Section ************************************/
+#hero {
+  margin-top: 6%;
+}
+.hero-intro {
+  margin: 3%;
+}
+#hero-header {
+  margin-left: 7%;
+}
+#return_back {
+  width: 5%;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 3%;
+}
+.hero-intro p {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: #7b8fa1;
+  letter-spacing: 1px;
+  margin-bottom: 1%;
+}
+
+/* preview_invoice */
+#preview_invoice button {
+  background: #9384d1;
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  margin-bottom: 4%;
+}
+#preview_invoice button:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+
+/* preview_invoice */
+#preview_invoice .modal-content {
+  background-color: var(--main-color);
+  border: 1px solid var(--text-color);
+}
+#preview_invoice .modal-header {
+  z-index: 100;
+  background-color: var(--main-color);
+}
+#preview_invoice h1 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 2vh;
+}
+#preview_invoice h1 span {
+  color: #7b8fa1;
+}
+#preview_invoice #close_btn {
+  width: 3%;
+  cursor: pointer;
+}
+#preview_invoice h2 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.7vh;
+  margin-top: 2%;
+}
+#preview_invoice h2 span {
+  display: block;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  color: #7b8fa1;
+}
+/* client_info */
+#client_info {
+  margin-top: 5%;
+}
+#client_info small {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+}
+#client_info h3 {
+  font-size: 2.2vh;
+  font-family: var(--header-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  margin-top: 2%;
+}
+.client_badge {
+  border-radius: 50%;
+  background: #6610f2;
+  color: var(--text-color);
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 3vh;
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+}
+#client_info h2 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.3vh;
+  margin-top: 2%;
+}
+#client_info h2 small {
+  font-family: var(--text-font);
+  margin-left: 15px;
+  color: #7b8fa1;
+}
+.badge {
+  background: #7b8fa1;
+  color: var(--text-color);
+  text-align: center;
+  font-size: 1.9vh;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+
+/* bill_table */
+#bill_table table {
+  margin-top: 6%;
+  border-bottom: 1px solid #fff;
+}
+#bill_table td {
+  color: var(--text-color);
+  margin-top: 3%;
+  background-color: transparent;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+}
+#bill_table th {
+  background: #6610f2;
+  color: var(--text-color);
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+}
+#bill_table tr:hover {
+  color: var(--text-color);
+  background: #7b8fa112;
+}
+
+/* invoice_total */
+#invoice_total {
+  margin-left: 40%;
+}
+#invoice_total h2 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 2.3vh;
+  margin-top: 2%;
+}
+#invoice_total h2 small {
+  font-family: var(--header-font);
+  margin-left: 5px;
+}
+#invoice_total h1 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 2.3vh;
+  margin-top: 2%;
+}
+#invoice_total h1 small {
+  font-family: var(--header-font);
+  margin-left: 5px;
+  font-size: 2.8vh;
+}
+#download_modal {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  background: #9384d1;
+  transition: all 0.5s ease-in-out;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+#download_modal:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+
+/*  */
+#invoice_msg {
+  background: #fff7d4;
+  padding: 1%;
+  border-radius: 3px;
+  margin-top: 7%;
+}
+#invoice_msg p {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 1%;
+}
+#invoice_msg ion-icon {
+  color: #eec759;
+  vertical-align: middle;
+  font-size: 1.3rem;
+}
+
+/*  */
+#hero .card {
+  background: #20242c;
+  margin-bottom: 3%;
+}
+#hero .input-container {
+  position: relative;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+#hero .input {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2.2vh;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  height: 52px;
+  margin-bottom: 1%;
+}
+#hero input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #f6f6f669;
+  color: var(--text-color);
+}
+#hero .input::placeholder {
+  opacity: 0;
+}
+#hero .label {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #fff;
+  transition: all 0.5s;
+  font-family: var(--text-font);
+  font-size: 1.9vh;
+}
+#hero .input:focus + .label,
+#hero .input:not(:placeholder-shown) + .label {
+  top: 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  background-color: #20242c;
+  padding: 10px;
+}
+#hero select {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  height: 52px;
+  margin-top: 2%;
+}
+#hero select:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #f6f6f669;
+  color: var(--text-color);
+}
+
+/* textarea */
+#hero textarea {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2.2vh;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  height: 52px;
+}
+#floatingTextarea {
+  height: 150px !important;
+}
+#hero form textarea:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #f6f6f669;
+  color: var(--text-color);
+  color: var(--text-color);
+}
+.form-floating label {
+  color: #fff;
+  font-family: var(--text-font);
+  font-size: 1.9vh;
+}
+
+/* date */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("../../images/calendar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* bill_info */
+#bill_info {
+  margin-top: 3%;
+}
+
+/* date-project_info */
+#date-project_info {
+  margin-top: 2%;
+}
+
+/* items */
+#invoice_items {
+  margin-top: 2%;
+}
+#add-more h3 {
+  color: #dc0000;
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.4vh;
+  margin-top: 3%;
+  cursor: pointer;
+  padding: 1%;
+  margin-top: 4px;
+  margin-bottom: 1%;
+}
+#total_price {
+  background-color: #6610f2;
+  margin-top: 2%;
+  padding: 1%;
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+#total_price h3 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.4vh;
+  margin-bottom: 1px;
+}
+#total_price h3 span {
+  float: right;
+  color: var(--text-color);
+}
+
+#line-divider {
+  width: 90%;
+  margin-top: 2%;
+}
+
+/* update */
+#update_btn {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  background: #9384d1;
+  transition: all 0.5s ease-in-out;
+  margin-top: 1%;
+}
+#update_btn:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+
+/* delete */
+#trash_img {
+  width: 23px;
+}
+
+/* delete-invoice-modal */
+#delete-invoice-modal .modal-dialog {
+  max-width: 600px;
+}
+#delete-invoice-modal .modal-content {
+  background-color: var(--main-color);
+  border: 1px solid var(--text-color);
+}
+#delete-invoice-modal .modal-header {
+  border-bottom: transparent;
+  margin-bottom: 1%;
+}
+#delete-invoice-modal h6 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.8vh;
+}
+#close_img {
+  width: 3.5%;
+}
+#delete-invoice-modal h2 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 3vh;
+  text-align: center;
+}
+#delete-invoice-modal h4 {
+  color: #7b8fa1;
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.9vh;
+  text-align: center;
+}
+#delete-invoice-modal h6 span {
+  border-bottom: 1px solid var(--text-color);
+}
+#sad_img {
+  width: 16%;
+  margin: 4%;
+}
+#delete_invoice {
+  color: var(--text-color);
+  background: #951c2f;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+#delete_invoice:hover {
+  color: var(--text-color);
+  background: #951c2eac;
+  transition: all 0.5s ease-in-out;
+}
+#delete-invoice-modal .modal-footer {
+  margin-bottom: -2%;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: -2%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  text-align: center;
+}
+
+/****************************************** Add-Invoice-modal ************************************/
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #mobile-table {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /************** Hero-Section ***************/
+  #hero {
+    margin-top: 4%;
+  }
+  .hero-intro {
+    margin: 3%;
+  }
+  #bill_info {
+    margin-top: 2%;
+  }
+  #hero-header {
+    margin-left: 7%;
+  }
+  #return_back {
+    width: 5%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 2%;
+  }
+  .hero-intro p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1%;
+  }
+
+  /* preview_invoice */
+  #preview_invoice button {
+    font-size: 1.2rem;
+    margin-bottom: 1%;
+  }
+
+  /* preview_invoice */
+  #preview_invoice h1 {
+    font-size: 2vh;
+  }
+  #preview_invoice #close_btn {
+    width: 3%;
+  }
+  #preview_invoice h2 {
+    font-size: 2.7vh;
+    margin-top: 2%;
+  }
+  #preview_invoice h2 span {
+    font-size: 2vh;
+  }
+  /* client_info */
+  #client_info {
+    margin-top: 5%;
+  }
+  #client_info small {
+    font-size: 2vh;
+  }
+  #client_info h3 {
+    font-size: 2.2vh;
+    margin-top: 2%;
+  }
+  .client_badge {
+    width: 35px;
+    height: 35px;
+    font-size: 3vh;
+  }
+  #client_info h2 {
+    font-size: 2.3vh;
+    margin-top: 2%;
+  }
+  #client_info h2 small {
+    margin-left: 15px;
+  }
+  .badge {
+    font-size: 1.9vh;
+  }
+
+  /* invoice_msg */
+  #invoice_msg {
+    padding: 1%;
+    margin-top: 3%;
+  }
+  #invoice_msg p {
+    font-size: 1.1rem;
+    margin-bottom: 1%;
+  }
+  #invoice_msg ion-icon {
+    font-size: 1.3rem;
+  }
+
+  /* bill_table */
+  #bill_table table {
+    margin-top: 4%;
+  }
+  #bill_table th {
+    font-size: 1.3rem;
+  }
+  #bill_table td {
+    margin-top: 3%;
+    font-size: 1.2rem;
+  }
+
+  /* invoice_total */
+  #invoice_total {
+    margin-left: 68%;
+  }
+  #invoice_total h2 {
+    font-size: 1.3rem;
+    margin-top: 2%;
+  }
+  #invoice_total h2 small {
+    margin-left: 5px;
+  }
+  #invoice_total h1 {
+    font-size: 1.5rem;
+    margin-top: 2%;
+  }
+  #invoice_total h1 small {
+    font-size: 1.8rem;
+  }
+  #download_modal {
+    font-size: 1.2rem;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+
+  /*  */
+  #hero .card {
+    margin-bottom: 1%;
+  }
+  #hero .input-container {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  #hero .input {
+    font-size: 1.3rem;
+    height: 52px;
+    margin-bottom: 1%;
+  }
+  #hero .label {
+    top: 40%;
+    left: 10px;
+    font-size: 1.2rem;
+  }
+  #hero select {
+    font-size: 1.2rem;
+    height: 52px;
+    margin-top: 2%;
+  }
+
+  /* textarea */
+  #hero textarea {
+    font-size: 1.2rem;
+    height: 52px;
+  }
+  #floatingTextarea {
+    height: 150px !important;
+  }
+  .form-floating label {
+    font-size: 1.2rem;
+  }
+
+  /* items */
+  #invoice_items {
+    margin-top: 1%;
+  }
+  #add-more h3 {
+    font-size: 1.3rem;
+    margin-top: 1%;
+    margin-bottom: -2%;
+  }
+  #total_price {
+    margin-top: 2%;
+    padding: 1%;
+    margin-bottom: 1%;
+  }
+  #total_price h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1px;
+    color: #7b8fa1;
+  }
+  #total_price h3 span {
+    font-size: 1.8rem;
+  }
+
+  /*  */
+  #line-divider {
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  /* update */
+  #update_btn {
+    font-size: 2vh;
+    margin-top: 1%;
+  }
+
+  /* delete */
+  #delete_btn {
+    margin-top: 1.5%;
+  }
+  #trash_img {
+    width: 23px;
+  }
+
+  /* delete-invoice-modal */
+  #delete-invoice-modal .modal-dialog {
+    max-width: 600px;
+  }
+  #delete-invoice-modal .modal-header {
+    margin-bottom: 1%;
+  }
+  #delete-invoice-modal h6 {
+    font-size: 1.8vh;
+  }
+  #close_img {
+    width: 3.5%;
+  }
+  #delete-invoice-modal h2 {
+    font-size: 3vh;
+    text-align: center;
+  }
+  #delete-invoice-modal h4 {
+    font-size: 1.9vh;
+    text-align: center;
+  }
+  #sad_img {
+    width: 16%;
+    margin: 4%;
+  }
+  #delete_invoice {
+    font-size: 2vh;
+    margin-left: 10px;
+  }
+
+  #delete-invoice-modal .modal-footer {
+    margin-bottom: -2%;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+}
