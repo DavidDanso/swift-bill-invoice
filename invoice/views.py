@@ -180,6 +180,10 @@ def edit_invoice(request, pk):
     profile = request.user.profile
     # Use get_object_or_404 to handle the case where the invoice does not exist
     invoice = get_object_or_404(profile.invoice_set, id=pk)
+
+    print(invoice.invoiceImageURL)
+
+    default_img = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
     
     # 
     display_items = invoice.items.all()
@@ -226,6 +230,7 @@ def edit_invoice(request, pk):
         'invoice': invoice, 
         'display_items': display_items,
         'items_total': items_total,
+        'default_img': default_img,
     }
     return render(request, 'invoice/invoice-details.html', context)
 
