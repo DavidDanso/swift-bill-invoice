@@ -308,6 +308,15 @@ a:hover {
   vertical-align: middle;
 }
 
+/*  */
+#create-client-offcanvas h6 {
+  font-size: 1.5rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 /****************************************** Footer-Section ************************************/
 footer {
   margin-top: -2%;
