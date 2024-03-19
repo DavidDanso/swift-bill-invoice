@@ -9,30 +9,19 @@
           <table class="table table-hover" id="invoice_table">
             <thead>
               <tr>
+                <th scope="col">Amount</th>
                 <th scope="col">Client</th>
                 <th scope="col">Email</th>
                 <th scope="col">Payment date</th>
-                <th scope="col">Amount</th>
                 <th scope="col">Payment for</th>
                 <th scope="col">Status</th>
+                <th scope="col">Last updated</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               {% for invoice in invoices %}
               <tr id="search_invoice">
-                <td id="client_name">
-                  <img
-                    src="{{invoice.client_name.imageURL}}"
-                    class="img-fluid rounded-circle"
-                    id="avatar-img"
-                    alt="avatar-img"
-                  />
-                  {{invoice.client_name}}
-                </td>
-                <td>{{invoice.client_name.email | truncatechars:25}}</td>
-                <td>{{invoice.payment_date|date:"d F, Y"}}</td>
-
                 <td>
                   {% if invoice.currency == "GHS 🇬🇭" %}
                   <!--  -->
@@ -56,6 +45,18 @@
                   <!--  -->
                   {% endif %}
                 </td>
+
+                <td id="client_name">
+                  <img
+                    src="{{invoice.client_name.imageURL}}"
+                    class="img-fluid rounded-circle"
+                    id="avatar-img"
+                    alt="avatar-img"
+                  />
+                  {{invoice.client_name}}
+                </td>
+                <td>{{invoice.client_name.email | truncatechars:25}}</td>
+                <td>{{invoice.payment_date|date:"d F, Y"}}</td>
 
                 <td>{{invoice.project_name | truncatechars:17}}</td>
 
@@ -93,6 +94,7 @@
                 {% endif %}
                 <!--  -->
                 {% endif %}
+                <td>{{invoice.updated_time_stamp|naturaltime}}</td>
                 <td>
                   <a href="{% url 'invoice-details' invoice.id %}">
                     <img

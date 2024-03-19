@@ -55,7 +55,6 @@ def dashboard_page(request):
 
         for invoice in invoices:
             if invoice.paid_date and invoice.paid_date.month == current_month:
-                # Assuming 'currency' is a field in your Invoice model
                 currency = invoice.currency
                 total_paid_in_current_month_usd += invoice.total * currency_rates.get(currency, 0)
 
