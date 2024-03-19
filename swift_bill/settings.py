@@ -91,6 +91,12 @@ WSGI_APPLICATION = 'swift_bill.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+'''
+Database configuration: You can uncomment 
+the sqlite3 DB to utilize the default Django 
+admin, or simply use the PostgreSQL DB.
+'''
+# sqlite3 DB
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,6 +104,7 @@ WSGI_APPLICATION = 'swift_bill.wsgi.application'
 #     }
 # }
 
+# postgresql DB
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
