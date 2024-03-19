@@ -96,6 +96,7 @@ Database configuration: You can uncomment
 the sqlite3 DB to utilize the default Django 
 admin, or simply use the PostgreSQL DB.
 '''
+
 # sqlite3 DB
 # DATABASES = {
 #     'default': {

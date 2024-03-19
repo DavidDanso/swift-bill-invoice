@@ -9,13 +9,23 @@
         <div class="card-body">
           <div id="invoice--container">
             <h4>
+              {% if invoice.client_name.imageURL != clientImg %}
               <img
                 src="{{invoice.client_name.imageURL}}"
                 class="img-fluid rounded-circle"
                 id="avatar-img"
                 alt="avatar-img"
               />
-              {{invoice.client_name}}
+              {% else %}
+              <img
+                src="{% static '/images/emil-kowalski.png' %}"
+                class="img-fluid rounded-circle"
+                id="avatar-img"
+                alt="avatar-img"
+              />
+              {% endif %}
+              <!--  -->
+              {{invoice.client_name.name}}
             </h4>
 
             <h5>

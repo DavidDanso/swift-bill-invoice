@@ -47,13 +47,23 @@
                 </td>
 
                 <td id="client_name">
+                  {% if invoice.client_name.imageURL != clientImg %}
                   <img
                     src="{{invoice.client_name.imageURL}}"
                     class="img-fluid rounded-circle"
                     id="avatar-img"
                     alt="avatar-img"
                   />
-                  {{invoice.client_name}}
+                  {% else %}
+                  <img
+                    src="{% static '/images/emil-kowalski.png' %}"
+                    class="img-fluid rounded-circle"
+                    id="avatar-img"
+                    alt="avatar-img"
+                  />
+                  {% endif %}
+                  <!--  -->
+                  {{invoice.client_name.name}}
                 </td>
                 <td>{{invoice.client_name.email | truncatechars:25}}</td>
                 <td>{{invoice.payment_date|date:"d F, Y"}}</td>

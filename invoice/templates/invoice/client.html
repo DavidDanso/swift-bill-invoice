@@ -92,12 +92,23 @@
                         <div class="card-body">
                           <div id="client--container">
                             <h4>
+                              {% if client.imageURL != clientImg %}
                               <img
                                 src="{{client.imageURL}}"
+                                src="{% static '/images/emil-kowalski.png' %}"
                                 class="img-fluid rounded-circle"
                                 id="avatar-img"
                                 alt="avatar-img"
                               />
+                              {% else %}
+                              <img
+                                src="{% static '/images/emil-kowalski.png' %}"
+                                class="img-fluid rounded-circle"
+                                id="avatar-img"
+                                alt="avatar-img"
+                              />
+                              {% endif %}
+                              <!--  -->
                               {{client.name}}
                             </h4>
 

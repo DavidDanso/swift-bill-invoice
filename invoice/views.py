@@ -107,8 +107,11 @@ def create_client(request):
         else:
             messages.error(request,  'Invalid form: Please check and resubmit')
 
+    
+    # default client image url
+    default_clientImg = "https://swift-bill-bucket.s3.amazonaws.com/emil-kowalski.png" 
 
-    context = {'form': form, 'clients': clients}
+    context = {'form': form, 'clients': clients, 'clientImg': default_clientImg}
     return render(request, 'invoice/client.html', context)
 
 
@@ -167,9 +170,12 @@ def create_invoice(request):
             return redirect('invoice')
         else:
             messages.error(request, 'Invalid form: Please check and resubmit')
+        
+    # default client image url
+    default_clientImg = "https://swift-bill-bucket.s3.amazonaws.com/emil-kowalski.png" 
 
     context = {'form': form, 'invoices': invoices,
-               'custom_range': custom_range}
+               'custom_range': custom_range, 'clientImg': default_clientImg}
     return render(request, 'invoice/invoice.html', context)
 
 
@@ -221,7 +227,7 @@ def edit_invoice(request, pk):
             return redirect('invoice')
         
     # default invoice image url
-    default_img = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
+    default_invoiceImg = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
 
     #
     context = {
@@ -229,7 +235,7 @@ def edit_invoice(request, pk):
         'invoice': invoice, 
         'display_items': display_items,
         'items_total': items_total,
-        'default_img': default_img,
+        'invoiceImg': default_invoiceImg,
     }
     return render(request, 'invoice/invoice-details.html', context)
 
