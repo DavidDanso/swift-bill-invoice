@@ -310,9 +310,9 @@ a:hover {
 
 /*  */
 #create-client-offcanvas h6 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: var(--text-font);
-  color: var(--main-color);
+  color: #7b8fa1d7;
   letter-spacing: 1px;
   text-align: center;
 }
@@ -493,6 +493,11 @@ footer p {
     margin-top: 5%;
     height: 17vh;
     width: 100%;
+  }
+
+  /*  */
+  #create-client-offcanvas h6 {
+    font-size: 1.1rem;
   }
 }
 

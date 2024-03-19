@@ -241,6 +241,15 @@ a:hover {
 }
 
 /*  */
+#client--details-hero h6 {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: #7b8fa1d7;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/*  */
 #form_error {
   background: #dc8686;
   border-radius: 5px;
@@ -399,6 +408,11 @@ footer p {
   }
   .errorlist li {
     font-size: 1.2rem;
+  }
+
+  /*  */
+  #client--details-hero h6 {
+    font-size: 1.1rem;
   }
 }
 
