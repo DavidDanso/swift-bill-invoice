@@ -1,5 +1,5 @@
 __pycache__
 venv/
 .env
-/invoice/migrations/
-/user/migrations/
+invoice/migrations/
+user/migrations/
