@@ -122,6 +122,91 @@ To access the admin interface and manage users, create a superuser account using
 python3 manage.py createsuperuser
 ```
 
+<table width="100%"> 
+  <tr>
+    <td width="70%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Home Page
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/home-page.png?raw=true" />
+    </td> 
+    <td width="40%">
+    <br>
+    <p align="center">
+      Invoice Interface
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/invoice.png?raw=true" />
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Signup Screen
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/signup.png?raw=true" />
+    </td> 
+    <td width="50%">
+    <br>
+    <p align="center">
+     Login Screen
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/login.png?raw=true" />
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Welcome Screen
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/welcome-page.png?raw=true" />
+    </td> 
+    <td width="50%">
+    <br>
+    <p align="center">
+     Client Page
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/create_client.png?raw=true" />
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Invoice Page
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/create_invoice.png?raw=true" />
+    </td> 
+    <td width="50%">
+    <br>
+    <p align="center">
+     Profile Page
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/profile.png?raw=true" />
+    </td>
+  </tr>
+
+  <tr>
+    <td width="100%">
+    <br>
+    <p align="center">
+     Dashboard Page
+    </p>
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/dashboard.png?raw=true" />
+    </td>
+  </tr>
+</table>
+
+
 ## Author
 David Danso - Initial work - [GitHub Profile](https://github.com/DavidDanso)
 
