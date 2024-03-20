@@ -124,7 +124,7 @@ python3 manage.py createsuperuser
 
 <table width="100%"> 
   <tr>
-    <td width="70%">      
+    <td width="50%">      
     &nbsp; 
     <br>
     <p align="center">
@@ -132,12 +132,12 @@ python3 manage.py createsuperuser
     </p>
     <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/home-page.png?raw=true" />
     </td> 
-    <td width="40%">
+    <td width="50%">
     <br>
     <p align="center">
-      Invoice Interface
+      Dashboard Screen
     </p>
-    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/invoice.png?raw=true" />
+    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/dashboard.png?raw=true" />
     </td>
   </tr>
 
@@ -192,16 +192,6 @@ python3 manage.py createsuperuser
      Profile Page
     </p>
     <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/profile.png?raw=true" />
-    </td>
-  </tr>
-
-  <tr>
-    <td width="100%">
-    <br>
-    <p align="center">
-     Dashboard Page
-    </p>
-    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/dashboard.png?raw=true" />
     </td>
   </tr>
 </table>
