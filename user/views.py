@@ -29,7 +29,7 @@ def profilePage(request):
     profile = Profile.objects.get(user=request.user)
 
     # Invoices
-    invoices = profile.invoice_set.all()
+    invoices = profile.acc_user.all()
     invoice_count = invoices.count()
 
 

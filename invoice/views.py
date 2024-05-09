@@ -24,7 +24,7 @@ def dashboard_page(request):
     clients_num = clients.count()
 
     # Invoices
-    invoices = profile.invoice_set.all()
+    invoices = profile.acc_user.all()
     invoices_num = invoices.count()
     
     # Assuming invoices is a queryset of Invoice model
