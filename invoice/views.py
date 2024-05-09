@@ -144,8 +144,7 @@ def edit_client(request, pk):
 @login_required(login_url='login')
 def create_invoice(request):
     profile = request.user.profile
-    invoices = profile.invoice_set.all()
-
+    invoices = profile.acc_user.select_related('account_owner').all()
     custom_range, invoices = paginateInvoice(request, 5, invoices)
 
     # Calculate days until due for each invoice
@@ -184,7 +183,7 @@ def create_invoice(request):
 def edit_invoice(request, pk):
     profile = request.user.profile
     # Use get_object_or_404 to handle the case where the invoice does not exist
-    invoice = get_object_or_404(profile.invoice_set, id=pk)
+    invoice = get_object_or_404(profile.acc_user, id=pk)
     
     # 
     display_items = invoice.items.all()

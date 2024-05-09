@@ -58,12 +58,12 @@ class Invoice(models.Model):
         ('NGN 🇳🇬', 'NGN 🇳🇬'),
     )
 
-    account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='acc_user', db_index=True)
     project_name = models.CharField(max_length=255)
     project_duration = models.CharField(max_length=50)
-    client_name = models.ForeignKey(Client, on_delete=models.CASCADE, to_field='name', related_name='invoice', 
+    client_name = models.ForeignKey(Client, on_delete=models.CASCADE, to_field='name', related_name='invoice', db_index=True, 
                                     help_text='Select a client for this entry.')
-    invoice_status = models.CharField(max_length=200, choices=STATUS)
+    invoice_status = models.CharField(max_length=200, choices=STATUS, db_index=True)
     payment_date = models.DateField(max_length=200, null=True)
     currency = models.CharField(max_length=200, choices=CURRENCY)
     invoice_image = models.ImageField(null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
@@ -72,8 +72,8 @@ class Invoice(models.Model):
     total = models.IntegerField(default=0, null=True, blank=True)
     paid_date = models.DateField(null=True, blank=True)
 
-    updated_time_stamp = models.DateTimeField(auto_now=True)
-    created_time_stamp = models.DateTimeField(auto_now_add=True)
+    updated_time_stamp = models.DateTimeField(auto_now=True, db_index=True)
+    created_time_stamp = models.DateTimeField(auto_now_add=True, db_index=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
     
     @property

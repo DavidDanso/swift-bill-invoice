@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('theboss/', admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
     path('', include('invoice.urls')),
     path('', include('user.urls')),
 
