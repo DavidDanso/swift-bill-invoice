@@ -20,7 +20,8 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('theboss/', admin.site.urls),
     path('', include('invoice.urls')),
     path('', include('user.urls')),
 

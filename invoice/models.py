@@ -118,8 +118,9 @@ class Item(models.Model):
     class Meta:
         ordering = ['-updated_time_stamp']
 
+    
     def __str__(self):
-        return str(self.title)
+        return f'{self.invoice.project_name} : {self.title}'
     
 
 @receiver(post_save, sender=Item)
