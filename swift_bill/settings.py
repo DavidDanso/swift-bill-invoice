@@ -198,3 +198,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'theboss']
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = ['https://swift-bill-invoice.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://swift-bill-invoice.onrender.com']
