@@ -243,7 +243,7 @@ def edit_invoice(request, pk):
 @login_required(login_url='login')
 def download_invoice(request, pk):
     profile = request.user.profile
-    invoice = profile.invoice_set.get(id=pk)
+    invoice = profile.acc_user.get(id=pk)
 
     items = invoice.items.all()
     items_total = invoice.items.aggregate(total=Sum('total'))['total']
