@@ -20,7 +20,7 @@ def dashboard_page(request):
     profile = request.user.profile
 
     # Clients
-    clients = profile.client_set.all()
+    clients = profile.clients.all()
     clients_num = clients.count()
 
     # Invoices
@@ -91,7 +91,7 @@ def dashboard_page(request):
 @login_required(login_url='login')
 def create_client(request):
     profile = request.user.profile
-    clients = profile.client_set.all()
+    clients = profile.clients.all()
     form = ClientCreationForm()
 
     # 
@@ -119,7 +119,7 @@ def create_client(request):
 @login_required(login_url='login')
 def edit_client(request, pk):
     profile = request.user.profile
-    client = profile.client_set.get(id=pk)
+    client = profile.clients.get(id=pk)
     form = ClientCreationForm(instance=client)
 
     # 

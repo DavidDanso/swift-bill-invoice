@@ -9,17 +9,17 @@ from django.dispatch import receiver
 
 # client model   
 class Client(models.Model):
-    account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, unique=True)
-    address = models.CharField(max_length=255, default='...')
-    country = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, unique=True, default='...')
-    phone_number = models.IntegerField(null=True, blank=True, default='(xxx)xxx-xxxx')
-    city_state = models.CharField(max_length=50)
-    postal_code = models.CharField(max_length=30, default='...')
+    account_owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='clients', db_index=True)
+    name = models.CharField(max_length=50, unique=True, db_index=True)
+    address = models.CharField(max_length=255)
+    country = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(max_length=100, unique=True, db_index=True)
+    phone_number = models.IntegerField(null=True, blank=True)
+    city_state = models.CharField(max_length=50, null=True, blank=True)
+    postal_code = models.CharField(max_length=30, null=True, blank=True)
     client_avatar = models.ImageField(null=True, blank=True, upload_to='client_avatar/', default='emil-kowalski.png')
-    updated_time_stamp = models.DateTimeField(auto_now=True)
-    created_time_stamp = models.DateTimeField(auto_now_add=True)
+    updated_time_stamp = models.DateTimeField(auto_now=True, db_index=True)
+    created_time_stamp = models.DateTimeField(auto_now_add=True, db_index=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
 
     @property
@@ -37,8 +37,14 @@ class Client(models.Model):
     # display new clients first
     class Meta:
         ordering = ['-updated_time_stamp']
+        indexes = [
+            models.Index(fields=['name']),
+            models.Index(fields=['email']),
+            models.Index(fields=['updated_time_stamp']),
+            models.Index(fields=['created_time_stamp']),
+        ]
     
-    # display clinet with names in the database
+    # display client with names in the database
     def __str__(self):
         return self.name
     

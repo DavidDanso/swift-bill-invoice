@@ -204,7 +204,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH', cast=bool, default=False)
 # AWS_S3_FILE_OVERWRITE = config('AWS_S3_FILE_OVERWRITE', cast=bool, default=False)
 
-
 #
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'theboss']
 
