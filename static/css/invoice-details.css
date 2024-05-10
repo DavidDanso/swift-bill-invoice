@@ -102,7 +102,7 @@ a:hover {
   color: #3860be;
   letter-spacing: 1px;
   font-family: var(--text-font);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   background: transparent;
   transition: all 0.5s ease-in-out;
   margin-bottom: 5%;
@@ -171,7 +171,7 @@ a:hover {
   margin-top: 11%;
 }
 .invoice--details-intro label {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -180,7 +180,7 @@ a:hover {
   color: var(--main-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   border: 1px solid #7b8fa1;
   background: transparent;
   border-bottom-right-radius: 5px;

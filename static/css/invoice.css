@@ -242,8 +242,10 @@ a:hover {
   text-transform: capitalize;
   font-size: 1.8vh;
 }
-#avatar-img {
-  width: 30px;
+.desktop-table-intro #avatar-img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
 }
 #unpaid_status .badge {
   background: #fff8e5;
@@ -293,16 +295,18 @@ a:hover {
   padding: 5%;
 }
 #invoice--container #avatar-img {
-  width: 35px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
 }
 .mobile-table-intro h4 {
-  font-size: 2.1vh;
+  font-size: 2.3vh;
   font-family: var(--header-font);
   color: var(--main-color);
   letter-spacing: 1px;
 }
 .mobile-table-intro h5 {
-  font-size: 2vh;
+  font-size: 2.2vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -312,7 +316,7 @@ a:hover {
 }
 #invoice--container #unpaid_status {
   border-radius: 15px;
-  font-size: 1.7vh;
+  font-size: 1.8vh;
   margin-top: 3%;
   margin-bottom: 5%;
 }
@@ -329,7 +333,7 @@ a:hover {
   margin-bottom: 5%;
 }
 .mobile-table-intro span {
-  font-size: 1.9vh;
+  font-size: 2vh;
   font-family: var(--text-font);
   color: #de9b12;
   letter-spacing: 1px;

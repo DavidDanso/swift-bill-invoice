@@ -4,6 +4,7 @@ import uuid
 from django.db.models import Sum
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from django_resized import ResizedImageField
 # import requests
 
 
@@ -17,7 +18,7 @@ class Client(models.Model):
     phone_number = models.IntegerField(null=True, blank=True)
     city_state = models.CharField(max_length=50, null=True, blank=True)
     postal_code = models.CharField(max_length=30, null=True, blank=True)
-    client_avatar = models.ImageField(null=True, blank=True, upload_to='client_avatar/', default='emil-kowalski.png')
+    client_avatar = ResizedImageField(size=[600, 600], quality=85, null=True, blank=True, upload_to='client_avatar/', default='emil-kowalski.png')
     updated_time_stamp = models.DateTimeField(auto_now=True, db_index=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True, db_index=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
@@ -72,7 +73,7 @@ class Invoice(models.Model):
     invoice_status = models.CharField(max_length=200, choices=STATUS, db_index=True)
     payment_date = models.DateField(max_length=200, null=True)
     currency = models.CharField(max_length=200, choices=CURRENCY)
-    invoice_image = models.ImageField(null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
+    invoice_image = ResizedImageField(size=[600, 600], quality=85, null=True, blank=True, upload_to='invoice_image/', default='invoice.png')
     client_note = models.TextField(max_length=100000, null=True, blank=True)
 
     total = models.IntegerField(default=0, null=True, blank=True)
