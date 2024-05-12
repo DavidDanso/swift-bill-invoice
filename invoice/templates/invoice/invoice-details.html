@@ -194,7 +194,7 @@
                               <label for="formFile" class="form-label">
                                 select a new image or keep the current one.
                                 <!--  -->
-                                {% if invoice.invoiceImageURL != invoiceImg %}
+                                {% if invoice.invoiceImageURL != default_Img %}
                                 <!--  -->
                                 (<img
                                   src="{{invoice.invoiceImageURL}}"
@@ -206,7 +206,7 @@
                                 {% else %}
                                 <!--  -->
                                 (<img
-                                  src="{% static '/images/invoice.png' %}"
+                                  src="{{default_Img}}"
                                   class="img-fluid"
                                   id="invoice--img-default"
                                   alt="invoice--img-default"

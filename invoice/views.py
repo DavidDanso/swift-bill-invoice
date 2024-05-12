@@ -204,7 +204,7 @@ def edit_invoice(request, pk):
             return redirect('invoice')
         
     # default invoice image url
-    default_invoiceImg = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
+    default_invoiceImg = "https://res.cloudinary.com/dcgh7zeff/image/upload/v1715554233/images/kupflj0vmq2vsresxoxy.png"
 
     #
     context = {
@@ -212,7 +212,7 @@ def edit_invoice(request, pk):
         'invoice': invoice, 
         'display_items': display_items,
         'items_total': items_total,
-        'invoiceImg': default_invoiceImg,
+        'default_Img': default_invoiceImg,
     }
     return render(request, 'invoice/invoice-details.html', context)
 
