@@ -181,11 +181,8 @@ a:hover {
   background: #f7f7f7f9;
   margin-bottom: 3%;
 }
-.client--intro .card h5 span {
-  float: right;
-}
 .client--intro .card h4 {
-  font-size: 1.4rem;
+  font-size: 2.2vh;
   font-family: var(--header-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -197,7 +194,7 @@ a:hover {
   object-fit: cover;
 }
 .client--intro .card h5 {
-  font-size: 1.4rem;
+  font-size: 2vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -207,6 +204,7 @@ a:hover {
   font-size: 1.3rem;
   color: #7b8fa1;
   text-transform: capitalize;
+  float: right;
 }
 
 /* no--client */
