@@ -300,13 +300,13 @@ a:hover {
   object-fit: cover;
 }
 .mobile-table-intro h4 {
-  font-size: 2.2vh;
+  font-size: 2.3vh;
   font-family: var(--header-font);
   color: var(--main-color);
   letter-spacing: 1px;
 }
 .mobile-table-intro h5 {
-  font-size: 2vh;
+  font-size: 2.1vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
