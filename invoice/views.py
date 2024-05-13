@@ -212,6 +212,7 @@ def edit_invoice(request, pk):
         'display_items': display_items,
         'items_total': items_total,
     }
+        
     return render(request, 'invoice/invoice-details.html', context)
 
 
