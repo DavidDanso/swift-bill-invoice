@@ -185,26 +185,26 @@ a:hover {
   float: right;
 }
 .client--intro .card h4 {
-  font-size: 1.4rem;
+  font-size: 2.2vh;
   font-family: var(--header-font);
   color: var(--main-color);
   letter-spacing: 1px;
   text-transform: capitalize;
 }
 .client--intro #avatar-img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 }
 .client--intro .card h5 {
-  font-size: 1.4rem;
+  font-size: 2vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
   margin-bottom: 2%;
 }
 .client--intro .card h5 span {
-  font-size: 1.3rem;
+  font-size: 2vh;
   color: #7b8fa1;
   text-transform: capitalize;
 }
@@ -421,8 +421,8 @@ footer p {
     font-size: 1.2rem;
   }
   .client--intro #avatar-img {
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 30px;
   }
   .client--intro .card h5 {
     font-size: 1.1rem;

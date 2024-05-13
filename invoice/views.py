@@ -24,14 +24,11 @@ def dashboard_page(request):
     clients_num = clients.count()
 
     # Invoices
-    invoices = profile.acc_user.all()
+    invoices = Invoice.objects.filter(account_owner=profile)
     invoices_num = invoices.count()
-    
-    # Assuming invoices is a queryset of Invoice model
-    current_month = datetime.now().month # Get the current month
-    total_paid_in_current_month_usd = 0  # Initialize a variable to store the total paid in USD in the current month
 
-    # Exchange rates for currencies
+    # Calculate total paid in USD for each month
+    monthly_activity = []
     currency_rates = {
         'NGN 🇳🇬': 0.000712758,
         'GHS 🇬🇭': 0.0811322, 
@@ -40,52 +37,32 @@ def dashboard_page(request):
         'USD 🇺🇸': 1.00000,
     }
 
-    # List of months
-    months = [
-        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-        'September', 'October', 'November', 'December'
-    ]
+    for month in range(1, 13):
+        total_paid_in_current_month_usd = sum(
+            invoice.total * currency_rates.get(invoice.currency, 0)
+            for invoice in invoices
+            if invoice.paid_date and invoice.paid_date.month == month
+        )
 
-    # Create or update the monthly_activity list of dictionaries
-    monthly_activity = []
-
-    # Iterate through invoices to find those paid in each month
-    for current_month in range(1, 13):
-        total_paid_in_current_month_usd = 0  # Initialize a variable to store the total paid in USD in the current month
-
-        for invoice in invoices:
-            if invoice.paid_date and invoice.paid_date.month == current_month:
-                currency = invoice.currency
-                total_paid_in_current_month_usd += invoice.total * currency_rates.get(currency, 0)
-
-        current_month_name = months[current_month - 1]
-
-        # Check if there is an entry for the current month
-        current_month_entry = next((entry for entry in monthly_activity if entry['month'] == current_month_name), None)
-
-        if current_month_entry:
-            # Update the existing entry for the current month
-            current_month_entry['amount'] += total_paid_in_current_month_usd
-        else:
-            # Create a new entry for the current month
-            monthly_activity.append({'month': current_month_name, 'amount': total_paid_in_current_month_usd})
-
-    # Now, monthly_activity will contain a list of dictionaries, each representing a month and its corresponding total amount paid in USD.
+        current_month_name = datetime.strptime(str(month), "%m").strftime("%B")
+        monthly_activity.append({'month': current_month_name, 'amount': total_paid_in_current_month_usd})
 
     # Calculate currency totals for paid and pending invoices
     paid_total_usd, pending_total_usd = calculate_currency_totals(invoices)
 
     current_month_num = datetime.now().month
 
-    # 
     context = {
-        'clients_num': clients_num, 'invoices_num': invoices_num, 
-        'paid_total_usd': paid_total_usd, 'pending_total_usd': pending_total_usd, 'clients': clients,
-        'monthly_activity': monthly_activity, 'num': current_month_num
+        'clients_num': clients_num,
+        'invoices_num': invoices_num,
+        'paid_total_usd': paid_total_usd,
+        'pending_total_usd': pending_total_usd,
+        'clients': clients,
+        'monthly_activity': monthly_activity,
+        'num': current_month_num
     }
 
     return render(request, 'invoice/dashboard.html', context)
-
 
 ########################################## client page views
 @login_required(login_url='login')
@@ -107,11 +84,7 @@ def create_client(request):
         else:
             messages.error(request,  'Invalid form: Please check and resubmit')
 
-    
-    # default client image url
-    default_clientImg = "https://swift-bill-bucket.s3.amazonaws.com/emil-kowalski.png" 
-
-    context = {'form': form, 'clients': clients, 'clientImg': default_clientImg}
+    context = {'form': form, 'clients': clients}
     return render(request, 'invoice/client.html', context)
 
 
@@ -226,7 +199,7 @@ def edit_invoice(request, pk):
             return redirect('invoice')
         
     # default invoice image url
-    default_invoiceImg = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
+    default_invoiceImg = "https://res.cloudinary.com/dcgh7zeff/image/upload/v1715604391/images/invoice.png"
 
     #
     context = {

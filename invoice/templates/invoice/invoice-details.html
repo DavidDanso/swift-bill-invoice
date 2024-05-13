@@ -193,26 +193,12 @@
                             <div class="mb-3">
                               <label for="formFile" class="form-label">
                                 select a new image or keep the current one.
-                                <!--  -->
-                                {% if invoice.invoiceImageURL != invoiceImg %}
-                                <!--  -->
                                 (<img
                                   src="{{invoice.invoiceImageURL}}"
                                   class="img-fluid"
                                   id="invoice--img-default"
                                   alt="invoice--img-default"
                                 />)
-                                <!--  -->
-                                {% else %}
-                                <!--  -->
-                                (<img
-                                  src="{% static '/images/invoice.png' %}"
-                                  class="img-fluid"
-                                  id="invoice--img-default"
-                                  alt="invoice--img-default"
-                                />)
-                                <!--  -->
-                                {% endif %}
                               </label>
                               {{form.invoice_image}}
                             </div>
