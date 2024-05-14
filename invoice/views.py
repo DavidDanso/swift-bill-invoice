@@ -28,7 +28,7 @@ def dashboard_page(request):
     invoices_num = invoices.count()
 
     # Calculate total paid in USD for each month
-    monthly_activity = []
+    monthly_activity = []    
     currency_rates = {
         'NGN 🇳🇬': 0.000712758,
         'GHS 🇬🇭': 0.0811322, 
@@ -61,6 +61,9 @@ def dashboard_page(request):
         'monthly_activity': monthly_activity,
         'num': current_month_num
     }
+
+    print(monthly_activity)
+
 
     return render(request, 'invoice/dashboard.html', context)
 

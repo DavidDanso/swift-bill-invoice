@@ -96,27 +96,29 @@
               <hr />
               <div class="row">
                 <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="info">
-                        <h6>
-                          <img
-                            src="{% static '/images/customers.png' %}"
-                            class="img-fluid icon"
-                            alt="customers--img"
-                          />
-                          Total Clients
-                        </h6>
+                  <a href="{% url 'clients' %}">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="info">
+                          <h6>
+                            <img
+                              src="{% static '/images/customers.png' %}"
+                              class="img-fluid icon"
+                              alt="customers--img"
+                            />
+                            Total Clients
+                          </h6>
+                        </div>
+                        <!-- end info -->
+                        <div class="data">
+                          <p>{{clients_num}}</p>
+                        </div>
+                        <!-- end data -->
                       </div>
-                      <!-- end info -->
-                      <div class="data">
-                        <p>{{clients_num}}</p>
-                      </div>
-                      <!-- end data -->
+                      <!-- end card-body -->
                     </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
+                    <!-- end card -->
+                  </a>
                 </div>
                 <!-- end client -->
 
@@ -187,27 +189,29 @@
                 <!-- end pending -->
 
                 <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="info">
-                        <h6>
-                          <img
-                            src="{% static '/images/billing.png' %}"
-                            class="img-fluid icon"
-                            alt="billing--img"
-                          />
-                          Total Invoice
-                        </h6>
+                  <a href="{% url 'invoice' %}">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="info">
+                          <h6>
+                            <img
+                              src="{% static '/images/billing.png' %}"
+                              class="img-fluid icon"
+                              alt="billing--img"
+                            />
+                            Total Invoice
+                          </h6>
+                        </div>
+                        <!-- end info -->
+                        <div class="data">
+                          <p>{{invoices_num}}</p>
+                        </div>
+                        <!-- end data -->
                       </div>
-                      <!-- end info -->
-                      <div class="data">
-                        <p>{{invoices_num}}</p>
-                      </div>
-                      <!-- end data -->
+                      <!-- end card-body -->
                     </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
+                    <!-- end card -->
+                  </a>
                 </div>
                 <!-- end invoice -->
               </div>
