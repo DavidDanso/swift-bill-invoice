@@ -64,7 +64,6 @@ def dashboard_page(request):
 
     return render(request, 'invoice/dashboard.html', context)
 
-
 ########################################## client page views
 @login_required(login_url='login')
 def create_client(request):
@@ -85,11 +84,7 @@ def create_client(request):
         else:
             messages.error(request,  'Invalid form: Please check and resubmit')
 
-    
-    # default client image url
-    default_clientImg = "https://swift-bill-bucket.s3.amazonaws.com/emil-kowalski.png" 
-
-    context = {'form': form, 'clients': clients, 'clientImg': default_clientImg}
+    context = {'form': form, 'clients': clients}
     return render(request, 'invoice/client.html', context)
 
 
@@ -204,6 +199,7 @@ def edit_invoice(request, pk):
             return redirect('invoice')
         
     # default invoice image url
+    default_invoiceImg = "https://swift-bill-bucket.s3.amazonaws.com/invoice.png"
 
     #
     context = {

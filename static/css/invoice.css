@@ -295,18 +295,18 @@ a:hover {
   padding: 5%;
 }
 #invoice--container #avatar-img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 }
 .mobile-table-intro h4 {
-  font-size: 2.3vh;
+  font-size: 2.2vh;
   font-family: var(--header-font);
   color: var(--main-color);
   letter-spacing: 1px;
 }
 .mobile-table-intro h5 {
-  font-size: 2.1vh;
+  font-size: 2.2vh;
   font-family: var(--text-font);
   color: var(--main-color);
   letter-spacing: 1px;
@@ -458,6 +458,13 @@ a:hover {
 }
 #invoice--img-card input {
   margin-bottom: -2%;
+}
+#invoice--img-card h6 {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: #7b8fa1d7;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 /* display--items  */
@@ -764,7 +771,12 @@ footer p {
   #invoice--img-card input {
     margin-bottom: -1%;
   }
+  #invoice--img-card h6 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
 
+  /*  */
   #sub-total a {
     font-size: 2.4vh;
     margin-top: 3%;

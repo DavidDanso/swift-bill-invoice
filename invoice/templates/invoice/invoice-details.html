@@ -194,6 +194,8 @@
                               <label for="formFile" class="form-label">
                                 select a new image or keep the current one.
                                 <!--  -->
+                                {% if invoice.invoiceImageURL != invoiceImg %}
+                                <!--  -->
                                 (<img
                                   src="{{invoice.invoiceImageURL}}"
                                   class="img-fluid"
