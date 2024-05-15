@@ -62,9 +62,6 @@ def dashboard_page(request):
         'num': current_month_num
     }
 
-    print(monthly_activity)
-
-
     return render(request, 'invoice/dashboard.html', context)
 
 ########################################## client page views

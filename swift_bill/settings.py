@@ -176,7 +176,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #
-if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
+if ENVIRONMENT == 'development' or POSTGRES_LOCALLY == True:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
