@@ -33,10 +33,13 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-if ENVIRONMENT == 'development':
-    DEBUG = True
-else:
-    DEBUG = False
+# if ENVIRONMENT == 'development':
+#     DEBUG = True
+# else:
+#     DEBUG = False
+DEBUG = True
+
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-invoice-stagging.onrender.com']
 
@@ -162,8 +165,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('ACCOUNT_EMAIL')
 EMAIL_HOST_PASSWORD = config('ACCOUNT_EMAIL_PASSWORD')
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
