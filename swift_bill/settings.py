@@ -33,12 +33,10 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# if ENVIRONMENT == 'development':
-#     DEBUG = True
-# else:
-#     DEBUG = False
-DEBUG = True
-
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-invoice-stagging.onrender.com']
