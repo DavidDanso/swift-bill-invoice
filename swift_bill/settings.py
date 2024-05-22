@@ -38,7 +38,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-6462a5f07e98.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-invoice.onrender.com']
 
 SESSION_COOKIE_SECURE = True 
 SESSION_COOKIE_HTTPONLY = True
@@ -192,5 +192,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'theboss']
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = ['https://swift-bill-6462a5f07e98.herokuapp.com/']
-CSRF_TRUSTED_ORIGINS = ['https://swift-bill-6462a5f07e98.herokuapp.com/']
+CORS_ALLOWED_ORIGINS = ['https://swift-bill-invoice.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://swift-bill-invoice.onrender.com']
