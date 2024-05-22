@@ -215,25 +215,33 @@ def edit_invoice(request, pk):
 ########################################## preview-invoice page views
 @login_required(login_url='login')
 def download_invoice(request, pk):
+    # Get the user's profile and invoice
     profile = request.user.profile
-    invoice = profile.acc_user.get(id=pk)
+    invoice = get_object_or_404(profile.acc_user, id=pk)
 
+    # Prefetch related items and calculate the total
     items = invoice.items.all()
-    items_total = invoice.items.aggregate(total=Sum('total'))['total']
+    items_total = items.aggregate(total=Sum('total'))['total']
 
-    context = {'invoice': invoice, 'profile': profile, 'items': items, 
-               'items_total': items_total}
+    # Context for rendering the invoice
+    context = {
+        'invoice': invoice,
+        'profile': profile,
+        'items': items,
+        'items_total': items_total
+    }
 
-    # Render HTML content
+    # Render HTML content for the invoice
     html_content = render_to_string('invoice/preview-invoice.html', context)
 
-    # Create a PDF file using WeasyPrint
+    # Generate the PDF file using WeasyPrint
     pdf_file = HTML(string=html_content, base_url=request.build_absolute_uri()).write_pdf()
 
     # Create a response with the PDF file
     response = HttpResponse(pdf_file, content_type='application/pdf')
-    
-    # Set the filename for the download as "invoice.pdf"
-    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+    response['Content-Disposition'] = f'attachment; filename="invoice_{pk}.pdf"'
 
     return response
+
+
+
