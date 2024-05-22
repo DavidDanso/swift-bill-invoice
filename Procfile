@@ -1,2 +1,2 @@
 # Procfile
-web: gunicorn ash_store.wsgi --log-file -
+web: gunicorn swift_bill.wsgi --log-file -
