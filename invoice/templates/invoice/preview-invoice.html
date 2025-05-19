@@ -303,7 +303,7 @@
                   </div>
                   <!-- end invoice--from-img -->
 
-                  <h3 id="name_">{{profile.name}}.</h3>
+                  <h3 id="name_">David Danso.</h3>
                   <p id="email_">{{profile.email}}.</p>
                 </div>
                 <!-- end invoice--from -->
@@ -327,8 +327,8 @@
                   <!-- end clients--info -->
 
                   <div class="invoice-info-col due-date align-self-center">
-                    <h4>Due Date</h4>
-                    <h6>{{ invoice.payment_date|date:"d M, Y" }}.</h6>
+                    <h4>Issue Date</h4>
+                    <h6>{{ invoice.created_time_stamp|date:"d M, Y" }}.</h6>
                   </div>
                   <!-- end due--date -->
                 </div>

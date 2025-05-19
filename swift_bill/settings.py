@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ENVIRONMENT = 'production'
+ENVIRONMENT = 'development'
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -118,7 +118,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = True
+POSTGRES_LOCALLY = False
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
 
@@ -154,12 +154,12 @@ USE_I18N = True
 USE_TZ = True
 
 # email configuration for sending welcome email when user signs up
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('ACCOUNT_EMAIL')
-EMAIL_HOST_PASSWORD = config('ACCOUNT_EMAIL_PASSWORD')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = config('ACCOUNT_EMAIL')
+# EMAIL_HOST_PASSWORD = config('ACCOUNT_EMAIL_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)

@@ -7,76 +7,39 @@
       <div class="row">
         <div class="col-md-8" id="monthly-stats">
           {% if paid_total_usd == 0 %}
-          <img
-            src="{% static 'images/receipt.svg'%}"
-            class="img-fluid d-flex mx-auto reciept"
-            id="reciept--img"
-            alt="reciept--img"
-          />
+          <img src="{% static 'images/receipt.svg'%}" class="img-fluid d-flex mx-auto reciept" id="reciept--img" alt="reciept--img" />
           <h4 id="no_data">No Data available yet!</h4>
           {% else%}
           <div class="card">
             <div class="card-body">
               <h3>
                 monthly invoice activity
-                <img
-                  src="{% static 'images/analytics.svg'%}"
-                  class="img-fluid"
-                  id="chart-icon"
-                  alt="chart-icon"
-                />
+                <img src="{% static 'images/analytics.svg'%}" class="img-fluid" id="chart-icon" alt="chart-icon" />
 
                 <span>
-                  <img
-                    src="{% static 'images/dash-icon.svg'%}"
-                    class="img-fluid"
-                    id="dash-icon"
-                    alt="dash-icon"
-                  />
+                  <img src="{% static 'images/dash-icon.svg'%}" class="img-fluid" id="dash-icon" alt="dash-icon" />
                 </span>
               </h3>
               <!--  -->
-              <img
-                src="{% static 'images/dash_line.svg'%}"
-                class="img-fluid"
-                id="dash-line"
-                alt="dash-line"
-              />
+              <img src="{% static 'images/dash_line.svg'%}" class="img-fluid" id="dash-line" alt="dash-line" />
               <!--  -->
               {% for data in monthly_activity|slice:":"|slice:num %}
               <h2>
-                <img
-                  src="{% static 'images/coins.png'%}"
-                  class="img-fluid"
-                  id="coin-img"
-                  alt="coin-img"
-                />
+                <img src="{% static 'images/coins.png'%}" class="img-fluid" id="coin-img" alt="coin-img" />
                 {{ data.month }}
-                <span id="amount"
-                  >${{ data.amount|floatformat:2|intcomma }}</span
-                >
+                <span id="amount">${{ data.amount|floatformat:2|intcomma }}</span>
               </h2>
               {% endfor %}
 
               <!--  -->
-              <img
-                src="{% static 'images/dash_line.svg'%}"
-                class="img-fluid"
-                id="dash-line"
-                alt="dash-line"
-              />
+              <img src="{% static 'images/dash_line.svg'%}" class="img-fluid" id="dash-line" alt="dash-line" />
               <!--  -->
 
-              <img
-                src="{% static 'images/receipt.svg'%}"
-                class="img-fluid d-flex mx-auto"
-                id="reciept--img"
-                alt="reciept--img"
-              />
+              <img src="{% static 'images/receipt.svg'%}" class="img-fluid d-flex mx-auto" id="reciept--img" alt="reciept--img" />
               <!--  -->
 
               <h5>
-                Total amount for [ 2024 ]
+                Total amount for [ {% now "Y" %} ]
                 <span>${{paid_total_usd|floatformat:2|intcomma}}</span>
               </h5>
             </div>
