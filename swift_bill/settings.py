@@ -38,7 +38,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-invoice.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'swift-bill-invoice.onrender.com', 'localhost']
 
 SESSION_COOKIE_SECURE = True 
 SESSION_COOKIE_HTTPONLY = True
