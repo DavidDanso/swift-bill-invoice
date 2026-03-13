@@ -122,7 +122,10 @@ def create_invoice(request):
 
     # Calculate days until due for each invoice
     for invoice in invoices:
-        invoice.due = (invoice.payment_date - datetime.now().date()).days
+        if invoice.payment_date:
+            invoice.due = (invoice.payment_date - datetime.now().date()).days
+        else:
+            invoice.due = 0
 
     # Filter clients based on the current user
     form = InvoiceCreationForm(request.user, request.POST, request.FILES if request.method == "POST" else None)

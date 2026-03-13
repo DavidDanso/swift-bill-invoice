@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ENVIRONMENT = 'development'
+ENVIRONMENT = config('ENVIRONMENT', default='development')
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -118,7 +118,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = False
+POSTGRES_LOCALLY = config('POSTGRES_LOCALLY', default=False, cast=bool)
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
 

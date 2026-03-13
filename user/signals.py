@@ -22,8 +22,12 @@ def updateProfile(sender, instance, created, **kwargs):
         user.save()
 
 def deleteUser(sender, instance, **kwargs):
-    user = instance.user
-    user.delete()
+    try:
+        user = instance.user
+        if user:
+            user.delete()
+    except User.DoesNotExist:
+        pass
 
 post_save.connect(createUser, sender=User)
 post_save.connect(updateProfile, sender=Profile)

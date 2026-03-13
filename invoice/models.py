@@ -115,10 +115,18 @@ class Item(models.Model):
         return self.quantity * self.price
     
     def save(self, *args, **kwargs):
-        # Convert quantity, price, and invoice_total to integers before saving
-        self.quantity = int(self.quantity)
-        self.price = int(self.price)
-        self.total = int(self.invoice_total)
+        # Safely convert quantity, price, and invoice_total to integers before saving
+        try:
+            self.quantity = int(self.quantity or 0)
+        except (ValueError, TypeError):
+            self.quantity = 0
+
+        try:
+            self.price = int(self.price or 0)
+        except (ValueError, TypeError):
+            self.price = 0
+
+        self.total = int(self.invoice_total or 0)
 
         super(Item, self).save(*args, **kwargs)
 
