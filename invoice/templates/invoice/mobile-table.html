@@ -18,7 +18,7 @@
               />
               {% else %}
               <img
-                src="{% static '/images/emil-kowalski.png' %}"
+                src="{% static 'images/emil-kowalski.png' %}"
                 class="img-fluid rounded-circle"
                 id="avatar-img"
                 alt="avatar-img"
@@ -39,7 +39,7 @@
               {% if invoice.invoice_status == 'Pending' %}
               <span class="badge" id="unpaid_status">
                 <img
-                  src="{% static '/images/pending.svg' %}"
+                  src="{% static 'images/pending.svg' %}"
                   class="img-fluid"
                   id="clock-img"
                   alt="clock-img"
@@ -49,7 +49,7 @@
               {% else %}
               <span class="badge" id="paid_status">
                 <img
-                  src="{% static '/images/paid.svg' %}"
+                  src="{% static 'images/paid.svg' %}"
                   class="img-fluid"
                   id="clock-img"
                   alt="clock-img"
@@ -95,7 +95,7 @@
 
             <a href="{% url 'invoice-details' invoice.id %}">
               <img
-                src="{% static '/images/list.png' %}"
+                src="{% static 'images/list.png' %}"
                 class="img-fluid"
                 id="open_invoice-link"
                 alt="open_invoice-link"

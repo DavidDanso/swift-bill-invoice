@@ -13,15 +13,15 @@
     <meta name="keywords" content="invoice app, billing, invoicing software" />
 
     <meta name="author" content="the_desiinger" />
-    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <link rel="icon" href="{% static 'images/favicon.svg' %}" />
     <title>Swift Bill | Client Page</title>
 
     <!-- Preload CSS -->
-    <link href="{% static '/css/normalize.css' %}" />
-    <link rel="preload" as="style" href="{% static '/css/client.css' %}" />
+    <link href="{% static 'css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static 'css/client.css' %}" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static '/css/client.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/client.css' %}" />
 
     <script>
       document.documentElement.className = "js";
@@ -94,7 +94,7 @@
                             <h4>
                               <img
                                 src="{{client.imageURL}}"
-                                src="{% static '/images/emil-kowalski.png' %}"
+                                src="{% static 'images/emil-kowalski.png' %}"
                                 class="img-fluid rounded-circle"
                                 id="avatar-img"
                                 alt="avatar-img"
@@ -143,7 +143,7 @@
               {% else %}
               <div id="no--clients">
                 <img
-                  src="{% static '/images/no-client.svg' %}"
+                  src="{% static 'images/no-client.svg' %}"
                   class="img-fluid no--client-img d-flex mx-auto"
                   alt="no--client-img"
                 />
@@ -318,7 +318,7 @@
                           <label for="formFile" class="form-label">
                             leave empty to use (default photo
                             <img
-                              src="{% static '/images/emil-kowalski.png' %}"
+                              src="{% static 'images/emil-kowalski.png' %}"
                               class="img-fluid rounded-circle"
                               id="client--avatar_"
                               alt="client--avatar_"
@@ -349,7 +349,7 @@
 
               <!--  -->
               <img
-                src="{% static '/images/banner.jpeg' %}"
+                src="{% static 'images/banner.jpeg' %}"
                 class="img-fluid offcanvas--banner"
                 alt="offcanvas--banner"
               />
@@ -380,8 +380,8 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="{% static '/js/jquery-min.js' %}"></script>
-    <script src="{% static '/js/bootstrap.min.js' %}"></script>
-    <script src="{% static '/js/client.js' %}"></script>
+    <script src="{% static 'js/jquery-min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/client.js' %}"></script>
   </body>
 </html>
